@@ -118,15 +118,11 @@
         android:id="@+id/editNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="28dp" />
 
     <TextView
         android:id="@+id/engineerView"
@@ -326,7 +322,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="236dp"
         android:layout_marginTop="8dp"
-        android:text="Impossible"
+        android:text="MEDIUM"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
