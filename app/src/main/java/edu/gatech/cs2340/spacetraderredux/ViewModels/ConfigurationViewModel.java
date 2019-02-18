@@ -1,19 +1,18 @@
 package edu.gatech.cs2340.spacetraderredux.ViewModels;
 
 import android.arch.lifecycle.ViewModel;
-import android.widget.TextView;
 
 import edu.gatech.cs2340.spacetraderredux.Model.*;
 
 public class ConfigurationViewModel extends ViewModel {
-    static Game game;
-    public String name = "Player1";
+    private static Game game;
+    private String name = "Player1";
     public Difficulty difficulty = Difficulty.EASY;
     public int pilot;
     public int fighter;
     public int trader;
     public int engineer;
-    int remaining = 16;
+    private int remaining = 16;
 
     public void updateRemaining() {
         remaining = 16 - (pilot + fighter + trader + engineer);
@@ -23,19 +22,11 @@ public class ConfigurationViewModel extends ViewModel {
         return Integer.toString(remaining);
     }
     public void incDifficulty() {
-        if (difficulty.equals(Difficulty.IMPOSSIBLE)) {
-            difficulty = Difficulty.EASY;
-        } else {
-            difficulty = Difficulty.values()[difficulty.ordinal() + 1];
-        }
+        difficulty = Difficulty.values()[(difficulty.ordinal() + 1) % Difficulty.values().length];
     }
 
     public void decDifficulty() {
-        if (difficulty.equals(Difficulty.EASY)) {
-            difficulty = Difficulty.IMPOSSIBLE;
-        } else {
-            difficulty = Difficulty.values()[difficulty.ordinal() - 1];
-        }
+        difficulty = Difficulty.values()[(difficulty.ordinal() + Difficulty.values().length - 1) % Difficulty.values().length];
     }
 
     public void decPoints(int flag) {
@@ -81,7 +72,7 @@ public class ConfigurationViewModel extends ViewModel {
     }
     public boolean validPlayer() {
         updateRemaining();
-        return name.length() > 1 && (remaining == 0);
+        return name.length() > 0 && (remaining == 0);
     }
     public String createPlayer() {
         Player player = new Player(name, pilot, fighter, trader, engineer);

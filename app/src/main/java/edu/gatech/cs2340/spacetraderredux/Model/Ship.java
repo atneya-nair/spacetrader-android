@@ -7,4 +7,9 @@ public class Ship {
     public Ship() {
         shipType = ShipType.GNAT;
     }
+
+    @Override
+    public String toString() {
+        return shipType.toString();
+    }
 }
