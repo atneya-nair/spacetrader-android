@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.spacetraderredux.Views;
 
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,164 +13,107 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import edu.gatech.cs2340.spacetraderredux.R;
+import edu.gatech.cs2340.spacetraderredux.ViewModels.ConfigurationViewModel;
 
 
 import static edu.gatech.cs2340.spacetraderredux.ViewModels.ConfigurationViewModel.*;
 
 public class ConfigurationActivity extends AppCompatActivity {
-
+    private ConfigurationViewModel mViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
+        mViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
 
-        ImageButton difficultyUp = (ImageButton) findViewById(R.id.difficultyUp);
-        difficultyUp.setOnClickListener(new View.OnClickListener() {
+        TextView difficultyText =  (TextView) findViewById(R.id.difficulty_buttons)
+                .findViewById(R.id.labelText);
+        TextView difficultyValue =  (TextView) findViewById(R.id.difficulty_buttons)
+                .findViewById(R.id.valueText);
+        TextView pilotText =  (TextView) findViewById(R.id.pilot_buttons)
+                .findViewById(R.id.labelText);
+        TextView fighterText =  (TextView) findViewById(R.id.fighter_buttons)
+                .findViewById(R.id.labelText);
+        TextView traderText =  (TextView) findViewById(R.id.trader_buttons)
+                .findViewById(R.id.labelText);
+        TextView engineerText =  (TextView) findViewById(R.id.engineer_buttons)
+                .findViewById(R.id.labelText);
+        TextView nameText = (TextView) findViewById(R.id.characterName);
+        Button submitButton = (Button) findViewById(R.id.submitButton);
+        nameText.setText("Player1");
+        difficultyText.setText("Difficulty:");
+        pilotText.setText("Pilot");
+        fighterText.setText("Fighter");
+        traderText.setText("Trader");
+        engineerText.setText("Engineer");
+        difficultyValue.setText("EASY");
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView difficultyTextView = (TextView) findViewById(R.id.difficultyEditView);
-                String difficultyText = (String) difficultyTextView.getText();
-                String newDifficulty = updateDifficulty(difficultyText, true);
-                difficultyTextView.setText(newDifficulty);
-            }
-        });
-
-        ImageButton difficultyDown = (ImageButton) findViewById(R.id.difficultyDown);
-        difficultyDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView difficultyTextView = (TextView) findViewById(R.id.difficultyEditView);
-                String difficultyText = (String) difficultyTextView.getText();
-                String newDifficulty = updateDifficulty(difficultyText, false);
-                Log.d("hey", newDifficulty);
-                difficultyTextView.setText(newDifficulty);
-            }
-        });
-
-
-        ImageButton pilotUp = (ImageButton) findViewById(R.id.pilotUp);
-        pilotUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView pilotTextView = (TextView) findViewById(R.id.pilotEditView);
-                String pilotText = (String) pilotTextView.getText();
-                String newSkill = updateSkill(pilotText, true);
-                pilotTextView.setText(newSkill);
-            }
-        });
-
-        ImageButton pilotDown = (ImageButton) findViewById(R.id.pilotDown);
-        pilotDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView pilotTextView = (TextView) findViewById(R.id.pilotEditView);
-                String pilotText = (String) pilotTextView.getText();
-                String newSkill = updateSkill(pilotText, false);
-                pilotTextView.setText(newSkill);
-            }
-        });
-
-        ImageButton fighterUp = (ImageButton) findViewById(R.id.fighterUp);
-        fighterUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView fighterTextView = (TextView) findViewById(R.id.fighterEditView);
-                String fighterText = (String) fighterTextView.getText();
-                String newSkill = updateSkill(fighterText, true);
-                fighterTextView.setText(newSkill);
-            }
-        });
-
-        final ImageButton fighterDown = (ImageButton) findViewById(R.id.fighterDown);
-        fighterDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView fighterTextView = (TextView) findViewById(R.id.fighterEditView);
-                String fighterText = (String) fighterTextView.getText();
-                String newSkill = updateSkill(fighterText, false);
-                fighterTextView.setText(newSkill);
-            }
-        });
-
-        ImageButton traderUp = (ImageButton) findViewById(R.id.traderUp);
-        traderUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView traderTextView = (TextView) findViewById(R.id.traderEditView);
-                String traderText = (String) traderTextView.getText();
-                String newSkill = updateSkill(traderText, true);
-                traderTextView.setText(newSkill);
-            }
-        });
-
-        ImageButton traderDown = (ImageButton) findViewById(R.id.traderDown);
-        traderDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView traderTextView = (TextView) findViewById(R.id.traderEditView);
-                String traderText = (String) traderTextView.getText();
-                String newSkill = updateSkill(traderText, false);
-                traderTextView.setText(newSkill);
-            }
-        });
-
-        ImageButton engineerUp = (ImageButton) findViewById(R.id.engineerUp);
-        engineerUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView engineerTextView = (TextView) findViewById(R.id.engineerEditView);
-                String engineerText = (String) engineerTextView.getText();
-                String newSkill = updateSkill(engineerText, true);
-                engineerTextView.setText(newSkill);
-            }
-        });
-
-        ImageButton engineerDown = (ImageButton) findViewById(R.id.engineerDown);
-        engineerDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView engineerTextView = (TextView) findViewById(R.id.engineerEditView);
-                String engineerText = (String) engineerTextView.getText();
-                String newSkill = updateSkill(engineerText, false);
-                engineerTextView.setText(newSkill);
-            }
-        });
-
-        Button configureButton = (Button) findViewById(R.id.configureButton);
-        configureButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText editTextName = (EditText) findViewById(R.id.editNameText);
-                String nameText = editTextName.getText().toString();
-                Toast.makeText(ConfigurationActivity.this, nameText, Toast.LENGTH_SHORT).show();
-                TextView difficultyTextView = (TextView) findViewById(R.id.difficultyEditView);
-                String difficultyText = (String) difficultyTextView.getText();
-                TextView pilotTextView = (TextView) findViewById(R.id.pilotEditView);
-                String pilotText = (String) pilotTextView.getText();
-                TextView fighterTextView = (TextView) findViewById(R.id.fighterEditView);
-                String fighterText = (String) fighterTextView.getText();
-                TextView traderTextView = (TextView) findViewById(R.id.traderEditView);
-                String traderText = (String) traderTextView.getText();
-                TextView engineerTextView = (TextView) findViewById(R.id.engineerEditView);
-                String engineerText = (String) engineerTextView.getText();
-                boolean isValid = validPlayer(nameText, difficultyText, pilotText, fighterText,
-                        traderText, engineerText);
-                if (isValid) {
-                    Toast.makeText(ConfigurationActivity.this, "YEA", Toast.LENGTH_SHORT).show();
-
+                TextView nameText = (TextView) findViewById(R.id.characterName);
+                mViewModel.setName(nameText.getText().toString());
+                if (mViewModel.validPlayer()) {
+                    Toast.makeText(ConfigurationActivity.this, "Creating valid player", Toast.LENGTH_SHORT).show();
+                    String s = mViewModel.createPlayer();
+                    Intent activityChangeIntent = new Intent(ConfigurationActivity.this, SuccessView.class);
+                    activityChangeIntent.putExtra("playerData", s);
+                    ConfigurationActivity.this.startActivity(activityChangeIntent);
                 } else {
                     Toast.makeText(ConfigurationActivity.this, "Invalid User Input", Toast.LENGTH_SHORT).show();
-                    Intent activityChangeIntent = new Intent(ConfigurationActivity.this, SuccessView.class);
 
-                    // currentContext.startActivity(activityChangeIntent);
 
-                    ConfigurationActivity.this.startActivity(activityChangeIntent);
-                    //SuccessView.receiveConfigData(nameText, difficultyText, pilotText, fighterText,
-                         //   traderText, engineerText);
                 }
 
             }
         });
+    }
+    public void downClicked(View view) {
+        View parentView = (View) view.getParent();
+        TextView labelText =  (TextView) parentView.findViewById(R.id.valueText);
+        TextView remainingText = (TextView) findViewById(R.id.totalPoints);
+        if (parentView.getId() ==  R.id.difficulty_buttons) {
+            mViewModel.decDifficulty();
+            labelText.setText(mViewModel.difficulty.toString());
+        } else if (parentView.getId() == R.id.pilot_buttons) {
+            mViewModel.decPoints(0);
+            labelText.setText(Integer.toString(mViewModel.pilot));
+        } else if (parentView.getId() == R.id.fighter_buttons) {
+            mViewModel.decPoints(1);
+            labelText.setText(Integer.toString(mViewModel.fighter));
+        } else if (parentView.getId() == R.id.trader_buttons) {
+            mViewModel.decPoints(2);
+            labelText.setText(Integer.toString(mViewModel.trader));
+        } else if (parentView.getId() == R.id.engineer_buttons) {
+            mViewModel.decPoints(3);
+            labelText.setText(Integer.toString(mViewModel.engineer));
+
+        }
+        remainingText.setText(mViewModel.getRemaining());
+    }
+    public void upClicked(View view) {
+        View parentView = (View) view.getParent();
+        TextView labelText =  (TextView) parentView.findViewById(R.id.valueText);
+        TextView remainingText = (TextView) findViewById(R.id.totalPoints);
+        if (parentView.getId() ==  R.id.difficulty_buttons) {
+            mViewModel.incDifficulty();
+            labelText.setText(mViewModel.difficulty.toString());
+        } else if (parentView.getId() == R.id.pilot_buttons) {
+            mViewModel.incPoints(0);
+            labelText.setText(Integer.toString(mViewModel.pilot));
+        } else if (parentView.getId() == R.id.fighter_buttons) {
+            mViewModel.incPoints(1);
+            labelText.setText(Integer.toString(mViewModel.fighter));
+        } else if (parentView.getId() == R.id.trader_buttons) {
+            mViewModel.incPoints(2);
+            labelText.setText(Integer.toString(mViewModel.trader));
+        } else if (parentView.getId() == R.id.engineer_buttons) {
+            mViewModel.incPoints(3);
+            labelText.setText(Integer.toString(mViewModel.engineer));
+
+        }
+        remainingText.setText(mViewModel.getRemaining());
     }
 }

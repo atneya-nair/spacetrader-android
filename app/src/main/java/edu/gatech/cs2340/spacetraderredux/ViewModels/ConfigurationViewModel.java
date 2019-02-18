@@ -1,76 +1,92 @@
 package edu.gatech.cs2340.spacetraderredux.ViewModels;
 
+import android.arch.lifecycle.ViewModel;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.spacetraderredux.Model.*;
 
-public class ConfigurationViewModel {
+public class ConfigurationViewModel extends ViewModel {
     static Game game;
+    public String name = "Player1";
+    public Difficulty difficulty = Difficulty.EASY;
+    public int pilot;
+    public int fighter;
+    public int trader;
+    public int engineer;
+    int remaining = 16;
 
-    public static String updateDifficulty(String oldDifficultyString, boolean up) {
-        String newDifficultyString = "";
-        oldDifficultyString = oldDifficultyString.toUpperCase();
-        Difficulty[] valuesArray = Difficulty.values();
-        for(int i = 0; i < valuesArray.length; i++) {
-            Difficulty value = Difficulty.values()[i];
-            String valueString = value.toString();
-            if(valueString.equals(oldDifficultyString)) {
-                int valueOrdinal = value.ordinal();
-                if (up) {
-                    int newOrdinal = (valueOrdinal + 1) % valuesArray.length;
-                    Difficulty newValue = valuesArray[newOrdinal];
-                    return newValue.toString();
-                } else {
-                    int newOrdinal = (valueOrdinal + valuesArray.length - 1) % valuesArray.length;
-                    Difficulty newValue = valuesArray[newOrdinal];
-                    return newValue.toString();
-                }
-            }
-
-        }
-        return oldDifficultyString;
+    public void updateRemaining() {
+        remaining = 16 - (pilot + fighter + trader + engineer);
     }
 
-    public static String updateSkill(String skillPoints, boolean up) {
-        int skill = Integer.parseInt(skillPoints);
-        if (up) {
-            if (skill == 16) {
-                return "16";
-            } else {
-                return skill + 1 + "";
-            }
+    public String getRemaining() {
+        return Integer.toString(remaining);
+    }
+    public void incDifficulty() {
+        if (difficulty.equals(Difficulty.IMPOSSIBLE)) {
+            difficulty = Difficulty.EASY;
         } else {
-            if (skill == 0) {
-                return "0";
-            } else {
-                return skill - 1 + "";
-            }
+            difficulty = Difficulty.values()[difficulty.ordinal() + 1];
         }
     }
 
-    public static boolean validPlayer(String nameText, String difficultyText, String pilotText, String fighterText,
-                                      String traderText, String engineerText) {
-        int pilotSkill = Integer.parseInt(pilotText);
-        int fighterSkill = Integer.parseInt(fighterText);
-        int traderSkill = Integer.parseInt(traderText);
-        int engineerSkill = Integer.parseInt(engineerText);
-
-        if (nameText == null || nameText.length() <= 0) {
-            return false;
-        } else if (pilotSkill + fighterSkill + traderSkill + engineerSkill > 16) {
-            return false;
+    public void decDifficulty() {
+        if (difficulty.equals(Difficulty.EASY)) {
+            difficulty = Difficulty.IMPOSSIBLE;
         } else {
-            Difficulty[] valuesArray = Difficulty.values();
-            Difficulty difficulty = valuesArray[0];
-            for(int i = 0; i < valuesArray.length; i++) {
-                Difficulty value = Difficulty.values()[i];
-                String valueString = value.toString();
-                if(valueString.equals(difficultyText)) {
-                    difficulty = valuesArray[i];
-                }
-            }
-            game = new Game(new Player(fighterSkill, traderSkill, fighterSkill, engineerSkill), difficulty);
-            return true;
+            difficulty = Difficulty.values()[difficulty.ordinal() - 1];
         }
+    }
+
+    public void decPoints(int flag) {
+        switch (flag) {
+            case 0:
+                if (pilot > 0) pilot--;
+                break;
+            case 1:
+                if (fighter > 0) fighter--;
+                break;
+            case 2:
+                if (trader > 0) trader--;
+                break;
+            case 3:
+                if (engineer > 0) engineer--;
+                break;
+        }
+        updateRemaining();
+    }
+
+    public void incPoints(int flag) {
+       if (remaining > 0) {
+           switch (flag) {
+               case 0:
+                   pilot++;
+                   break;
+               case 1:
+                   fighter++;
+                   break;
+               case 2:
+                   trader++;
+                   break;
+               case 3:
+                   engineer++;
+                   break;
+           }
+       }
+       updateRemaining();
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public boolean validPlayer() {
+        updateRemaining();
+        return name.length() > 1 && (remaining == 0);
+    }
+    public String createPlayer() {
+        Player player = new Player(name, pilot, fighter, trader, engineer);
+        game = new Game(player, difficulty);
+        return player.toString();
+
     }
 }
