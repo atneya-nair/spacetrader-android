@@ -21,7 +21,12 @@ public class SplashActivity extends AppCompatActivity {
 
                 SplashActivity.this.startActivity(activityChangeIntent);
             }
+
         });
+
+        if (getIntent().getBooleanExtra("EXIT", false)) {   // To be removed...
+            finish();
+        }
     }
 
 
