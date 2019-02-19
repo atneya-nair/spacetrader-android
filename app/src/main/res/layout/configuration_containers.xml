@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="horizontal"
+    android:layout_weight="1"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/labelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/downButton"
+        android:onClick="downClicked"
+        app:srcCompat="@drawable/ic_down"
+        android:layout_weight="0"/>
+
+    <TextView
+        android:id="@+id/valueText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="0"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
+        android:id="@+id/upButton"
+        app:srcCompat="@drawable/ic_up"
+        android:onClick="upClicked"
+        android:layout_weight="0"/>
+</LinearLayout>
