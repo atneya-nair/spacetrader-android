@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+import edu.gatech.cs2340.spacetraderredux.Model.SkillType;
 import edu.gatech.cs2340.spacetraderredux.R;
 import edu.gatech.cs2340.spacetraderredux.ViewModels.ConfigurationViewModel;
 
@@ -62,6 +67,11 @@ public class ConfigurationActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Processes a decrement button being clicked, updating the corresponding difficulty or skillpoint.
+     * @param view the view the event happened in.
+     */
     public void downClicked(View view) {
         View parentView = (View) view.getParent();
         TextView labelText =  (TextView) parentView.findViewById(R.id.valueText);
@@ -70,21 +80,26 @@ public class ConfigurationActivity extends AppCompatActivity {
             mViewModel.decDifficulty();
             labelText.setText(mViewModel.difficulty.toString());
         } else if (parentView.getId() == R.id.pilot_buttons) {
-            mViewModel.decPoints(0);
+            mViewModel.decPoints(SkillType.PILOT);
             labelText.setText(Integer.toString(mViewModel.pilot));
         } else if (parentView.getId() == R.id.fighter_buttons) {
-            mViewModel.decPoints(1);
+            mViewModel.decPoints(SkillType.FIGHTER);
             labelText.setText(Integer.toString(mViewModel.fighter));
         } else if (parentView.getId() == R.id.trader_buttons) {
-            mViewModel.decPoints(2);
+            mViewModel.decPoints(SkillType.TRADER);
             labelText.setText(Integer.toString(mViewModel.trader));
         } else if (parentView.getId() == R.id.engineer_buttons) {
-            mViewModel.decPoints(3);
+            mViewModel.decPoints(SkillType.ENGINEER);
             labelText.setText(Integer.toString(mViewModel.engineer));
 
         }
         remainingText.setText(mViewModel.getRemaining());
     }
+
+    /**
+     * Processes an increment button being clicked, updating the corresponding difficulty or skillpoint.
+     * @param view the view the event happened in.
+     */
     public void upClicked(View view) {
         View parentView = (View) view.getParent();
         TextView labelText =  (TextView) parentView.findViewById(R.id.valueText);
@@ -93,16 +108,16 @@ public class ConfigurationActivity extends AppCompatActivity {
             mViewModel.incDifficulty();
             labelText.setText(mViewModel.difficulty.toString());
         } else if (parentView.getId() == R.id.pilot_buttons) {
-            mViewModel.incPoints(0);
+            mViewModel.incPoints(SkillType.PILOT);
             labelText.setText(Integer.toString(mViewModel.pilot));
         } else if (parentView.getId() == R.id.fighter_buttons) {
-            mViewModel.incPoints(1);
+            mViewModel.incPoints(SkillType.FIGHTER);
             labelText.setText(Integer.toString(mViewModel.fighter));
         } else if (parentView.getId() == R.id.trader_buttons) {
-            mViewModel.incPoints(2);
+            mViewModel.incPoints(SkillType.TRADER);
             labelText.setText(Integer.toString(mViewModel.trader));
         } else if (parentView.getId() == R.id.engineer_buttons) {
-            mViewModel.incPoints(3);
+            mViewModel.incPoints(SkillType.ENGINEER);
             labelText.setText(Integer.toString(mViewModel.engineer));
 
         }
