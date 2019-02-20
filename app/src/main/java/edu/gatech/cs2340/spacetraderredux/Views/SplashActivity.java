@@ -8,7 +8,9 @@ import android.widget.Button;
 import edu.gatech.cs2340.spacetraderredux.R;
 
 public class SplashActivity extends AppCompatActivity {
-    public void onCreate(Bundle savedInstanceState){
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         final Button button = (Button) findViewById(R.id.newGame);
