@@ -4,36 +4,32 @@ import android.graphics.Point;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 public class SolarSystem {
-    private String name;
-    private static Point location;
-    private Planet[] planets;
+    private final SolarSystemName name;
+    private final Point location;
+    private final Planet[] planets;
 
-    public SolarSystem(String name){
+    public SolarSystem(SolarSystemName name, Point location, Random seed){
         this.name = name;
-        this.planets = planets;
-        Point location = new Point(0,0);
+        this.location = location;
+        this.planets = new Planet[seed.nextInt(10) + 1];
+        for (int i = 0; i < this.planets.length; i++) {
+            this.planets[i] = new Planet(seed);
+        }
     }
 
-    public static void createSolarSystems(ArrayList<SolarSystem> solarSystems){
-        ArrayList<Integer> xcoordinatelist = new ArrayList<>(200);
-        ArrayList<Integer> ycoordinatelist = new ArrayList<>(200);
-        for(int i = 0; i < 200; i ++){
-            xcoordinatelist.add(i);
-            ycoordinatelist.add(i);
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Solar System " + name.name() + " at (" + location.x + ", " + location.y + ") containing planets: {");
+        for (int i = 0; i < planets.length - 1; i++) {
+            sb.append(planets[i] + ", ");
         }
-        Collections.shuffle(xcoordinatelist);
-        Collections.shuffle(ycoordinatelist);
-        for(int i = 0; i < SolarSystemName.values().length; i++){
-             solarSystems.get(i).setLocation(xcoordinatelist.get(i), ycoordinatelist.get(i));
-
-        }
-
-
-    }
-
-    public void setLocation(int x, int y){
-        this.location = new Point(x, y);
+        sb.append(planets[planets.length - 1] + "}");
+        return sb.toString();
     }
 }

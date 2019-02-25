@@ -7,9 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import edu.gatech.cs2340.spacetraderredux.Model.Difficulty;
+import edu.gatech.cs2340.spacetraderredux.Model.GameInstance;
+import edu.gatech.cs2340.spacetraderredux.Model.Player;
 import edu.gatech.cs2340.spacetraderredux.R;
 
 public class SuccessView extends AppCompatActivity {
+    private GameInstance gameInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +33,14 @@ public class SuccessView extends AppCompatActivity {
             }
 
         });
+
+        Bundle gameData = intent.getBundleExtra("gameData");
+        int[] stats = gameData.getIntArray("playerStats");
+        String playerName = gameData.getString("playerName");
+        int difficultyValue = gameData.getInt("difficulty");
+        Difficulty difficulty = Difficulty.values()[difficultyValue];
+        gameInstance = new GameInstance(new Player(playerName, stats[0], stats[1], stats[2], stats[3]), difficulty);
+        gameInstance.getUniverse().dumpToLog();
+
     }
 }

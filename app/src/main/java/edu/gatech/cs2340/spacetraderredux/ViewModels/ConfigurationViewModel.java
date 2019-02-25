@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.spacetraderredux.ViewModels;
 
 import android.arch.lifecycle.ViewModel;
+import android.os.Bundle;
 
 import edu.gatech.cs2340.spacetraderredux.Model.*;
 
@@ -9,9 +10,8 @@ public class ConfigurationViewModel extends ViewModel {
     private static final String DEFAULT_PLAYER_NAME = "Player1";
     private static final Difficulty DEFAULT_PLAYER_DIFFICULTY = Difficulty.EASY;
 
-    private static Game game;
-    private String name = DEFAULT_PLAYER_NAME;
     public Difficulty difficulty = DEFAULT_PLAYER_DIFFICULTY;
+    private String name = DEFAULT_PLAYER_NAME;
     public int pilot;
     public int fighter;
     public int trader;
@@ -119,8 +119,18 @@ public class ConfigurationViewModel extends ViewModel {
      */
     public String createPlayer() {
         Player player = new Player(name, pilot, fighter, trader, engineer);
-        game = new Game(player, difficulty);
         return player.toString();
+    }
 
+    /**
+     * Creates a bundle containing all the game data
+     * @return a bundle containing all the game data
+     */
+    public Bundle createGameDataBundle() {
+        Bundle bundle = new Bundle();
+        bundle.putString("playerName", name);
+        bundle.putIntArray("playerStats", new int[]{pilot, fighter, trader, engineer});
+        bundle.putInt("difficulty", difficulty.ordinal());
+        return bundle;
     }
 }

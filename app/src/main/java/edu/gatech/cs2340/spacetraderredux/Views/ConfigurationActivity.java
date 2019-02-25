@@ -13,6 +13,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.gatech.cs2340.spacetraderredux.Model.Difficulty;
+import edu.gatech.cs2340.spacetraderredux.Model.Player;
 import edu.gatech.cs2340.spacetraderredux.Model.SkillType;
 import edu.gatech.cs2340.spacetraderredux.R;
 import edu.gatech.cs2340.spacetraderredux.ViewModels.ConfigurationViewModel;
@@ -26,11 +28,11 @@ public class ConfigurationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configuration);
         mViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
 
-        TextView difficultyText =  (TextView) findViewById(R.id.difficulty_buttons)
+        final TextView difficultyText =  (TextView) findViewById(R.id.difficulty_buttons)
                 .findViewById(R.id.labelText);
-        TextView difficultyValue =  (TextView) findViewById(R.id.difficulty_buttons)
+        final TextView difficultyValue =  (TextView) findViewById(R.id.difficulty_buttons)
                 .findViewById(R.id.valueText);
-        TextView pilotText =  (TextView) findViewById(R.id.pilot_buttons)
+        final TextView pilotText =  (TextView) findViewById(R.id.pilot_buttons)
                 .findViewById(R.id.labelText);
         TextView fighterText =  (TextView) findViewById(R.id.fighter_buttons)
                 .findViewById(R.id.labelText);
@@ -57,6 +59,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                     String s = mViewModel.createPlayer();
                     Intent activityChangeIntent = new Intent(ConfigurationActivity.this, SuccessView.class);
                     activityChangeIntent.putExtra("playerData", s);
+                    activityChangeIntent.putExtra("gameData", mViewModel.createGameDataBundle());
                     ConfigurationActivity.this.startActivity(activityChangeIntent);
                 } else {
                     Toast.makeText(ConfigurationActivity.this, "Invalid User Input", Toast.LENGTH_SHORT).show();
