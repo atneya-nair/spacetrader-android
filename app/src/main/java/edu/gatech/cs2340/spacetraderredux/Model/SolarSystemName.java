@@ -122,8 +122,8 @@ public enum SolarSystemName {
     ZALKON,
     ZUUL;
 
-    public final String name;
+    public final String displayName;
     SolarSystemName() {
-        name = name().substring(0,1) + name().toLowerCase().substring(1);
+        displayName = name().substring(0,1) + name().toLowerCase().substring(1);
     }
 }

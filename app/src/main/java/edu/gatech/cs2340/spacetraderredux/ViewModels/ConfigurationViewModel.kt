@@ -79,8 +79,8 @@ class ConfigurationViewModel @Inject constructor(): ViewModel() {
     }
 
     /**
-     * Sets the name of the player
-     * @param name the new name of the player
+     * Sets the displayName of the player
+     * @param name the new displayName of the player
      */
     fun setName(name: String) {
         this.playername = name
