@@ -1,6 +1,6 @@
-package edu.gatech.cs2340.spacetraderredux.Model;
+package edu.gatech.cs2340.spacetraderredux.Model
 
-public enum SolarSystemName {
+enum class SolarSystemName private constructor() {
     ACAMAR,
     ADAHN,
     ALDEA,
@@ -122,8 +122,9 @@ public enum SolarSystemName {
     ZALKON,
     ZUUL;
 
-    public final String displayName;
-    SolarSystemName() {
-        displayName = name().substring(0,1) + name().toLowerCase().substring(1);
+    val displayName: String
+
+    init {
+        displayName = name.substring(0, 1) + name.toLowerCase().substring(1)
     }
 }
