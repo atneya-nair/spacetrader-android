@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Intent activityChangeIntent = new Intent(SplashActivity.this, ConfigurationActivity.class);
+                Intent activityChangeIntent = new Intent(SplashActivity.this, Trade.class);
 
                 // currentContext.startActivity(activityChangeIntent);
 
