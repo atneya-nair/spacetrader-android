@@ -10,9 +10,9 @@ import javax.inject.Singleton
 class PlayerConfiguration private constructor() {
     @Module
     companion object {
-        private val MAX_SKILLPOINTS = 16
-        private val DEFAULT_PLAYER_NAME = "Player1"
-        private val DEFAULT_PLAYER_DIFFICULTY = Difficulty.EASY
+        val MAX_SKILLPOINTS = 16
+        val DEFAULT_PLAYER_NAME = "Player1"
+        val DEFAULT_PLAYER_DIFFICULTY = Difficulty.EASY
         private val configuration = PlayerConfiguration()
 
         @JvmStatic
@@ -23,10 +23,12 @@ class PlayerConfiguration private constructor() {
         }
     }
 
-    private var difficulty = DEFAULT_PLAYER_DIFFICULTY
-    private var playername = DEFAULT_PLAYER_NAME
+    var playerName = DEFAULT_PLAYER_NAME
+    var difficulty = DEFAULT_PLAYER_DIFFICULTY
+        private set
     private var skillPoints = HashMap<SkillType, Int>()
-    private var remaining = MAX_SKILLPOINTS
+    var remaining = MAX_SKILLPOINTS
+        private set
 
     init {
         for (type in SkillType.values()) {
@@ -36,7 +38,7 @@ class PlayerConfiguration private constructor() {
 
     fun reinitialize() {
         difficulty = DEFAULT_PLAYER_DIFFICULTY
-        playername = DEFAULT_PLAYER_NAME
+        playerName = DEFAULT_PLAYER_NAME
         skillPoints = HashMap()
         remaining = MAX_SKILLPOINTS
 
@@ -51,10 +53,6 @@ class PlayerConfiguration private constructor() {
 
     fun decrementDifficulty() {
         difficulty = Difficulty.values()[(difficulty.ordinal + Difficulty.values().size - 1) % Difficulty.values().size]
-    }
-
-    fun getDifficulty(): Difficulty {
-        return difficulty
     }
 
     fun incrementSkill(type: SkillType): Boolean {
@@ -80,20 +78,8 @@ class PlayerConfiguration private constructor() {
         return skillPoints.get(type)!!
     }
 
-    fun getRemainingSkillPoints(): Int {
-        return remaining
-    }
-
-    fun getName(): String {
-        return playername
-    }
-
-    fun setName(newName: String) {
-        playername = newName
-    }
-
     fun isPlayerNameValid(): Boolean {
-        return playername.length > 0
+        return playerName.length > 0
     }
 
     fun areSkillPointsRemaining(): Boolean {

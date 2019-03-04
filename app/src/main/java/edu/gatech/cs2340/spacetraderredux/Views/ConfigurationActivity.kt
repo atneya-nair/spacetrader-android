@@ -3,12 +3,16 @@ package edu.gatech.cs2340.spacetraderredux.Views
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import edu.gatech.cs2340.spacetraderredux.Model.Difficulty
 
 import edu.gatech.cs2340.spacetraderredux.Model.SkillType
+import edu.gatech.cs2340.spacetraderredux.Model.configuration.PlayerConfiguration
+import edu.gatech.cs2340.spacetraderredux.Model.configuration.PlayerConfiguration_Companion_GetInstanceFactory
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.Presenters.ConfigurationPresenter
 import kotlinx.android.synthetic.main.activity_configuration.*
@@ -38,11 +42,22 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationPresenter.View {
                 SkillType.PILOT to pilot_buttons.findViewById(R.id.valueText),
                 SkillType.ENGINEER to engineer_buttons.findViewById(R.id.valueText),
                 SkillType.TRADER to trader_buttons.findViewById(R.id.valueText),
-                SkillType.FIGHTER to fighter_buttons.findViewById(R.id.valueText)
-        )
+                SkillType.FIGHTER to fighter_buttons.findViewById(R.id.valueText))
+
+        characterName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                presenter.onPlayerNameChange(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        characterName.setText(PlayerConfiguration.DEFAULT_PLAYER_NAME)
 
         difficulty_buttons.labelText.text = "Difficulty"
-        difficulty_buttons.valueText.text = "EASY"
+        difficulty_buttons.valueText.text = PlayerConfiguration.DEFAULT_PLAYER_DIFFICULTY.name
         pilot_buttons.labelText.text = "Pilot:"
         engineer_buttons.labelText.text = "Enginer:"
         trader_buttons.labelText.text = "Trader:"

@@ -12,28 +12,32 @@ class ConfigurationPresenter constructor(view: View) {
     //@Inject
     var playerConfiguration: PlayerConfiguration = PlayerConfiguration.getInstance()
 
+    fun onPlayerNameChange(name: String) {
+        playerConfiguration.playerName = name
+    }
+
     fun onIncrementSkillType(type: SkillType): Boolean {
         var didSucceed = playerConfiguration.incrementSkill(type)
         view.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
-        view.updateRemainingSkillPoints(playerConfiguration.getRemainingSkillPoints())
+        view.updateRemainingSkillPoints(playerConfiguration.remaining)
         return didSucceed
     }
 
     fun onDecrementSkillType(type: SkillType): Boolean {
         var didSucceed = playerConfiguration.decrementSkill(type)
         view.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
-        view.updateRemainingSkillPoints(playerConfiguration.getRemainingSkillPoints())
+        view.updateRemainingSkillPoints(playerConfiguration.remaining)
         return didSucceed
     }
 
     fun onIncrementDifficulty() {
         playerConfiguration.incrementDifficulty()
-        view.updateDifficulty(playerConfiguration.getDifficulty())
+        view.updateDifficulty(playerConfiguration.difficulty)
     }
 
     fun onDecrementDifficulty() {
         playerConfiguration.decrementDifficulty()
-        view.updateDifficulty(playerConfiguration.getDifficulty())
+        view.updateDifficulty(playerConfiguration.difficulty)
     }
 
     fun onSubmit() {
