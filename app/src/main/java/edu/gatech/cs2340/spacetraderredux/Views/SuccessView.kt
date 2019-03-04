@@ -15,6 +15,7 @@ import edu.gatech.cs2340.spacetraderredux.R
 class SuccessView : AppCompatActivity() {
     private var gameInstance: GameInstance? = null
 
+    //TODO: fix
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_success_view)
