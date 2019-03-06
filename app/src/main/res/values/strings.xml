@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Space Trader Redux</string>
+    <string name="name">Name</string>
 </resources>
