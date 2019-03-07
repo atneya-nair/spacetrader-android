@@ -1,6 +1,9 @@
 package edu.gatech.cs2340.spacetraderredux.Model
 
 import edu.gatech.cs2340.spacetraderredux.Model.configuration.PlayerConfiguration
+import edu.gatech.cs2340.spacetraderredux.Model.ship.Ship
+import edu.gatech.cs2340.spacetraderredux.Model.ship.types.Gnat
+import edu.gatech.cs2340.spacetraderredux.Model.ship.types.ShipFactory
 
 class Player {
     val name: String
@@ -13,7 +16,7 @@ class Player {
 
     init {
         credits = 1000
-        ship = Ship()
+        ship = ShipFactory.createShip(Gnat::class)
 
         var playerConfiguration = PlayerConfiguration.getInstance()
         name = playerConfiguration.playerName

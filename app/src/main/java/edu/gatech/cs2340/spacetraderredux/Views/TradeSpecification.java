@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.spacetraderredux.R;
-import edu.gatech.cs2340.spacetraderredux.ViewModels.ConfigurationViewModel;
 import edu.gatech.cs2340.spacetraderredux.ViewModels.TradeSpecificationViewModel;
 
 public class TradeSpecification extends AppCompatActivity {
