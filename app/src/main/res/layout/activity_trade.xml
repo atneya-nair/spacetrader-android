@@ -25,21 +25,24 @@
         android:id="@+id/labelPlanetName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelTrade"
+        android:layout_below="@id/labelTabName"
         android:paddingLeft="15dp"
         android:paddingRight="25dp"
         android:text="Planet Name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
+
     <TextView
         android:id="@+id/planetName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelTrade"
+        android:layout_below="@id/labelTabName"
         android:text="Jar"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_alignParentEnd="@id/labelPlanetName"
         android:layout_toRightOf="@id/labelPlanetName"/>
+
+
     </LinearLayout>
 
     <TextView

@@ -12,7 +12,7 @@ import java.util.List;
 import edu.gatech.cs2340.spacetraderredux.R;
 
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class ResourcesViewAdapter extends RecyclerView.Adapter<ResourcesViewAdapter.MyViewHolder> {
 
     private List<TempTrade> list;
 
@@ -27,14 +27,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(List<TempTrade> updatedList) {
+    public ResourcesViewAdapter(List<TempTrade> updatedList) {
         this.list = updatedList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.trade_row, parent, false);
+                .inflate(R.layout.resources_row, parent, false);
 
         return new MyViewHolder(itemView);
     }
