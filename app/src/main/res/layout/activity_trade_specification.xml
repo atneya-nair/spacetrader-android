@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Quantity"
+                android:text="Quantity:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             <ImageButton
                 android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
 
             <TextView
                 android:id="@+id/resourceValueText"
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:paddingTop="3dp"

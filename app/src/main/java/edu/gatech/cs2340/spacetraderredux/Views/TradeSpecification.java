@@ -19,6 +19,7 @@ public class TradeSpecification extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setFinishOnTouchOutside(false);
         setContentView(R.layout.activity_trade_specification);
         mViewModel = ViewModelProviders.of(this).get(TradeSpecificationViewModel.class);
         TextView specificationText = (TextView) findViewById(R.id.labelTradeConfirmation);
