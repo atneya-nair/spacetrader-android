@@ -15,7 +15,6 @@ import javax.inject.Named
 class PlayerModule {
 
     @Provides
-    @Named("New")
     @Singleton
     fun provideNewPlayer(playerConfiguration: PlayerConfiguration): Player {
         return Player(playerConfiguration.getName()!!, playerConfiguration.getDifficulty()!!,

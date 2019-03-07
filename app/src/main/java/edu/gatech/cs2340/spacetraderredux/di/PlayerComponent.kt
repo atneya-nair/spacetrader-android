@@ -4,11 +4,13 @@ import dagger.BindsInstance
 import dagger.Component
 import edu.gatech.cs2340.spacetraderredux.domain.Player
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
+import javax.inject.Singleton
 
 
+@Singleton
 @Component(modules = arrayOf(PlayerModule::class))
 interface PlayerComponent {
-
+    fun player(): Player
     @Component.Builder
     interface Builder {
         @BindsInstance fun playerConfig(config: PlayerConfiguration): Builder

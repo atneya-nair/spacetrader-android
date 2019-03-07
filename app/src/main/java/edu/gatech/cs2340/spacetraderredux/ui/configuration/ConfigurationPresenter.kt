@@ -1,15 +1,19 @@
 package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
+import edu.gatech.cs2340.spacetraderredux.di.DaggerPlayerComponent
+import edu.gatech.cs2340.spacetraderredux.domain.Player
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Difficulty
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
 import edu.gatech.cs2340.spacetraderredux.domain.entities.SkillType
 import javax.inject.Inject
 
 class ConfigurationPresenter constructor(view: ConfigurationView) {
+
+
     var view: ConfigurationView = view
 
 
-    @Inject lateinit var playerConfiguration: PlayerConfiguration
+    var playerConfiguration = PlayerConfiguration()
 
     fun onPlayerNameChange(name: String) {
         playerConfiguration.playerName = name
@@ -46,6 +50,8 @@ class ConfigurationPresenter constructor(view: ConfigurationView) {
             view.displaySkillPointsRemainingError()
         } else {
             view.configurationSuccess()
+            var mPlayer = DaggerPlayerComponent.builder().playerConfig(playerConfiguration).build().player()
+            var s = mPlayer.toString()
         }
     }
 }
