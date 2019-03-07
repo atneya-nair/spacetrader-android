@@ -1,16 +1,15 @@
-package edu.gatech.cs2340.spacetraderredux.Presenters
+package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
-import dagger.Component
-import edu.gatech.cs2340.spacetraderredux.Model.*
-import edu.gatech.cs2340.spacetraderredux.Model.configuration.PlayerConfiguration
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Difficulty
+import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
+import edu.gatech.cs2340.spacetraderredux.domain.entities.SkillType
 import javax.inject.Inject
 
-class ConfigurationPresenter constructor(view: View) {
-    var view: View = view
+class ConfigurationPresenter constructor(view: ConfigurationView) {
+    var view: ConfigurationView = view
 
-    //TODO: Change to injection
-    //@Inject
-    var playerConfiguration: PlayerConfiguration = PlayerConfiguration.getInstance()
+
+    @Inject lateinit var playerConfiguration: PlayerConfiguration
 
     fun onPlayerNameChange(name: String) {
         playerConfiguration.playerName = name
@@ -32,12 +31,12 @@ class ConfigurationPresenter constructor(view: View) {
 
     fun onIncrementDifficulty() {
         playerConfiguration.incrementDifficulty()
-        view.updateDifficulty(playerConfiguration.difficulty)
+        view.updateDifficulty(playerConfiguration.playerDifficulty)
     }
 
     fun onDecrementDifficulty() {
         playerConfiguration.decrementDifficulty()
-        view.updateDifficulty(playerConfiguration.difficulty)
+        view.updateDifficulty(playerConfiguration.playerDifficulty)
     }
 
     fun onSubmit() {
@@ -46,16 +45,7 @@ class ConfigurationPresenter constructor(view: View) {
         } else if (playerConfiguration.areSkillPointsRemaining()) {
             view.displaySkillPointsRemainingError()
         } else {
-            view.goToNextView()
+            view.configurationSuccess()
         }
-    }
-
-    interface View {
-        fun updateDifficulty(difficulty: Difficulty)
-        fun updateSkillPoints(type: SkillType, points: Int)
-        fun updateRemainingSkillPoints(remainingSkillPoints: Int)
-        fun displayInvalidPlayerNameError()
-        fun displaySkillPointsRemainingError()
-        fun goToNextView()
     }
 }

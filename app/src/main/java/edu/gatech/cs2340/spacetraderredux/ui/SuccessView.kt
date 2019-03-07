@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetraderredux.Views
+package edu.gatech.cs2340.spacetraderredux.ui
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -7,9 +7,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
-import edu.gatech.cs2340.spacetraderredux.Model.Game
-import edu.gatech.cs2340.spacetraderredux.Model.Player
+import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.R
+import edu.gatech.cs2340.spacetraderredux.ui.splash.SplashActivity
 
 class SuccessView : AppCompatActivity() {
     //TODO: fix
@@ -25,9 +25,5 @@ class SuccessView : AppCompatActivity() {
             intent.putExtra("EXIT", true)
             startActivity(intent)
         }
-
-        Game.reinitialize()
-        successText.text = Game.instance.player.toString()
-        Game.instance.universe.dumpToLog()
     }
 }

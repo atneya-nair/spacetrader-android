@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Views.SuccessView"></activity>
-        <activity android:name=".Views.ConfigurationActivity" />
-        <activity android:name=".Views.SplashActivity">
+        <activity android:name=".ui.SuccessView"></activity>
+        <activity android:name=".ui.configuration.ConfigurationActivity" />
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

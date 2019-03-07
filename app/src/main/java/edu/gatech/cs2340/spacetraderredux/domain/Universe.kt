@@ -1,7 +1,8 @@
-package edu.gatech.cs2340.spacetraderredux.Model
+package edu.gatech.cs2340.spacetraderredux.domain
 
 import android.graphics.Point
 import android.util.Log
+import edu.gatech.cs2340.spacetraderredux.domain.entities.SolarSystemName
 
 import java.util.ArrayList
 import java.util.Collections

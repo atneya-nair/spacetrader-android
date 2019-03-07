@@ -1,5 +1,7 @@
-package edu.gatech.cs2340.spacetraderredux.Model
+package edu.gatech.cs2340.spacetraderredux.domain
 
+import edu.gatech.cs2340.spacetraderredux.domain.entities.PlanetName
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Resource
 import java.util.Random
 
 class Planet(rand: Random) {

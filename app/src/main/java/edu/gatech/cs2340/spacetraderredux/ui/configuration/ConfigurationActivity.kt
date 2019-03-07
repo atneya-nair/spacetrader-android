@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetraderredux.Views
+package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -8,17 +8,17 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import edu.gatech.cs2340.spacetraderredux.Model.Difficulty
 
-import edu.gatech.cs2340.spacetraderredux.Model.SkillType
-import edu.gatech.cs2340.spacetraderredux.Model.configuration.PlayerConfiguration
-import edu.gatech.cs2340.spacetraderredux.Model.configuration.PlayerConfiguration_Companion_GetInstanceFactory
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Difficulty
+import edu.gatech.cs2340.spacetraderredux.domain.entities.SkillType
+import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
 import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.Presenters.ConfigurationPresenter
+import edu.gatech.cs2340.spacetraderredux.di.PlayerComponent
+import edu.gatech.cs2340.spacetraderredux.ui.SuccessView
 import kotlinx.android.synthetic.main.activity_configuration.*
 import kotlinx.android.synthetic.main.configuration_containers.view.*
 
-class ConfigurationActivity : AppCompatActivity(), ConfigurationPresenter.View {
+class ConfigurationActivity : AppCompatActivity(), ConfigurationView{
 
     private var presenter: ConfigurationPresenter = ConfigurationPresenter(this)
 
@@ -54,10 +54,9 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationPresenter.View {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        characterName.setText(PlayerConfiguration.DEFAULT_PLAYER_NAME)
-
+        characterName.setText(presenter.playerConfiguration.playerName)
+        updateDifficulty(presenter.playerConfiguration.playerDifficulty)
         difficulty_buttons.labelText.text = "Difficulty"
-        difficulty_buttons.valueText.text = PlayerConfiguration.DEFAULT_PLAYER_DIFFICULTY.name
         pilot_buttons.labelText.text = "Pilot:"
         engineer_buttons.labelText.text = "Enginer:"
         trader_buttons.labelText.text = "Trader:"
@@ -86,7 +85,7 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationPresenter.View {
         Toast.makeText(this@ConfigurationActivity, "Unallocated skill points remaining", Toast.LENGTH_SHORT).show()
     }
 
-    override fun goToNextView() {
+    override fun configurationSuccess() {
         Toast.makeText(this@ConfigurationActivity, "Creating valid player", Toast.LENGTH_SHORT).show()
         val activityChangeIntent = Intent(this@ConfigurationActivity, SuccessView::class.java)
         this@ConfigurationActivity.startActivity(activityChangeIntent)
