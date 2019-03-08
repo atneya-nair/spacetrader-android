@@ -16,37 +16,33 @@
         android:layout_height="35dp"
         android:text="S"
         android:layout_alignParentRight="true"/>
-
-    <Button
-        android:id="@+id/planetMapButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:text="P"
-        android:layout_toLeftOf="@id/solarSystemMapButton"/>
-
     <Button
         android:id="@+id/tradeableButton"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:text="T"
-        android:layout_toLeftOf="@id/planetMapButton"
+        android:layout_toLeftOf="@id/solarSystemMapButton"
         android:onClick="tradeableClick"/>
-
     <Button
         android:id="@+id/shipYardButton"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:text="Y"
         android:layout_toLeftOf="@id/tradeableButton"/>
-
+    <Button
+        android:id="@+id/cargoButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="C"
+        android:layout_toLeftOf="@id/shipYardButton"
+        android:onClick="cargoClick"/>
     <Button
         android:id="@+id/systemInfoButton"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_toLeftOf="@id/shipYardButton"
+        android:layout_toLeftOf="@id/cargoButton"
         android:text="I"
         android:onClick="systemInfoClick"/>
-
     <View
         android:layout_below="@id/systemInfoButton"
         android:layout_width="match_parent"

@@ -64,6 +64,11 @@ public class Trade extends AppCompatActivity {
         Trade.this.startActivity(activityChangeIntent);
     }
 
+    public void cargoClick(View view) {
+        Intent activityChangeIntent = new Intent(Trade.this, CargoActivity.class);
+        Trade.this.startActivity(activityChangeIntent);
+    }
+
     public void tradeableClick(View view) {
         Intent activityChangeIntent = new Intent(Trade.this, Trade.class);
         Trade.this.startActivity(activityChangeIntent);

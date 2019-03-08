@@ -13,18 +13,17 @@ import java.util.LinkedList;
 
 import edu.gatech.cs2340.spacetraderredux.Model.ResourcesViewAdapter;
 import edu.gatech.cs2340.spacetraderredux.Model.TempTrade;
-import edu.gatech.cs2340.spacetraderredux.Model.TradeViewAdapter;
 import edu.gatech.cs2340.spacetraderredux.R;
 
-public class SystemInfoActivity extends AppCompatActivity {
+public class CargoActivity extends AppCompatActivity {
     public ResourcesViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_system_info);
+        setContentView(R.layout.activity_cargo);
         TextView tabText = (TextView) findViewById(R.id.labelTabName);
-        tabText.setText("System Info");
+        tabText.setText("Cargo");
 
         LinkedList<TempTrade> trades = new LinkedList<TempTrade>();
         trades.add(new TempTrade());
@@ -42,17 +41,17 @@ public class SystemInfoActivity extends AppCompatActivity {
     }
 
     public void systemInfoClick(View view) {
-        Intent activityChangeIntent = new Intent(SystemInfoActivity.this, SystemInfoActivity.class);
-        SystemInfoActivity.this.startActivity(activityChangeIntent);
+        Intent activityChangeIntent = new Intent(CargoActivity.this, SystemInfoActivity.class);
+        CargoActivity.this.startActivity(activityChangeIntent);
     }
 
     public void cargoClick(View view) {
-        Intent activityChangeIntent = new Intent(SystemInfoActivity.this, CargoActivity.class);
-        SystemInfoActivity.this.startActivity(activityChangeIntent);
+        Intent activityChangeIntent = new Intent(CargoActivity.this, CargoActivity.class);
+        CargoActivity.this.startActivity(activityChangeIntent);
     }
 
     public void tradeableClick(View view) {
-        Intent activityChangeIntent = new Intent(SystemInfoActivity.this, Trade.class);
-        SystemInfoActivity.this.startActivity(activityChangeIntent);
+        Intent activityChangeIntent = new Intent(CargoActivity.this, Trade.class);
+        CargoActivity.this.startActivity(activityChangeIntent);
     }
 }

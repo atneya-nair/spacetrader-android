@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Views.SystemInfoActivity"></activity>
-        <activity android:name=".Views.TradeSpecification"
-                    android:excludeFromRecents="true"
-                    android:theme="@style/Theme.AppCompat.Dialog"></activity>
+        <activity android:name=".Views.CargoActivity"></activity>
+        <activity android:name=".Views.SystemInfoActivity" />
+        <activity
+            android:name=".Views.TradeSpecification"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity android:name=".Views.Trade" />
         <activity android:name=".Views.SuccessView" />
         <activity android:name=".Views.ConfigurationActivity" />
