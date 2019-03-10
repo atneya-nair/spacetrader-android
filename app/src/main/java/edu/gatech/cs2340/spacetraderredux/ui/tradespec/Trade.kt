@@ -11,19 +11,14 @@ import android.widget.TextView
 
 import java.util.LinkedList
 
+import edu.gatech.cs2340.spacetraderredux.Model.TradeViewAdapter
 import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.di.SpaceTraderGlobal
-import kotlinx.android.synthetic.main.activity_trade.*
 
 class Trade : AppCompatActivity() {
-    var adapter: RecyclerViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        var global = getApplication() as SpaceTraderGlobal
-        val game = global.game
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trade)
-        planetName.text = game!!.player.currPlanet.name.toString()
         val trades = LinkedList<TempTrade>()
         trades.add(TempTrade())
         trades.add(TempTrade())
@@ -31,12 +26,12 @@ class Trade : AppCompatActivity() {
 
         val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
 
-        adapter = RecyclerViewAdapter(trades)
+        var adapter = TradeViewAdapter(trades)
         val mLayoutManager = GridLayoutManager(applicationContext, 2)
         recyclerView.layoutManager = mLayoutManager
         recyclerView.itemAnimator = DefaultItemAnimator()
         recyclerView.adapter = adapter
-        adapter!!.notifyDataSetChanged()
+        adapter.notifyDataSetChanged()
     }
 
     fun buyClick(view: View) {
@@ -58,6 +53,21 @@ class Trade : AppCompatActivity() {
         activityChangeIntent.putExtra("resource", tradeResource.text as String)
         activityChangeIntent.putExtra("resourcePrice", tradeResourcePrice.text as String)
         activityChangeIntent.putExtra("buy", "False")
+        this@Trade.startActivity(activityChangeIntent)
+    }
+
+    fun systemInfoClick(view: View) {
+        val activityChangeIntent = Intent(this@Trade, SystemInfoActivity::class.java)
+        this@Trade.startActivity(activityChangeIntent)
+    }
+
+    fun cargoClick(view: View) {
+        val activityChangeIntent = Intent(this@Trade, CargoActivity::class.java)
+        this@Trade.startActivity(activityChangeIntent)
+    }
+
+    fun tradeableClick(view: View) {
+        val activityChangeIntent = Intent(this@Trade, Trade::class.java)
         this@Trade.startActivity(activityChangeIntent)
     }
 }

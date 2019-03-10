@@ -9,10 +9,12 @@ import android.widget.TextView
 
 import edu.gatech.cs2340.spacetraderredux.R
 
+
 class TradeSpecification : AppCompatActivity() {
     var mViewModel: TradeSpecificationViewModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.setFinishOnTouchOutside(false)
         setContentView(R.layout.activity_trade_specification)
         mViewModel = ViewModelProviders.of(this).get(TradeSpecificationViewModel::class.java)
         val specificationText = findViewById<View>(R.id.labelTradeConfirmation) as TextView

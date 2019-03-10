@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import edu.gatech.cs2340.spacetraderredux.R;
+import edu.gatech.cs2340.spacetraderredux.ui.tradespec.TempTrade;
 
 
 public class ResourcesViewAdapter extends RecyclerView.Adapter<ResourcesViewAdapter.MyViewHolder> {
@@ -43,7 +44,7 @@ public class ResourcesViewAdapter extends RecyclerView.Adapter<ResourcesViewAdap
     public void onBindViewHolder(MyViewHolder holder, int position) {
         TempTrade tempTrade = list.get(position);
         holder.resourceName.setText(tempTrade.getResourceName());
-        holder.price.setText(tempTrade.price);
+        holder.price.setText(tempTrade.getPrice());
     }
 
     @Override

@@ -10,38 +10,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".ui.tradespec.TradeSpecification">
-        </activity>
+
         <activity android:name=".ui.tradespec.Trade" />
         <activity android:name=".ui.SuccessView" />
         <activity android:name=".ui.configuration.ConfigurationActivity" />
         <activity android:name=".ui.splash.SplashActivity">
-||||||| merged common ancestors
-        <activity android:name=".Views.TradeSpecification">
-        </activity>
-        <activity android:name=".Views.Trade" />
-        <activity android:name=".Views.SuccessView" />
-        <activity android:name=".Views.ConfigurationActivity" />
-        <activity android:name=".Views.SplashActivity">
-=======
-        <activity android:name=".Views.CargoActivity"></activity>
-        <activity android:name=".Views.SystemInfoActivity" />
-        <activity
-            android:name=".Views.TradeSpecification"
-            android:excludeFromRecents="true"
-            android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".Views.Trade" />
-        <activity android:name=".Views.SuccessView" />
-        <activity android:name=".Views.ConfigurationActivity" />
-        <activity android:name=".Views.SplashActivity">
->>>>>>> tanay-dev
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.tradespec.CargoActivity" />
+        <activity android:name=".ui.tradespec.SystemInfoActivity" />
+        <activity
+            android:name=".ui.tradespec.TradeSpecification"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+
+
     </application>
 
 </manifest>
