@@ -1,10 +1,13 @@
 package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
-import edu.gatech.cs2340.spacetraderredux.di.DaggerPlayerComponent
+import edu.gatech.cs2340.spacetraderredux.di.DaggerPlayerConfigurationComponent
+import edu.gatech.cs2340.spacetraderredux.di.SpaceTraderGlobal
+import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.domain.Player
-import edu.gatech.cs2340.spacetraderredux.domain.entities.Difficulty
+import edu.gatech.cs2340.spacetraderredux.domain.Universe
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
-import edu.gatech.cs2340.spacetraderredux.domain.entities.SkillType
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
+import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.types.Gnat
 import javax.inject.Inject
 
 class ConfigurationPresenter constructor(view: ConfigurationView) {
@@ -12,8 +15,15 @@ class ConfigurationPresenter constructor(view: ConfigurationView) {
 
     var view: ConfigurationView = view
 
+    init {
+        DaggerPlayerConfigurationComponent.builder().build().inject(this)
+    }
 
-    var playerConfiguration = PlayerConfiguration()
+    @Inject
+    lateinit var playerConfiguration:PlayerConfiguration
+
+    @Inject
+    lateinit var universe: Universe
 
     fun onPlayerNameChange(name: String) {
         playerConfiguration.playerName = name
@@ -49,9 +59,10 @@ class ConfigurationPresenter constructor(view: ConfigurationView) {
         } else if (playerConfiguration.areSkillPointsRemaining()) {
             view.displaySkillPointsRemainingError()
         } else {
-            view.configurationSuccess()
-            var mPlayer = DaggerPlayerComponent.builder().playerConfig(playerConfiguration).build().player()
-            var s = mPlayer.toString()
+            var game = Game(Player(playerConfiguration.getName()!!,
+                    playerConfiguration.getDifficulty()!!, playerConfiguration.getSkills()!!,
+                    universe.solarSystems[0].planets[0], Gnat(), 1000), universe)
+            view.configurationSuccess(game)
         }
     }
 }

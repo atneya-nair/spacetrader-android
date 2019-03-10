@@ -1,7 +1,8 @@
 package edu.gatech.cs2340.spacetraderredux.domain
 
-import edu.gatech.cs2340.spacetraderredux.domain.entities.PlanetName
-import edu.gatech.cs2340.spacetraderredux.domain.entities.Resource
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.PlanetName
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Resource
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
 import java.util.Random
 
 class Planet(rand: Random) {

@@ -9,16 +9,15 @@ import android.widget.TextView
 
 import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.di.DaggerPlayerComponent
+import edu.gatech.cs2340.spacetraderredux.domain.Player
 import edu.gatech.cs2340.spacetraderredux.ui.splash.SplashActivity
+import javax.inject.Inject
 
 class SuccessView : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_success_view)
-        var mPlayer = DaggerPlayerComponent.builder().build().player()
-        val intent = intent
         val successText = findViewById<View>(R.id.successTextView) as TextView
         val exitButton = findViewById<View>(R.id.exitButton) as Button
         exitButton.setOnClickListener {

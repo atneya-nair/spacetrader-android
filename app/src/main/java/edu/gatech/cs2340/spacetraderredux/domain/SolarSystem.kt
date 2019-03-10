@@ -1,12 +1,12 @@
 package edu.gatech.cs2340.spacetraderredux.domain
 
 import android.graphics.Point
-import edu.gatech.cs2340.spacetraderredux.domain.entities.SolarSystemName
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
 
 import java.util.Random
 
 class SolarSystem(private val name: SolarSystemName, private val location: Point, rand: Random) {
-    private val planets: Array<Planet>
+    val planets: Array<Planet>
 
     init {
         this.planets = Array(rand.nextInt(10) + 1) { generateRandomPlanet(rand) };

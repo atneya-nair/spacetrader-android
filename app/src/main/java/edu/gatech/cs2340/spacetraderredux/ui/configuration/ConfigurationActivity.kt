@@ -6,15 +6,18 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Space
 import android.widget.TextView
 import android.widget.Toast
 
-import edu.gatech.cs2340.spacetraderredux.domain.entities.Difficulty
-import edu.gatech.cs2340.spacetraderredux.domain.entities.SkillType
-import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Difficulty
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.di.PlayerComponent
+import edu.gatech.cs2340.spacetraderredux.di.SpaceTraderGlobal
+import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.ui.SuccessView
+import edu.gatech.cs2340.spacetraderredux.ui.tradespec.Trade
+import edu.gatech.cs2340.spacetraderredux.ui.tradespec.TradeSpecification
 import kotlinx.android.synthetic.main.activity_configuration.*
 import kotlinx.android.synthetic.main.configuration_containers.view.*
 
@@ -85,9 +88,11 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationView{
         Toast.makeText(this@ConfigurationActivity, "Unallocated skill points remaining", Toast.LENGTH_SHORT).show()
     }
 
-    override fun configurationSuccess() {
+    override fun configurationSuccess(game: Game) {
         Toast.makeText(this@ConfigurationActivity, "Creating valid player", Toast.LENGTH_SHORT).show()
-        val activityChangeIntent = Intent(this@ConfigurationActivity, SuccessView::class.java)
+        var global = getApplication() as SpaceTraderGlobal
+        global.game = game
+        val activityChangeIntent = Intent(this@ConfigurationActivity, Trade::class.java)
         this@ConfigurationActivity.startActivity(activityChangeIntent)
     }
 

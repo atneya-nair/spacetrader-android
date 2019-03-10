@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetraderredux.domain.entities
+package edu.gatech.cs2340.spacetraderredux.domain.entities.enums
 
 enum class Resource {
 

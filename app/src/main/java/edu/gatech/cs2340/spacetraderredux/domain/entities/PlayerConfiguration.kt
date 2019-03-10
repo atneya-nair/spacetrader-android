@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.spacetraderredux.domain.entities
 
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Difficulty
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import javax.inject.Inject
 
 class PlayerConfiguration @Inject constructor(){

@@ -2,14 +2,15 @@ package edu.gatech.cs2340.spacetraderredux.domain
 
 import android.graphics.Point
 import android.util.Log
-import edu.gatech.cs2340.spacetraderredux.domain.entities.SolarSystemName
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
 
 import java.util.ArrayList
 import java.util.Collections
 import java.util.HashSet
 import java.util.Random
+import javax.inject.Inject
 
-class Universe internal constructor() {
+class Universe @Inject constructor() {
     val solarSystems: List<SolarSystem>
 
     init {

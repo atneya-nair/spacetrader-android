@@ -1,12 +1,13 @@
 package edu.gatech.cs2340.spacetraderredux.domain
 
-import edu.gatech.cs2340.spacetraderredux.domain.entities.Difficulty
-import edu.gatech.cs2340.spacetraderredux.domain.entities.SkillType
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Difficulty
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Ship
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Skills
 
 
-class Player(val charName: String, val difficulty: Difficulty,
-             val skills: Skills, var ship: Ship, var credits: Int) {
+class Player constructor(val charName: String, val difficulty: Difficulty,
+                         val skills: Skills, val currPlanet: Planet,
+                         var ship: Ship, var credits: Int) {
 
     /**
      * Creates a string representation of the player
