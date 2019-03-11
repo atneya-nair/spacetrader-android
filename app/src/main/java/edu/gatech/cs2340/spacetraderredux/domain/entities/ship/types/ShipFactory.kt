@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.domain.entities.ship.types
 
-import edu.gatech.cs2340.spacetraderredux.domain.entities.Ship
+import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.Ship
 import kotlin.reflect.KClass
 
 class ShipFactory {

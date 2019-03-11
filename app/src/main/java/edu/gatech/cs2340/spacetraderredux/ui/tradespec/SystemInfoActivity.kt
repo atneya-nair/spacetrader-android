@@ -11,7 +11,6 @@ import android.widget.TextView
 
 import java.util.LinkedList
 
-import edu.gatech.cs2340.spacetraderredux.Model.ResourcesViewAdapter
 import edu.gatech.cs2340.spacetraderredux.R
 
 class SystemInfoActivity : AppCompatActivity() {

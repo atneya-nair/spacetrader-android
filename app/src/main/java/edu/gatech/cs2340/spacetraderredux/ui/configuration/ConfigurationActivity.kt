@@ -94,6 +94,7 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationView{
         global.game = game
         val activityChangeIntent = Intent(this@ConfigurationActivity, Trade::class.java)
         this@ConfigurationActivity.startActivity(activityChangeIntent)
+        this.finish()
     }
 
     /**

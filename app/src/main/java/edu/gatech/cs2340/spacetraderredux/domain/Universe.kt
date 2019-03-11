@@ -14,6 +14,7 @@ class Universe @Inject constructor() {
     val solarSystems: List<SolarSystem>
 
     init {
+        //TODO Make first planet a good one near the center
         val solarSystemList = ArrayList<SolarSystem>()
         val usedPoints = HashSet<Point>()
         val rand = Random()
