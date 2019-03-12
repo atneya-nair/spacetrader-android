@@ -8,6 +8,7 @@ enum class Politics(val displayName:String, val traffickingReaction: Int, val po
                         val minTechLevel: TechLevel, val maxTechLevel: TechLevel,
                         val bribeLevel: Int, val drugLegality: Boolean,
                         val firearmLegality: Boolean, val tradeItemDemand: Tradeable) {
+    //TODO add all politics
     DEMOCRACY(
             "Democracy",
             4,

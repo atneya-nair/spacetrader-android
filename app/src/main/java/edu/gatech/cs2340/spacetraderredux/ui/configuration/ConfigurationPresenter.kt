@@ -1,68 +1,77 @@
 package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
 import edu.gatech.cs2340.spacetraderredux.di.DaggerPlayerConfigurationComponent
-import edu.gatech.cs2340.spacetraderredux.di.SpaceTraderGlobal
 import edu.gatech.cs2340.spacetraderredux.domain.Game
-import edu.gatech.cs2340.spacetraderredux.domain.Player
+import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.Universe
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.types.Gnat
+import edu.gatech.cs2340.spacetraderredux.domain.usecases.SaveNewGame
+import edu.gatech.cs2340.spacetraderredux.ui.common.BasePresenter
+import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
-class ConfigurationPresenter constructor(view: ConfigurationView) {
+class ConfigurationPresenter @Inject constructor(
+        val saveNewGameUseCase: SaveNewGame, var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
 
 
-    var view: ConfigurationView = view
+    var gameId: Int = -1
 
-    init {
-        DaggerPlayerConfigurationComponent.builder().build().inject(this)
+    override fun disposeSubscriptions() {
+        saveNewGameUseCase.dispose()
     }
-
-    @Inject
-    lateinit var playerConfiguration:PlayerConfiguration
-
-    @Inject
-    lateinit var universe: Universe
-
+    override fun initialise() {
+        getView()?.initialiseView()
+    }
     fun onPlayerNameChange(name: String) {
         playerConfiguration.playerName = name
     }
 
     fun onIncrementSkillType(type: SkillType): Boolean {
         var didSucceed = playerConfiguration.incrementSkill(type)
-        view.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
-        view.updateRemainingSkillPoints(playerConfiguration.remaining)
+        getView()?.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
+        getView()?.updateRemainingSkillPoints(playerConfiguration.remaining)
         return didSucceed
     }
 
     fun onDecrementSkillType(type: SkillType): Boolean {
         var didSucceed = playerConfiguration.decrementSkill(type)
-        view.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
-        view.updateRemainingSkillPoints(playerConfiguration.remaining)
+        getView()?.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
+        getView()?.updateRemainingSkillPoints(playerConfiguration.remaining)
         return didSucceed
     }
 
     fun onIncrementDifficulty() {
         playerConfiguration.incrementDifficulty()
-        view.updateDifficulty(playerConfiguration.playerDifficulty)
+        getView()?.updateDifficulty(playerConfiguration.playerDifficulty)
     }
 
     fun onDecrementDifficulty() {
         playerConfiguration.decrementDifficulty()
-        view.updateDifficulty(playerConfiguration.playerDifficulty)
+        getView()?.updateDifficulty(playerConfiguration.playerDifficulty)
     }
 
     fun onSubmit() {
         if (!playerConfiguration.isPlayerNameValid()) {
-            view.displayInvalidPlayerNameError()
+            getView()?.displayInvalidPlayerNameError()
         } else if (playerConfiguration.areSkillPointsRemaining()) {
-            view.displaySkillPointsRemainingError()
+            getView()?.displaySkillPointsRemainingError()
         } else {
-            var game = Game(Player(playerConfiguration.getName()!!,
+            var universe = Universe() //TODO Figure out a better way to do this
+            var game = Game(PlayerState(playerConfiguration.getName()!!,
                     playerConfiguration.getDifficulty()!!, playerConfiguration.getSkills()!!,
                     universe.solarSystems[0].planets[0], Gnat(), 1000), universe)
-            view.configurationSuccess(game)
+
+            saveNewGameUseCase.execute(object: DisposableSingleObserver<Int>() {
+                override fun onSuccess(t: Int) {
+                    gameId = t
+                }
+                override fun onError(e: Throwable) {
+                    e.printStackTrace()
+                }
+            }, game)
+            getView()?.configurationSuccess(game)
         }
     }
 }

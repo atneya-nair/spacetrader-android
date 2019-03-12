@@ -4,7 +4,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.Planet
 
 //TODO tradeable skill stuff (and crew member)
 //TODO all quantity items
-class BaseMarketPlace(val planet: Planet) {
+open class BaseMarketPlace(val planet: Planet) {
     val marketPrice = HashMap<Tradeable, Int>()
     init {
         enumValues<Tradeable>().forEach { marketPrice.put(it, getPrice(it)) }

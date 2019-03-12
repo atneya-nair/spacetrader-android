@@ -7,11 +7,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
-import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.domain.Player
 import edu.gatech.cs2340.spacetraderredux.ui.splash.SplashActivity
-import javax.inject.Inject
 
 class SuccessView : AppCompatActivity() {
 

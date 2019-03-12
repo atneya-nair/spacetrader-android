@@ -6,35 +6,43 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Space
 import android.widget.TextView
 import android.widget.Toast
 
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Difficulty
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.di.SpaceTraderGlobal
+import edu.gatech.cs2340.spacetraderredux.di.AppModule
+import edu.gatech.cs2340.spacetraderredux.di.DaggerAppComponent
+import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerConfigurationComponent
+import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.domain.Game
-import edu.gatech.cs2340.spacetraderredux.ui.SuccessView
+import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
+import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
 import edu.gatech.cs2340.spacetraderredux.ui.tradespec.Trade
-import edu.gatech.cs2340.spacetraderredux.ui.tradespec.TradeSpecification
 import kotlinx.android.synthetic.main.activity_configuration.*
 import kotlinx.android.synthetic.main.configuration_containers.view.*
+import javax.inject.Inject
 
-class ConfigurationActivity : AppCompatActivity(), ConfigurationView{
+class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), ConfigurationView{
 
-    private var presenter: ConfigurationPresenter = ConfigurationPresenter(this)
 
-    private lateinit var difficultyTextView: TextView
-    private lateinit var buttonIdToSkillType: Map<Int, SkillType>
-    private lateinit var skillTypeToTextView: Map<SkillType, TextView>
+    lateinit var difficultyTextView: TextView
+    lateinit var buttonIdToSkillType: Map<Int, SkillType>
+    lateinit var skillTypeToTextView: Map<SkillType, TextView>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_configuration)
 
-        difficultyTextView = difficulty_buttons.findViewById(R.id.valueText) as TextView
 
+    override fun getLayout(): Int = R.layout.activity_configuration
+    override fun initInjector() {
+        DaggerConfigurationComponent.builder()
+                .appComponent((application as App).applicationComponent)
+                .build()
+                .inject(this)
+
+    }
+
+    override fun initialiseView() {
         buttonIdToSkillType = mapOf(
                 R.id.pilot_buttons to SkillType.PILOT,
                 R.id.engineer_buttons to SkillType.ENGINEER,
@@ -57,6 +65,8 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationView{
             override fun afterTextChanged(s: Editable?) {}
         })
 
+        submitButton.setOnClickListener { presenter.onSubmit() }
+        difficultyTextView = difficulty_buttons.findViewById(R.id.valueText) as TextView
         characterName.setText(presenter.playerConfiguration.playerName)
         updateDifficulty(presenter.playerConfiguration.playerDifficulty)
         difficulty_buttons.labelText.text = "Difficulty"
@@ -65,9 +75,7 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationView{
         trader_buttons.labelText.text = "Trader:"
         fighter_buttons.labelText.text = "Fighter:"
 
-        submitButton.setOnClickListener { presenter.onSubmit() }
     }
-
     override fun updateDifficulty(difficulty: Difficulty) {
         difficultyTextView.text = difficulty.name
     }
@@ -81,7 +89,7 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationView{
     }
 
     override fun displayInvalidPlayerNameError() {
-        Toast.makeText(this@ConfigurationActivity, "Player name is empty", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@ConfigurationActivity, "PlayerState name is empty", Toast.LENGTH_SHORT).show()
     }
 
     override fun displaySkillPointsRemainingError() {
@@ -89,9 +97,7 @@ class ConfigurationActivity : AppCompatActivity(), ConfigurationView{
     }
 
     override fun configurationSuccess(game: Game) {
-        Toast.makeText(this@ConfigurationActivity, "Creating valid player", Toast.LENGTH_SHORT).show()
-        var global = getApplication() as SpaceTraderGlobal
-        global.game = game
+        Toast.makeText(this@ConfigurationActivity, "Creating valid playerState", Toast.LENGTH_SHORT).show()
         val activityChangeIntent = Intent(this@ConfigurationActivity, Trade::class.java)
         this@ConfigurationActivity.startActivity(activityChangeIntent)
         this.finish()
