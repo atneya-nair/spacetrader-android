@@ -16,7 +16,6 @@ class ConfigurationPresenter @Inject constructor(
         val saveNewGameUseCase: SaveNewGame, var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
 
 
-    var gameId: Int = -1
 
     override fun disposeSubscriptions() {
         saveNewGameUseCase.dispose()
@@ -65,7 +64,6 @@ class ConfigurationPresenter @Inject constructor(
 
             saveNewGameUseCase.execute(object: DisposableSingleObserver<Int>() {
                 override fun onSuccess(t: Int) {
-                    gameId = t
                 }
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
