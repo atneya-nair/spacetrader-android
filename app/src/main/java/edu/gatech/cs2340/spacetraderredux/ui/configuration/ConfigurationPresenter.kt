@@ -8,12 +8,14 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.types.Gnat
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.SaveNewGame
+import edu.gatech.cs2340.spacetraderredux.domain.usecases.TradeUseCase
 import edu.gatech.cs2340.spacetraderredux.ui.common.BasePresenter
+import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class ConfigurationPresenter @Inject constructor(
-        val saveNewGameUseCase: SaveNewGame, var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
+        val tradeUseCase: TradeUseCase, val saveNewGameUseCase: SaveNewGame, var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
 
 
 
@@ -69,7 +71,15 @@ class ConfigurationPresenter @Inject constructor(
                     e.printStackTrace()
                 }
             }, game)
-            getView()?.configurationSuccess(game)
+            tradeUseCase.execute(object: DisposableCompletableObserver() {
+                override fun onComplete() {
+                    getView()?.configurationSuccess(game)
+                    var g = game.toString()
+                }
+                override fun onError(e: Throwable) {
+                    e.printStackTrace()
+                }
+            }, 0, 100)
         }
     }
 }

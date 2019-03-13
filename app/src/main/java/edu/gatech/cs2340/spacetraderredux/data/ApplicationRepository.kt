@@ -27,4 +27,9 @@ class ApplicationRepository(val app: App): GameStateRepository {
         app.game = game
         return Completable.complete()
     }
+
+    override fun setRecentGameState(game: Game): Completable {
+        app.game = game
+        return Completable.complete()
+    }
 }

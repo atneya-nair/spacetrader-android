@@ -10,4 +10,5 @@ interface GameStateRepository {
     fun getGameStateById(id: Int): Single<Game>
     fun setNewGameState(game: Game): Single<Int>
     fun setGameState(id:Int, game: Game): Completable
+    fun setRecentGameState(game: Game): Completable
 }

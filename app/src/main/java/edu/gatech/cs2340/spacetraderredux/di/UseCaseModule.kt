@@ -3,7 +3,9 @@ package edu.gatech.cs2340.spacetraderredux.di
 import dagger.Module
 import dagger.Provides
 import edu.gatech.cs2340.spacetraderredux.data.ApplicationRepository
+import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.SaveNewGame
+import edu.gatech.cs2340.spacetraderredux.domain.usecases.TradeUseCase
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,11 +24,19 @@ class UseCaseModule {
     @Named("mainThreadScheduler")
     internal fun provideMainThreadScheduler() = AndroidSchedulers.mainThread()
 
+
     @Provides
     @Singleton
     internal fun provideSaveNewGameUseCase(
-            applicationRepository: ApplicationRepository,
+            gameStateRepository: GameStateRepository,
             @Named("ioScheduler") ioScheduler: Scheduler,
             @Named("mainThreadScheduler") mainThreadScheduler: Scheduler): SaveNewGame =
-            SaveNewGame(applicationRepository, ioScheduler, mainThreadScheduler)
+            SaveNewGame(gameStateRepository, ioScheduler, mainThreadScheduler)
+    @Provides
+    @Singleton
+    internal fun provideTradeUseCase(
+            gameStateRepository: GameStateRepository, @Named("ioScheduler") ioScheduler: Scheduler,
+            @Named("mainThreadScheduler") mainThreadScheduler: Scheduler): TradeUseCase =
+            TradeUseCase(gameStateRepository, ioScheduler, mainThreadScheduler)
+
 }

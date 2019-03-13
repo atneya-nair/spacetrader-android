@@ -9,10 +9,6 @@ import java.lang.IllegalArgumentException
 
 class SaveNewGame(private val gameStateRepository: GameStateRepository,
                   subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) : UseCase<Int, Game>(subscribeScheduler, postExecutionScheduler) {
-    companion object {
-        private const val GAME_STATE = "game_state"
-
-    }
     override fun buildUseCaseSingle(params: Game?): Single<Int> = gameStateRepository.setNewGameState(params!!)
 
 }
