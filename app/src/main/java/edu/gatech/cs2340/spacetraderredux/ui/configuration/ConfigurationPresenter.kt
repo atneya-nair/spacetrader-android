@@ -71,15 +71,6 @@ class ConfigurationPresenter @Inject constructor(
                     e.printStackTrace()
                 }
             }, game)
-            tradeUseCase.execute(object: DisposableCompletableObserver() {
-                override fun onComplete() {
-                    getView()?.configurationSuccess(game)
-                    var g = game.toString()
-                }
-                override fun onError(e: Throwable) {
-                    e.printStackTrace()
-                }
-            }, 0, 100)
         }
     }
 }
