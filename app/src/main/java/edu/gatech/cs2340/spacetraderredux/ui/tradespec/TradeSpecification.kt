@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.TextView
 
 import edu.gatech.cs2340.spacetraderredux.R
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Tradeable
+import org.w3c.dom.Text
 
 
 class TradeSpecification : AppCompatActivity() {
@@ -19,11 +21,17 @@ class TradeSpecification : AppCompatActivity() {
         mViewModel = ViewModelProviders.of(this).get(TradeSpecificationViewModel::class.java)
         val specificationText = findViewById<View>(R.id.labelTradeConfirmation) as TextView
         val intent = intent
-        mViewModel!!.resourceValue = Integer.parseInt(intent.getStringExtra("resourcePrice"))
+        (findViewById<TextView>(R.id.remainingCredits)).text = mViewModel!!.playerState.credits.toString()
+
+        var resourceValue = Integer.parseInt(intent.getStringExtra("resourcePrice"))
+        var resourceName = intent.getStringExtra("resource")
+        mViewModel!!.trade = Trade(Tradeable.valueOf(resourceName.toUpperCase()), resourceValue)
         if (intent.getStringExtra("buy") == "True") {
+            mViewModel!!.isBuy = true
             val text = "Buy " + intent.getStringExtra("resource") + " at " + intent.getStringExtra("resourcePrice") + " credits"
             specificationText.text = text
         } else {
+            mViewModel!!.isBuy = false
             val text = "Sell " + intent.getStringExtra("resource") + " at " + intent.getStringExtra("resourcePrice") + " credits"
             specificationText.text = text
         }
@@ -34,6 +42,7 @@ class TradeSpecification : AppCompatActivity() {
         val parentView = view.rootView as View
         val resourceValue = parentView.findViewById<View>(R.id.resourceValueText) as TextView
         val transactionTotal = parentView.findViewById<View>(R.id.transactionTotalText) as TextView
+
         mViewModel!!.incPoints()
         resourceValue.text = Integer.toString(mViewModel!!.labelValue)
         transactionTotal.text = Integer.toString(mViewModel!!.transactionCredits)
@@ -48,8 +57,13 @@ class TradeSpecification : AppCompatActivity() {
         transactionTotal.text = Integer.toString(mViewModel!!.transactionCredits)
     }
 
+    fun transact(view: View) {
+        mViewModel!!.transact()
+        cancel(view)
+    }
+
     fun cancel(view: View) {
-        val activityChangeIntent = Intent(this@TradeSpecification, Trade::class.java)
+        val activityChangeIntent = Intent(this@TradeSpecification, TradeActivity::class.java)
         this@TradeSpecification.startActivity(activityChangeIntent)
     }
 }

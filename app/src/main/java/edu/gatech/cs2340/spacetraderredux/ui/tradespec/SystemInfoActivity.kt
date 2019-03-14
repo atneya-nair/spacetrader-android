@@ -21,10 +21,10 @@ class SystemInfoActivity : AppCompatActivity() {
         val tabText = findViewById<View>(R.id.labelTabName) as TextView
         tabText.text = "System Info"
 
-        val trades = LinkedList<TempTrade>()
-        trades.add(TempTrade())
-        trades.add(TempTrade())
-        trades.add(TempTrade())
+        val trades = LinkedList<Trade>()
+        /*trades.add(Trade())
+        trades.add(Trade())
+        trades.add(Trade())*/
 
         val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
 
@@ -47,7 +47,7 @@ class SystemInfoActivity : AppCompatActivity() {
     }
 
     fun tradeableClick(view: View) {
-        val activityChangeIntent = Intent(this@SystemInfoActivity, Trade::class.java)
+        val activityChangeIntent = Intent(this@SystemInfoActivity, TradeActivity::class.java)
         this@SystemInfoActivity.startActivity(activityChangeIntent)
     }
 }

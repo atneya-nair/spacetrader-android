@@ -12,8 +12,12 @@ import android.widget.TextView
 import java.util.LinkedList
 
 import edu.gatech.cs2340.spacetraderredux.R
+import edu.gatech.cs2340.spacetraderredux.domain.entities.BuyMarketPlace
+import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 
 class CargoActivity : AppCompatActivity() {
+    var playerState: PlayerState = TradeActivity.game!!.playerState
+    var bmp = BuyMarketPlace(TradeActivity.game!!.playerState.currPlanet, TradeActivity.game!!.playerState);
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +25,12 @@ class CargoActivity : AppCompatActivity() {
         val tabText = findViewById<View>(R.id.labelTabName) as TextView
         tabText.text = "Cargo"
 
-        val trades = LinkedList<TempTrade>()
-        trades.add(TempTrade())
-        trades.add(TempTrade())
-        trades.add(TempTrade())
+        val trades = LinkedList<Trade>()
+        for (element in playerState.ship.storageUnits.cargoHold.getItems()) {
+            for (i in (0 until element.value)) {
+                trades.add(Trade(element.key, -1))
+            }
+        }
 
         val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
 
@@ -47,7 +53,7 @@ class CargoActivity : AppCompatActivity() {
     }
 
     fun tradeableClick(view: View) {
-        val activityChangeIntent = Intent(this@CargoActivity, Trade::class.java)
+        val activityChangeIntent = Intent(this@CargoActivity, TradeActivity::class.java)
         this@CargoActivity.startActivity(activityChangeIntent)
     }
 }

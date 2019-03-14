@@ -1,8 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -12,17 +10,13 @@ import android.widget.Toast
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Difficulty
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.di.AppModule
-import edu.gatech.cs2340.spacetraderredux.di.DaggerAppComponent
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerConfigurationComponent
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.domain.Game
-import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
-import edu.gatech.cs2340.spacetraderredux.ui.tradespec.Trade
+import edu.gatech.cs2340.spacetraderredux.ui.tradespec.TradeActivity
 import kotlinx.android.synthetic.main.activity_configuration.*
 import kotlinx.android.synthetic.main.configuration_containers.view.*
-import javax.inject.Inject
 
 class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), ConfigurationView{
 
@@ -98,7 +92,7 @@ class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), Configurat
 
     override fun configurationSuccess(game: Game) {
         Toast.makeText(this@ConfigurationActivity, "Creating valid playerState", Toast.LENGTH_SHORT).show()
-        val activityChangeIntent = Intent(this@ConfigurationActivity, Trade::class.java)
+        val activityChangeIntent = Intent(this@ConfigurationActivity, TradeActivity::class.java)
         this@ConfigurationActivity.startActivity(activityChangeIntent)
         this.finish()
     }

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.tradespec.Trade" />
+        <activity android:name=".ui.tradespec.TradeActivity" />
         <activity android:name=".ui.SuccessView" />
         <activity android:name=".ui.configuration.ConfigurationActivity" />
         <activity android:name=".ui.splash.SplashActivity">

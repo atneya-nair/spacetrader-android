@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
-import edu.gatech.cs2340.spacetraderredux.di.DaggerPlayerConfigurationComponent
 import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.Universe
@@ -10,6 +9,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.types.Gnat
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.SaveNewGame
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.TradeUseCase
 import edu.gatech.cs2340.spacetraderredux.ui.common.BasePresenter
+import edu.gatech.cs2340.spacetraderredux.ui.tradespec.TradeActivity
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
@@ -63,7 +63,7 @@ class ConfigurationPresenter @Inject constructor(
             var game = Game(PlayerState(playerConfiguration.getName()!!,
                     playerConfiguration.getDifficulty()!!, playerConfiguration.getSkills()!!,
                     universe.solarSystems[0].planets[0], Gnat(), 1000), universe)
-
+            TradeActivity.game = game
             saveNewGameUseCase.execute(object: DisposableSingleObserver<Int>() {
                 override fun onSuccess(t: Int) {
                 }

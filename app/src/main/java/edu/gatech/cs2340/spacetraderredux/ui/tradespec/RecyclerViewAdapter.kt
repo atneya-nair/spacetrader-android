@@ -10,7 +10,7 @@ import android.widget.TextView
 import edu.gatech.cs2340.spacetraderredux.R
 
 
-class RecyclerViewAdapter(private val list: List<TempTrade>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+class RecyclerViewAdapter(private val list: List<Trade>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var resourceName: TextView
@@ -31,8 +31,8 @@ class RecyclerViewAdapter(private val list: List<TempTrade>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val tempTrade = list[position]
-        holder.resourceName.text = tempTrade.resourceName
-        holder.price.text = tempTrade.price
+        holder.resourceName.text = tempTrade.tradeable.displayName
+        holder.price.text = tempTrade.price.toString()
     }
 
     override fun getItemCount(): Int {

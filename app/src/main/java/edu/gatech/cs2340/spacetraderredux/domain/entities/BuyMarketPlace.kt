@@ -7,15 +7,13 @@ class BuyMarketPlace(planet: Planet, playerState: PlayerState): BaseMarketPlace(
     init {
         enumValues<Tradeable>().forEach {
             var modifiedPrice = this.marketPrice.get(it)!!
-            if (modifiedPrice == 0) {
-                modifiedPrice = 0
-            } else {
+            if (modifiedPrice != 0) {
                 if (planet.techLevel.ordinal < it.minProduceLevel.ordinal) {
                     modifiedPrice = 0
                 } else {
                     modifiedPrice = ((playerState.skills.trader - playerState.skills.MAX_SKILL) / 2) + 100 * modifiedPrice / 100
-                    this.marketPrice.put(it, modifiedPrice)
                 }
+                this.marketPrice.put(it, modifiedPrice)
             }
         }
     }
