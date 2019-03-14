@@ -32,7 +32,7 @@ class ResourcesViewAdapter(private val list: List<Trade>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val tempTrade = list[position]
         holder.resourceName.text = tempTrade.tradeable.displayName
-        holder.price.text = ""
+        holder.price.text = tempTrade.price.toString()
     }
 
     override fun getItemCount(): Int {

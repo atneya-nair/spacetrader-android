@@ -29,6 +29,9 @@ class TradeActivity : AppCompatActivity() {
         val trades = LinkedList<Trade>()
         var bmp = BuyMarketPlace(game!!.playerState.currPlanet, game!!.playerState);
         for (element in bmp.marketPrice) {
+            if (element.value == 0) {
+                continue
+            }
             trades.add(Trade(element.key, element.value))
         }
 

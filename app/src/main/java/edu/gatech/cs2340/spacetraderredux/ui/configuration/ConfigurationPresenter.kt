@@ -79,7 +79,7 @@ class ConfigurationPresenter @Inject constructor(
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
                 }
-            }, 0, 100)
+            }, 0, 0)
         }
     }
 }

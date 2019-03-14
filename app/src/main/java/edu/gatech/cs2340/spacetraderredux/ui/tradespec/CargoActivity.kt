@@ -27,9 +27,7 @@ class CargoActivity : AppCompatActivity() {
 
         val trades = LinkedList<Trade>()
         for (element in playerState.ship.storageUnits.cargoHold.getItems()) {
-            for (i in (0 until element.value)) {
-                trades.add(Trade(element.key, -1))
-            }
+            trades.add(Trade(element.key, element.value))
         }
 
         val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
