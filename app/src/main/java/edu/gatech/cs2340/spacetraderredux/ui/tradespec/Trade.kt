@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 import java.util.LinkedList
 
@@ -66,7 +67,6 @@ class Trade : AppCompatActivity() {
     }
 
     fun tradeableClick(view: View) {
-        val activityChangeIntent = Intent(this@Trade, Trade::class.java)
-        this@Trade.startActivity(activityChangeIntent)
+        Toast.makeText(this@Trade, "Already on the trade page!", Toast.LENGTH_SHORT).show()
     }
 }

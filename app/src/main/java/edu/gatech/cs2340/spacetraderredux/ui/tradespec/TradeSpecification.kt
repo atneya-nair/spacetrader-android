@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.ui.tradespec
 
+
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -49,7 +50,6 @@ class TradeSpecification : AppCompatActivity() {
     }
 
     fun cancel(view: View) {
-        val activityChangeIntent = Intent(this@TradeSpecification, Trade::class.java)
-        this@TradeSpecification.startActivity(activityChangeIntent)
+        finish()
     }
 }

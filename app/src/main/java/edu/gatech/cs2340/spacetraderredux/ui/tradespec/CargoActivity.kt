@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 import java.util.LinkedList
 
@@ -42,8 +43,7 @@ class CargoActivity : AppCompatActivity() {
     }
 
     fun cargoClick(view: View) {
-        val activityChangeIntent = Intent(this@CargoActivity, CargoActivity::class.java)
-        this@CargoActivity.startActivity(activityChangeIntent)
+        Toast.makeText(this@CargoActivity, "Already on the cargo page!", Toast.LENGTH_SHORT).show()
     }
 
     fun tradeableClick(view: View) {
