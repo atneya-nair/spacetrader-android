@@ -50,4 +50,9 @@ class SystemInfoActivity : AppCompatActivity() {
         val activityChangeIntent = Intent(this@SystemInfoActivity, TradeActivity::class.java)
         this@SystemInfoActivity.startActivity(activityChangeIntent)
     }
+
+    fun solarClick(view: View) {
+        val activityChangeIntent = Intent(this@SystemInfoActivity, SolarSystem::class.java)
+        this@SystemInfoActivity.startActivity(activityChangeIntent)
+    }
 }

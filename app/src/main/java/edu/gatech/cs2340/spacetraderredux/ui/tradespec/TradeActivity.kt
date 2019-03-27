@@ -81,4 +81,15 @@ class TradeActivity : AppCompatActivity() {
         val activityChangeIntent = Intent(this@TradeActivity, TradeActivity::class.java)
         this@TradeActivity.startActivity(activityChangeIntent)
     }
+
+    fun warpClick(view: View) {
+        val activityChangeIntent = Intent(this@TradeActivity, TradeActivity::class.java)
+        this@TradeActivity.startActivity(activityChangeIntent)
+    }
+
+    fun solarClick(view: View) {
+        val activityChangeIntent = Intent(this@TradeActivity, SolarSystem::class.java)
+        this@TradeActivity.startActivity(activityChangeIntent)
+
+    }
 }

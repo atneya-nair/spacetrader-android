@@ -54,4 +54,9 @@ class CargoActivity : AppCompatActivity() {
         val activityChangeIntent = Intent(this@CargoActivity, TradeActivity::class.java)
         this@CargoActivity.startActivity(activityChangeIntent)
     }
+
+    fun solarClick(view: View) {
+        val activityChangeIntent = Intent(this@CargoActivity, SolarSystem::class.java)
+        this@CargoActivity.startActivity(activityChangeIntent)
+    }
 }
