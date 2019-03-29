@@ -5,5 +5,7 @@ import javax.inject.Inject
 
 class MapPresenter @Inject constructor(
         mapUseCase:GetMapUseCase, travelUseCase: TravelUseCase): BasePresenter<MapView>() {
+    fun onInitialise() {
 
+    }
 }
