@@ -2,6 +2,7 @@ package edu.gatech.cs2340.spacetraderredux.domain
 
 import android.graphics.Point
 import android.util.Log
+import android.widget.RadioButton
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
 
 import java.util.ArrayList
@@ -12,22 +13,30 @@ import javax.inject.Inject
 
 class Universe @Inject constructor() {
     val solarSystems: List<SolarSystem>
+    val totalPlanets = 25
 
     init {
         //TODO Make first planet a good one near the center
         val solarSystemList = ArrayList<SolarSystem>()
         val usedPoints = HashSet<Point>()
         val rand = Random()
-        for (name in SolarSystemName.values()) {
-            var newLocation: Point
-            do {
-                newLocation = Point(rand.nextInt(150), rand.nextInt(100))
-            } while (usedPoints.contains(newLocation))
-            usedPoints.add(newLocation)
+        val solarSystemNamesLen = SolarSystemName.values().size
+        val selectedNames = HashSet<SolarSystemName>()
+        var counter = 0
 
-            solarSystemList.add(SolarSystem(name, newLocation, rand))
+        while(counter < totalPlanets) {
+            val randomIndex = rand.nextInt(solarSystemNamesLen)
+            val currSolarSystem = SolarSystemName.values()[randomIndex]
+            if (!selectedNames.contains(currSolarSystem)) {
+                var newLocation: Point
+                do {
+                    newLocation = Point(rand.nextInt(150), rand.nextInt(100))
+                } while (usedPoints.contains(newLocation))
+                usedPoints.add(newLocation)
+                solarSystemList.add(SolarSystem(currSolarSystem, newLocation, rand))
+                counter++
+            }
         }
-
         this.solarSystems = Collections.unmodifiableList(solarSystemList)
     }
 
