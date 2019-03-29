@@ -20,11 +20,11 @@ class TravelUseCase(val gameStateRepository: GameStateRepository, val subscribeS
         var curSystem = t.playerState.currSystem
         var dist = Math.abs(curSystem.location.x - solarSystem!!.location.x) +
                 Math.abs(curSystem.location.y - solarSystem!!.location.y)
-        if (dist > t.playerState.ship.storageUnits.fuelTank.current) throw IllegalStateException(
+        if (dist / 3 > t.playerState.ship.storageUnits.fuelTank.current) throw IllegalStateException(
                 "Ship does not have fuel for this journey!")
         t.playerState.currSystem = solarSystem
         t.playerState.currPlanet = solarSystem.planets[0] // TODO pick planets
-        t.playerState.ship.storageUnits.fuelTank.current -= dist
+        t.playerState.ship.storageUnits.fuelTank.current -= dist / 3
         return Game(t.playerState, t.universe)
     }
 
