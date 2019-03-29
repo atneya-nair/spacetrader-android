@@ -4,8 +4,7 @@ import dagger.Module
 import dagger.Provides
 import edu.gatech.cs2340.spacetraderredux.data.ApplicationRepository
 import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
-import edu.gatech.cs2340.spacetraderredux.domain.usecases.SaveNewGame
-import edu.gatech.cs2340.spacetraderredux.domain.usecases.TradeUseCase
+import edu.gatech.cs2340.spacetraderredux.domain.usecases.*
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -38,5 +37,35 @@ class UseCaseModule {
             gameStateRepository: GameStateRepository, @Named("ioScheduler") ioScheduler: Scheduler,
             @Named("mainThreadScheduler") mainThreadScheduler: Scheduler): TradeUseCase =
             TradeUseCase(gameStateRepository, ioScheduler, mainThreadScheduler)
+    @Provides
+    @Singleton
+    internal fun provideTravelUseCase(
+            gameStateRepository: GameStateRepository, @Named("ioScheduler") ioScheduler: Scheduler,
+            @Named("mainThreadScheduler") mainThreadScheduler: Scheduler): TravelUseCase =
+            TravelUseCase(gameStateRepository, ioScheduler, mainThreadScheduler)
+    @Provides
+    @Singleton
+    internal fun provideGetMapUseCase(
+            gameStateRepository: GameStateRepository, @Named("ioScheduler") ioScheduler: Scheduler,
+            @Named("mainThreadScheduler") mainThreadScheduler: Scheduler): GetMapUseCase =
+            GetMapUseCase(gameStateRepository, ioScheduler, mainThreadScheduler)
+
+    @Provides
+    @Singleton
+    internal fun provideGetCurrentStateUseCase(
+            gameStateRepository: GameStateRepository, @Named("ioScheduler") ioScheduler: Scheduler,
+            @Named("mainThreadScheduler") mainThreadScheduler: Scheduler): GetCurrentStateUseCase =
+            GetCurrentStateUseCase(gameStateRepository, ioScheduler, mainThreadScheduler)
+
+    @Provides
+    @Singleton
+    internal fun provideGetMarketPlaceUseCase(
+            gameStateRepository: GameStateRepository, @Named("ioScheduler") ioScheduler: Scheduler,
+            @Named("mainThreadScheduler") mainThreadScheduler: Scheduler): GetMarketPlaceUseCase =
+            GetMarketPlaceUseCase(gameStateRepository, ioScheduler, mainThreadScheduler)
+
+
+
+
 
 }

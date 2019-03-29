@@ -7,7 +7,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.Ship
 
 
 data class PlayerState(val charName: String, val difficulty: Difficulty,
-                       val skills: Skills, val currSystem: SolarSystem,
-                       val currPlanet: Planet,
+                       val skills: Skills, var currSystem: SolarSystem,
+                       var currPlanet: Planet,
                        var ship: Ship, var credits: Int) {
 }

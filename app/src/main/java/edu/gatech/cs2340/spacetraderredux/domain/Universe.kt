@@ -13,10 +13,12 @@ import javax.inject.Inject
 
 class Universe @Inject constructor() {
     val solarSystems: List<SolarSystem>
-    val totalPlanets = 25
+    val totalSystems = 25 // TODO more planets
 
     init {
         //TODO Make first planet a good one near the center
+        //TODO fuzzy spread
+        //TODO dagger this
         val solarSystemList = ArrayList<SolarSystem>()
         val usedPoints = HashSet<Point>()
         val rand = Random()
@@ -24,7 +26,7 @@ class Universe @Inject constructor() {
         val selectedNames = HashSet<SolarSystemName>()
         var counter = 0
 
-        while(counter < totalPlanets) {
+        while(counter < totalSystems) {
             val randomIndex = rand.nextInt(solarSystemNamesLen)
             val currSolarSystem = SolarSystemName.values()[randomIndex]
             if (!selectedNames.contains(currSolarSystem)) {
