@@ -11,5 +11,5 @@ interface ConfigurationView {
     fun updateRemainingSkillPoints(remainingSkillPoints: Int)
     fun displayInvalidPlayerNameError()
     fun displaySkillPointsRemainingError()
-    fun configurationSuccess(game: Game)
+    fun configurationSuccess()
 }

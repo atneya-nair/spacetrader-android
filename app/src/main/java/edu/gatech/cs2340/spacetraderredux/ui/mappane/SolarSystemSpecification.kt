@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetraderredux.ui.tradespec
+package edu.gatech.cs2340.spacetraderredux.ui.mappane
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity

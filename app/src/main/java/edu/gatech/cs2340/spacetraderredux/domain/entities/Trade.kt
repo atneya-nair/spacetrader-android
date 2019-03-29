@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetraderredux.ui.tradespec
+package edu.gatech.cs2340.spacetraderredux.domain.entities
 
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Tradeable
 

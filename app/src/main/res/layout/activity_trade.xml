@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_trade"
-    tools:context=".ui.tradespec.TradeActivity"
+    tools:context=".ui.tradepane.TradeActivity"
     android:orientation="vertical"
     android:paddingBottom="@dimen/row_padding_vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"

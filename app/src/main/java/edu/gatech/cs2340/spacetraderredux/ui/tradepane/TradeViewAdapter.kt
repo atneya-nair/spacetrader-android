@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetraderredux.ui.tradespec
+package edu.gatech.cs2340.spacetraderredux.ui.tradepane
 
 
 import android.support.v7.widget.RecyclerView
@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import edu.gatech.cs2340.spacetraderredux.R
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 
 
-class ResourcesViewAdapter(private val list: List<Trade>) : RecyclerView.Adapter<ResourcesViewAdapter.MyViewHolder>() {
+class TradeViewAdapter(private val list: List<Trade>) : RecyclerView.Adapter<TradeViewAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var resourceName: TextView
@@ -24,7 +25,7 @@ class ResourcesViewAdapter(private val list: List<Trade>) : RecyclerView.Adapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.resources_row, parent, false)
+                .inflate(R.layout.trade_row, parent, false)
 
         return MyViewHolder(itemView)
     }

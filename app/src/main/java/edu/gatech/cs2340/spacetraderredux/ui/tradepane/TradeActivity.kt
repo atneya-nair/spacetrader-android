@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetraderredux.ui.tradespec
+package edu.gatech.cs2340.spacetraderredux.ui.tradepane
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +15,10 @@ import java.util.LinkedList
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.domain.entities.BuyMarketPlace
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
+import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
+import edu.gatech.cs2340.spacetraderredux.ui.mappane.SolarSystem
+import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
 
 class TradeActivity : AppCompatActivity() {
     //Lol

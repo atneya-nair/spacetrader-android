@@ -1,8 +1,8 @@
-package edu.gatech.cs2340.spacetraderredux.ui.tradespec
+package edu.gatech.cs2340.spacetraderredux.ui.tradepane
 
 import android.arch.lifecycle.ViewModel
-import android.util.Log
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 
 class TradeSpecificationViewModel : ViewModel() {
     var labelValue = 0

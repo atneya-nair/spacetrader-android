@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetraderredux.ui.tradespec
+package edu.gatech.cs2340.spacetraderredux.ui.tradepane
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
@@ -8,8 +8,8 @@ import android.view.View
 import android.widget.TextView
 
 import edu.gatech.cs2340.spacetraderredux.R
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Tradeable
-import org.w3c.dom.Text
 
 
 class TradeSpecification : AppCompatActivity() {

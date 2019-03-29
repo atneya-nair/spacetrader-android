@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tradespec.SolarSystem"
+    tools:context=".ui.mappane.SolarSystem"
     android:id="@+id/solarSystemLayout"
     android:background="@drawable/solar_background">
 </RelativeLayout>

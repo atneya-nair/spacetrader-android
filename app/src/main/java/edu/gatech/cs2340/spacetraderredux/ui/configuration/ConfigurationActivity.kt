@@ -14,7 +14,7 @@ import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerConfigurationCompo
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
-import edu.gatech.cs2340.spacetraderredux.ui.tradespec.TradeActivity
+import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeActivity
 import kotlinx.android.synthetic.main.activity_configuration.*
 import kotlinx.android.synthetic.main.configuration_containers.view.*
 
@@ -90,7 +90,7 @@ class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), Configurat
         Toast.makeText(this@ConfigurationActivity, "Unallocated skill points remaining", Toast.LENGTH_SHORT).show()
     }
 
-    override fun configurationSuccess(game: Game) {
+    override fun configurationSuccess() {
         Toast.makeText(this@ConfigurationActivity, "Creating valid playerState", Toast.LENGTH_SHORT).show()
         val activityChangeIntent = Intent(this@ConfigurationActivity, TradeActivity::class.java)
         this@ConfigurationActivity.startActivity(activityChangeIntent)

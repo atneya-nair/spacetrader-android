@@ -1,15 +1,11 @@
-package edu.gatech.cs2340.spacetraderredux.ui.tradespec
+package edu.gatech.cs2340.spacetraderredux.ui.mappane
 import android.arch.lifecycle.ViewModel
 import android.content.Context
-import android.content.Intent
 import android.view.View
 import android.widget.ImageButton
 import edu.gatech.cs2340.spacetraderredux.R
 import android.widget.RelativeLayout
-import android.view.ViewGroup.MarginLayoutParams
-import android.view.ViewGroup
 import java.util.*
-import kotlin.math.min
 
 //411 x 650
 

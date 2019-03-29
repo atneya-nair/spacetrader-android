@@ -3,20 +3,32 @@ package edu.gatech.cs2340.spacetraderredux.domain.usecases
 import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.domain.common.CompletableFunctionUseCase
 import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
+import edu.gatech.cs2340.spacetraderredux.domain.entities.TradeAction
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.Single
+import java.lang.IllegalStateException
 
 class TradeUseCase(val gameStateRepository: GameStateRepository, val subscribeScheduler: Scheduler, val postExecutionScheduler: Scheduler):
-        CompletableFunctionUseCase<Game, Int, Int>(subscribeScheduler, postExecutionScheduler) {
+        CompletableFunctionUseCase<Game, Int, TradeAction>(subscribeScheduler, postExecutionScheduler) {
 
     override fun buildUseCaseSingle(params: Int?): Single<Game> {
         return gameStateRepository.getGameStateById(params!!)
     }
 
-    override fun transform(t: Game, params: Int?): Game {
+    override fun transform(t: Game, tradeAction: TradeAction?): Game {
         var player = t.playerState
-        if (params != null) player.credits -= params
+        if (!tradeAction!!.sell) {
+            //TODO move code from cargo hold to here
+            if (tradeAction != null) player.credits -= tradeAction!!.trade.price * tradeAction!!.quantity
+            if (player.credits < 0) throw IllegalStateException("Not enough money to buy item!")
+            player.ship.storageUnits.cargoHold.addItems(tradeAction!!.trade.tradeable, tradeAction!!.quantity)
+        } else {
+            player.ship.storageUnits.cargoHold.removeItems(tradeAction!!.trade.tradeable, tradeAction!!.quantity)
+            if (tradeAction != null) player.credits += tradeAction!!.trade.price * tradeAction!!.quantity
+        }
+
         return Game(player, t.universe)
     }
 
