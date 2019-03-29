@@ -4,5 +4,5 @@ class ShipStorageUnits constructor(cargoHoldSize: Int, weaponStorageSize: Int, s
     val cargoHold: CargoHold = CargoHold(cargoHoldSize)
     val weaponStorage: WeaponStorage = WeaponStorage(weaponStorageSize)
     val shieldStorage: ShieldStorage = ShieldStorage(shieldStorageSize)
-    val fuelTank: FuelTank = FuelTank(fuelTankSize, fuelCost)
+    val fuelTank: FuelTank = FuelTank(fuelTankSize, fuelCost, fuelTankSize)
 }
