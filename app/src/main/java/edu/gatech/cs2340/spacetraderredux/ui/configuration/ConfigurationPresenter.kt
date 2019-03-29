@@ -61,7 +61,7 @@ class ConfigurationPresenter @Inject constructor(
             var universe = Universe() //TODO Figure out a better way to do this
             var game = Game(PlayerState(playerConfiguration.getName()!!,
                     playerConfiguration.getDifficulty()!!, playerConfiguration.getSkills()!!,
-                    universe.solarSystems[0].planets[0], Gnat(), 1000), universe)
+                    universe.solarSystems[0], universe.solarSystems[0].planets[0], Gnat(), 1000), universe)
             TradeActivity.game = game
             saveNewGameUseCase.execute(object: DisposableSingleObserver<Int>() {
                 override fun onSuccess(t: Int) {

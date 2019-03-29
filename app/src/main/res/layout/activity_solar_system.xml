@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mappane.SolarSystem"
+    tools:context=".ui.mappane.MapActivity"
     android:id="@+id/solarSystemLayout"
     android:background="@drawable/solar_background">
 </RelativeLayout>

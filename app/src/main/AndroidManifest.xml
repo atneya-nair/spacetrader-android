@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.mappane.SolarSystem" />
+        <activity android:name=".ui.mappane.MapActivity" />
         <activity android:name=".ui.tradepane.TradeActivity" />
         <activity android:name=".ui.SuccessView" />
         <activity android:name=".ui.configuration.ConfigurationActivity" />

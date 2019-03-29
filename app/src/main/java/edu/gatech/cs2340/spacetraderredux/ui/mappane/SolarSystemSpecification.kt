@@ -14,7 +14,7 @@ class SolarSystemSpecification : AppCompatActivity() {
     }
 
     fun cancel(view: View) {
-        val activityChangeIntent = Intent(this@SolarSystemSpecification, SolarSystem::class.java)
+        val activityChangeIntent = Intent(this@SolarSystemSpecification, MapActivity::class.java)
         this@SolarSystemSpecification.startActivity(activityChangeIntent)
     }
 }

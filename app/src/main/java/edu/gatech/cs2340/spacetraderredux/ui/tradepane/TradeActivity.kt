@@ -17,7 +17,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.domain.entities.BuyMarketPlace
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
-import edu.gatech.cs2340.spacetraderredux.ui.mappane.SolarSystem
+import edu.gatech.cs2340.spacetraderredux.ui.mappane.MapActivity
 import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
 
 class TradeActivity : AppCompatActivity() {
@@ -92,7 +92,7 @@ class TradeActivity : AppCompatActivity() {
     }
 
     fun solarClick(view: View) {
-        val activityChangeIntent = Intent(this@TradeActivity, SolarSystem::class.java)
+        val activityChangeIntent = Intent(this@TradeActivity, MapActivity::class.java)
         this@TradeActivity.startActivity(activityChangeIntent)
 
     }

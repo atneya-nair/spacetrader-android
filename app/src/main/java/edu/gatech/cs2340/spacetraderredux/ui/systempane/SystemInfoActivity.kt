@@ -13,7 +13,7 @@ import java.util.LinkedList
 
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
-import edu.gatech.cs2340.spacetraderredux.ui.mappane.SolarSystem
+import edu.gatech.cs2340.spacetraderredux.ui.mappane.MapActivity
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.ResourcesViewAdapter
 import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeActivity
@@ -57,7 +57,7 @@ class SystemInfoActivity : AppCompatActivity() {
     }
 
     fun solarClick(view: View) {
-        val activityChangeIntent = Intent(this@SystemInfoActivity, SolarSystem::class.java)
+        val activityChangeIntent = Intent(this@SystemInfoActivity, MapActivity::class.java)
         this@SystemInfoActivity.startActivity(activityChangeIntent)
     }
 }

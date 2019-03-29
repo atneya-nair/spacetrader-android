@@ -5,7 +5,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
 
 import java.util.Random
 
-class SolarSystem(private val name: SolarSystemName, private val location: Point, rand: Random) {
+class SolarSystem(val name: SolarSystemName, val location: Point, rand: Random) {
     val planets: Array<Planet>
 
     init {
