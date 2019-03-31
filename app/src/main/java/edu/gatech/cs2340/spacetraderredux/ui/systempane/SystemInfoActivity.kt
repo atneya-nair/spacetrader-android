@@ -30,15 +30,6 @@ class SystemInfoActivity : AppCompatActivity() {
         /*trades.add(Trade())
         trades.add(Trade())
         trades.add(Trade())*/
-
-        val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
-
-        var adapter = ResourcesViewAdapter(trades)
-        val mLayoutManager = GridLayoutManager(applicationContext, 2)
-        recyclerView.layoutManager = mLayoutManager
-        recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
     }
 
     fun systemInfoClick(view: View) {
