@@ -63,7 +63,6 @@ class TradeSpecification : AppCompatActivity() {
     }
 
     fun cancel(view: View) {
-        val activityChangeIntent = Intent(this@TradeSpecification, TradeActivity::class.java)
-        this@TradeSpecification.startActivity(activityChangeIntent)
+        finish();
     }
 }

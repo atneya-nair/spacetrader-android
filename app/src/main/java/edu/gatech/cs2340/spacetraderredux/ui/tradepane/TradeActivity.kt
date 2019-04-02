@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 import java.util.LinkedList
 
@@ -123,27 +124,34 @@ class TradeActivity : AppCompatActivity() {
 
     fun systemInfoClick(view: View) {
         val activityChangeIntent = Intent(this@TradeActivity, SystemInfoActivity::class.java)
-        this@TradeActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+
     }
 
     fun cargoClick(view: View) {
         val activityChangeIntent = Intent(this@TradeActivity, CargoActivity::class.java)
-        this@TradeActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+
     }
 
     fun tradeableClick(view: View) {
-        val activityChangeIntent = Intent(this@TradeActivity, TradeActivity::class.java)
-        this@TradeActivity.startActivity(activityChangeIntent)
+        Toast.makeText(this@TradeActivity, "Already on Trade page!", Toast.LENGTH_SHORT).show()
     }
 
     fun warpClick(view: View) {
         val activityChangeIntent = Intent(this@TradeActivity, TradeActivity::class.java)
-        this@TradeActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+
     }
 
     fun solarClick(view: View) {
         val activityChangeIntent = Intent(this@TradeActivity, MapActivity::class.java)
-        this@TradeActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+
 
     }
 }

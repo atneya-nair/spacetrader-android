@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 import java.util.LinkedList
 
@@ -42,22 +43,24 @@ class SystemInfoActivity : AppCompatActivity() {
     }
 
     fun systemInfoClick(view: View) {
-        val activityChangeIntent = Intent(this@SystemInfoActivity, SystemInfoActivity::class.java)
-        this@SystemInfoActivity.startActivity(activityChangeIntent)
+        Toast.makeText(this@SystemInfoActivity, "Already on System Info page!", Toast.LENGTH_SHORT).show()
     }
 
     fun cargoClick(view: View) {
         val activityChangeIntent = Intent(this@SystemInfoActivity, CargoActivity::class.java)
-        this@SystemInfoActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
     }
 
     fun tradeableClick(view: View) {
         val activityChangeIntent = Intent(this@SystemInfoActivity, TradeActivity::class.java)
-        this@SystemInfoActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
     }
 
     fun solarClick(view: View) {
         val activityChangeIntent = Intent(this@SystemInfoActivity, MapActivity::class.java)
-        this@SystemInfoActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
     }
 }

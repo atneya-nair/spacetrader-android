@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 import java.util.LinkedList
 
@@ -61,23 +62,52 @@ class CargoActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume(){
+        super.onResume()
+        getCurrentStateUseCase.execute(object: DisposableSingleObserver<PlayerState>() {
+            override fun onSuccess(playerStateResult: PlayerState) {
+                val trades = LinkedList<Trade>()
+                for (element in playerStateResult.ship.storageUnits.cargoHold.getItems()) {
+                    trades.add(Trade(element.key, element.value))
+                }
+
+                val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
+
+                var adapter = ResourcesViewAdapter(trades)
+                val mLayoutManager = GridLayoutManager(applicationContext, 2)
+                recyclerView.layoutManager = mLayoutManager
+                recyclerView.itemAnimator = DefaultItemAnimator()
+                recyclerView.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+            override fun onError(e: Throwable) {
+                e.printStackTrace()
+            }
+        })
+    }
+
     fun systemInfoClick(view: View) {
         val activityChangeIntent = Intent(this@CargoActivity, SystemInfoActivity::class.java)
-        this@CargoActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+
     }
 
     fun cargoClick(view: View) {
-        val activityChangeIntent = Intent(this@CargoActivity, CargoActivity::class.java)
-        this@CargoActivity.startActivity(activityChangeIntent)
+        Toast.makeText(this@CargoActivity, "Already on Cargo page!", Toast.LENGTH_SHORT).show()
     }
 
     fun tradeableClick(view: View) {
         val activityChangeIntent = Intent(this@CargoActivity, TradeActivity::class.java)
-        this@CargoActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+
     }
 
     fun solarClick(view: View) {
         val activityChangeIntent = Intent(this@CargoActivity, MapActivity::class.java)
-        this@CargoActivity.startActivity(activityChangeIntent)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+
     }
 }
