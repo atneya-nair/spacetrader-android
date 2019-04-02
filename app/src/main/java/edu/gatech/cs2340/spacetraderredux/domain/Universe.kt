@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.domain
 
-import android.graphics.Point
+
 import android.util.Log
 import android.widget.RadioButton
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class Universe @Inject constructor() {
     val solarSystems: List<SolarSystem>
-    val totalSystems = 25 // TODO more planets
+    val totalSystems = 25
 
     init {
         //TODO Make first planet a good one near the center
@@ -23,13 +23,13 @@ class Universe @Inject constructor() {
         val usedPoints = HashSet<Point>()
         val rand = Random()
         val solarSystemNamesLen = SolarSystemName.values().size
-        val selectedNames = HashSet<SolarSystemName>()
+        val selectedNames = HashSet<String>()
         var counter = 0
 
         while(counter < totalSystems) {
             val randomIndex = rand.nextInt(solarSystemNamesLen)
             val currSolarSystem = SolarSystemName.values()[randomIndex]
-            if (!selectedNames.contains(currSolarSystem)) {
+            if (!selectedNames.contains(currSolarSystem.name)) {
                 var newLocation: Point
                 do {
                     newLocation = Point(rand.nextInt(150), rand.nextInt(100))
@@ -38,6 +38,7 @@ class Universe @Inject constructor() {
                 solarSystemList.add(SolarSystem(currSolarSystem, newLocation, rand))
                 counter++
             }
+            selectedNames.add(currSolarSystem.name)
         }
         this.solarSystems = Collections.unmodifiableList(solarSystemList)
     }
@@ -52,12 +53,12 @@ class Universe @Inject constructor() {
         return sb.toString()
     }
 
-    fun dumpToLog() {
+    /*fun dumpToLog() {
         var logLeft = toString()
         while (logLeft.length > 4000) {
             Log.d("INFO", logLeft.substring(0, 4000))
             logLeft = logLeft.substring(4000)
         }
         Log.d("INFO", logLeft)
-    }
+    }*/
 }

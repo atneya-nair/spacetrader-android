@@ -37,7 +37,7 @@ class TradeSpecificationViewModel : ViewModel() {
             playerState.ship.storageUnits.cargoHold.addItems(trade.tradeable, labelValue)
         } else {
             playerState.credits += labelValue * trade.price
-            playerState.ship.storageUnits.cargoHold.addItems(trade.tradeable, -labelValue)
+            playerState.ship.storageUnits.cargoHold.removeItems(trade.tradeable, -labelValue)
         }
     }
 }
