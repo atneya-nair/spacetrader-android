@@ -45,7 +45,7 @@ class TradeActivity : AppCompatActivity() {
         getCurrentStateUseCase.execute(object: DisposableSingleObserver<PlayerState>() {
             override fun onSuccess(playerStateResult: PlayerState) {
                 playerState = playerStateResult
-                planetName.text = playerStateResult.currPlanet.toString()
+                planetName.text = playerStateResult.currPlanet.name.toString()
                 val trades = LinkedList<Trade>()
                 var bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult);
                 for (element in bmp.marketPrice) {

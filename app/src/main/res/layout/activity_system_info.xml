@@ -77,15 +77,33 @@
             android:text="IDK"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/labelPolitics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="25dp"
+            android:text="Politics:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
+        <TextView
+            android:id="@+id/politicsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IDK"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+    </LinearLayout>
     <TextView
-        android:id="@+id/labelResources"
+        android:id="@+id/specialEventText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="15dp"
         android:paddingRight="25dp"
         android:paddingTop="15dp"
-        android:text="This system is currently under X:"
+        android:text="This system is currently under X!"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_below="@id/labelTechLevel"
         />
