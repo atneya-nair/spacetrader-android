@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.spacetraderredux.domain
 
-import android.graphics.Point
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
 
 import java.util.Random
@@ -9,7 +8,15 @@ class SolarSystem(val name: SolarSystemName, val location: Point, rand: Random) 
     val planets: Array<Planet>
 
     init {
-        this.planets = Array(rand.nextInt(10) + 1) { generateRandomPlanet(rand) };
+        var set = HashSet<String>()
+        this.planets = Array(rand.nextInt(10) + 1){generateRandomPlanet(rand)}
+        for (i in 0..planets.size-1) {
+            var currPlanet = generateRandomPlanet(rand)
+            while (set.contains(currPlanet.name.name)) {
+                currPlanet = generateRandomPlanet(rand)
+            }
+            set.add(currPlanet.name.name)
+        }
     }
 
     private fun generateRandomPlanet(rand: Random): Planet {

@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="400dp">
+        android:paddingTop="350dp">
     <Button
         android:backgroundTint="@color/colorwhite"
         android:textColor="@color/colorBlack"
@@ -45,5 +45,21 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="New Game"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="0dp">
+        <Button
+            android:backgroundTint="@color/colorwhite"
+            android:textColor="@color/colorBlack"
+            android:id="@+id/continueGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Continue"/>
     </LinearLayout>
 </LinearLayout>
