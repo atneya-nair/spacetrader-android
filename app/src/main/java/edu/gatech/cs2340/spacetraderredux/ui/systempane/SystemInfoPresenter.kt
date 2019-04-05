@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.ui.systempane
 
+import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.GetCurrentStateUseCase
 import edu.gatech.cs2340.spacetraderredux.ui.common.BasePresenter

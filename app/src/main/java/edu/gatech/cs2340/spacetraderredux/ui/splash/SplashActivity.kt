@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Button
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.ui.configuration.ConfigurationActivity
+import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
+import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
 
@@ -22,7 +24,10 @@ class SplashActivity : AppCompatActivity() {
 
             this@SplashActivity.startActivity(activityChangeIntent)
         }
-
+        continueGame.setOnClickListener {
+            val activityChangeIntent = Intent(this@SplashActivity, SystemInfoActivity::class.java)
+            this@SplashActivity.startActivity(activityChangeIntent)
+        }
         if (intent.getBooleanExtra("EXIT", false)) {   // To be removed...
             finish()
         }

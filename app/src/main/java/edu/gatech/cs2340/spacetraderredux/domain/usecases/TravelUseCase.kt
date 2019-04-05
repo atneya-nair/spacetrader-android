@@ -6,12 +6,13 @@ import edu.gatech.cs2340.spacetraderredux.domain.common.CompletableFunctionUseCa
 import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.entities.TradeAction
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import java.lang.IllegalStateException
 
-class TravelUseCase(val gameStateRepository: GameStateRepository, val subscribeScheduler: Scheduler, val postExecutionScheduler: Scheduler):
+class TravelUseCase(private val gameStateRepository: GameStateRepository, val subscribeScheduler: Scheduler, val postExecutionScheduler: Scheduler):
         CompletableFunctionUseCase<Game, Int, SolarSystem>(subscribeScheduler, postExecutionScheduler) {
     override fun buildUseCaseSingle(params: Int?): Single<Game> {
         return gameStateRepository.getGameStateById(params!!)
@@ -24,6 +25,12 @@ class TravelUseCase(val gameStateRepository: GameStateRepository, val subscribeS
                 "Ship does not have fuel for this journey!")
         t.playerState.currSystem = solarSystem
         t.playerState.currPlanet = solarSystem.planets[0] // TODO pick planets
+        var specialEvent = t.playerState.currPlanet.specialEvent
+        var value = (0..1000).random()
+        if (value < 560) {
+            specialEvent =  SpecialEvent.values()[value / 70]
+        }
+        t.playerState.currPlanet.specialEvent = specialEvent
         t.playerState.ship.storageUnits.fuelTank.current -= dist / 3
         return Game(t.playerState, t.universe)
     }

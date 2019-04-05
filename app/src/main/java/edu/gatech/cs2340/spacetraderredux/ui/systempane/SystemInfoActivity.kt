@@ -1,36 +1,42 @@
 package edu.gatech.cs2340.spacetraderredux.ui.systempane
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 
-import java.util.LinkedList
 
 import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
+import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerSystemInfoComponent
+import edu.gatech.cs2340.spacetraderredux.domain.entities.Politics
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.PlanetName
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
 import edu.gatech.cs2340.spacetraderredux.ui.mappane.MapActivity
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
-import edu.gatech.cs2340.spacetraderredux.ui.cargopane.ResourcesViewAdapter
+import edu.gatech.cs2340.spacetraderredux.ui.common.App
+import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
 import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeActivity
+import kotlinx.android.synthetic.main.activity_system_info.*
 
-class SystemInfoActivity : AppCompatActivity() {
+class SystemInfoActivity : BaseActivity<SystemInfoPresenter>(), SystemInfoView {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_system_info)
-        val tabText = findViewById<View>(R.id.labelTabName) as TextView
-        tabText.text = "System Info"
+    override fun displayInfo(solarSystem: SolarSystemName, planetName: PlanetName, techLevel: TechLevel, politics: Politics, specialEvent: SpecialEvent) {
+        systemNameText.text = solarSystem.displayName
+        planetNameText.text = planetName.toString()
+        techLevelText.text = techLevel.toString()
+        politicsText.text = politics.toString()
+        specialEventText.text = "This system is currently under " + specialEvent.toString() + "!"
+    }
 
-        val trades = LinkedList<Trade>()
-        /*trades.add(Trade())
-        trades.add(Trade())
-        trades.add(Trade())*/
+    override fun getLayout(): Int = R.layout.activity_system_info
+    override fun initInjector() {
+        DaggerSystemInfoComponent.builder()
+                .appComponent((application as App).applicationComponent)
+                .build()
+                .inject(this)
     }
 
     fun systemInfoClick(view: View) {
@@ -53,5 +59,10 @@ class SystemInfoActivity : AppCompatActivity() {
         val activityChangeIntent = Intent(this@SystemInfoActivity, MapActivity::class.java)
         activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
         startActivityIfNeeded(activityChangeIntent, 0)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.initialise()
     }
 }

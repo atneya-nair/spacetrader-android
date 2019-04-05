@@ -53,7 +53,8 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
 
             solarSystemArray[i]?.layoutParams = layoutParams
 
-            if (playerState.currSystem.equals(solarSystems[i])) {
+            if (playerState.currSystem.location.x == solarSystems[i].location.x
+                    && playerState.currSystem.location.y == solarSystems[i].location.y) {
                 solarSystemArray[i]?.setImageResource(R.drawable.green_dot);
             }
 
@@ -95,6 +96,11 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
 
     override fun initialiseView() {
         presenter.onInitialise();
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onInitialise()
     }
 
 }

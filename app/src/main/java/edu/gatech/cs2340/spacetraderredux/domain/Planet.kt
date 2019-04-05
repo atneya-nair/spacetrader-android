@@ -12,7 +12,7 @@ class Planet(rand: Random) {
     val name: PlanetName
     val resource: Resource
     val techLevel: TechLevel
-    val specialEvent: SpecialEvent = SpecialEvent.UNEVENTFUL
+    var specialEvent: SpecialEvent = SpecialEvent.UNEVENTFUL
     val politics: Politics = Politics.DEMOCRACY// TODO Initialize this
     init {
         this.name = PlanetName.values()[rand.nextInt(PlanetName.values().size)]

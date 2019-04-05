@@ -8,8 +8,10 @@ import android.view.View
 import android.widget.TextView
 
 import edu.gatech.cs2340.spacetraderredux.R
+import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerTradeSpecComponent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Tradeable
+import edu.gatech.cs2340.spacetraderredux.ui.common.App
 
 
 class TradeSpecification : AppCompatActivity() {
@@ -19,6 +21,7 @@ class TradeSpecification : AppCompatActivity() {
         this.setFinishOnTouchOutside(false)
         setContentView(R.layout.activity_trade_specification)
         mViewModel = ViewModelProviders.of(this).get(TradeSpecificationViewModel::class.java)
+        DaggerTradeSpecComponent.builder().appComponent((application as App).applicationComponent).build().inject(mViewModel as TradeSpecificationViewModel)
         val specificationText = findViewById<View>(R.id.labelTradeConfirmation) as TextView
         val intent = intent
         (findViewById<TextView>(R.id.remainingCredits)).text = mViewModel!!.playerState.credits.toString()
