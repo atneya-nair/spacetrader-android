@@ -26,7 +26,7 @@ class CargoHold constructor(val size: Int) {
         if (curItems + num == 0) {
             items.remove(tradeable)
         } else {
-            items.put(tradeable, curItems + num)
+            items.put(tradeable, curItems - num)
         }
     }
     fun getItems(): Map<Tradeable, Int> {

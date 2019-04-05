@@ -20,14 +20,6 @@ class TradeSpecificationViewModel : ViewModel() {
     var playerState: PlayerState = TradeActivity.playerState!!
 
     fun incPoints() {
-        if (isBuy && (((labelValue + 1) * trade.price) > playerState.credits || playerState.ship.storageUnits.cargoHold.capacityLeft < labelValue + 1)) {
-            return
-        } else if (!isBuy) {
-            if (playerState.ship.storageUnits.cargoHold.getItems().get(trade.tradeable) ?: 0 <  labelValue + 1) {
-                return
-            }
-        }
-
         labelValue++
         transactionCredits += trade.price
     }
@@ -46,6 +38,7 @@ class TradeSpecificationViewModel : ViewModel() {
             }
 
             override fun onError(e: Throwable) {
+
                 e.printStackTrace()
             }
 

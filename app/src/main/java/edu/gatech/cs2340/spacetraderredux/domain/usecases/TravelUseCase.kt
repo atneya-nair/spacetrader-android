@@ -26,7 +26,7 @@ class TravelUseCase(private val gameStateRepository: GameStateRepository, val su
         t.playerState.currSystem = solarSystem
         t.playerState.currPlanet = solarSystem.planets[0] // TODO pick planets
         var specialEvent = t.playerState.currPlanet.specialEvent
-        var value = (0..1000).random()
+        var value = (0..600).random() // TODO make less common again after demo
         if (value < 560) {
             specialEvent =  SpecialEvent.values()[value / 70]
         }

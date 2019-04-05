@@ -25,6 +25,7 @@ import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
 import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeActivity
 import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeViewAdapter
 import io.reactivex.observers.DisposableSingleObserver
+import kotlinx.android.synthetic.main.activity_cargo.*
 import kotlinx.android.synthetic.main.activity_trade.*
 import javax.inject.Inject
 
@@ -53,6 +54,7 @@ class CargoActivity : AppCompatActivity() {
                 recyclerView.itemAnimator = DefaultItemAnimator()
                 recyclerView.adapter = adapter
                 adapter.notifyDataSetChanged()
+                creditsLabel.text = "Remaining credits: " + playerStateResult.credits
             }
             override fun onError(e: Throwable) {
                 e.printStackTrace()
@@ -79,6 +81,8 @@ class CargoActivity : AppCompatActivity() {
                 recyclerView.itemAnimator = DefaultItemAnimator()
                 recyclerView.adapter = adapter
                 adapter.notifyDataSetChanged()
+                creditsLabel.text = "Remaining credits: " + playerStateResult.credits
+
             }
             override fun onError(e: Throwable) {
                 e.printStackTrace()
