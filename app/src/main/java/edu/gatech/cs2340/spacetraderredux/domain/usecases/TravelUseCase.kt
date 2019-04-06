@@ -4,13 +4,10 @@ import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.domain.SolarSystem
 import edu.gatech.cs2340.spacetraderredux.domain.common.CompletableFunctionUseCase
 import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
-import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
-import edu.gatech.cs2340.spacetraderredux.domain.entities.TradeAction
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.Single
-import java.lang.IllegalStateException
 
 class TravelUseCase(private val gameStateRepository: GameStateRepository,
                     subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler):

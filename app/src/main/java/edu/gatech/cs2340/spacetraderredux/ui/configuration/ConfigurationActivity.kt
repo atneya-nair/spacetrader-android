@@ -6,16 +6,13 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-
-import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Difficulty
-import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerConfigurationComponent
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Difficulty
+import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
-import edu.gatech.cs2340.spacetraderredux.domain.Game
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
 import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
-import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeActivity
 import kotlinx.android.synthetic.main.activity_configuration.*
 import kotlinx.android.synthetic.main.configuration_containers.view.*
 

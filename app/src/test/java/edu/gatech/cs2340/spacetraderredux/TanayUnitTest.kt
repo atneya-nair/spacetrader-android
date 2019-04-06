@@ -1,16 +1,10 @@
 package edu.gatech.cs2340.spacetraderredux
 
-import edu.gatech.cs2340.spacetraderredux.domain.Point
-import edu.gatech.cs2340.spacetraderredux.domain.SolarSystem
-import edu.gatech.cs2340.spacetraderredux.domain.Universe
-import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Tradeable
 import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.CargoHold
-import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.fail
 import org.junit.Test
-import kotlin.IllegalStateException
 import kotlin.random.Random
 
 class TanayUnitTest {

@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.domain.entities
 
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
-import edu.gatech.cs2340.spacetraderredux.domain.entities.Tradeable
 
 enum class Politics(val displayName:String, val traffickingReaction: Int, val policeStrength: Int,
                         val pirateStrength: Int, val traderStrength: Int,

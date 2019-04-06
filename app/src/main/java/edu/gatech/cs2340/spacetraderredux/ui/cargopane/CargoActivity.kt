@@ -1,21 +1,16 @@
 package edu.gatech.cs2340.spacetraderredux.ui.cargopane
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-
-import java.util.LinkedList
-
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerCargoComponent
-import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerTradeComponent
-import edu.gatech.cs2340.spacetraderredux.domain.entities.BuyMarketPlace
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.GetCurrentStateUseCase
@@ -23,10 +18,9 @@ import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.mappane.MapActivity
 import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
 import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeActivity
-import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeViewAdapter
 import io.reactivex.observers.DisposableSingleObserver
 import kotlinx.android.synthetic.main.activity_cargo.*
-import kotlinx.android.synthetic.main.activity_trade.*
+import java.util.*
 import javax.inject.Inject
 
 class CargoActivity : AppCompatActivity() {

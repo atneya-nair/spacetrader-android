@@ -5,9 +5,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.domain.entities.TradeAction
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.TradeUseCase
-import io.reactivex.CompletableObserver
 import io.reactivex.observers.DisposableCompletableObserver
-import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class TradeSpecificationViewModel : ViewModel() {

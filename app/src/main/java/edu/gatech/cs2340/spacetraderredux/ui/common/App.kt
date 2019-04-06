@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.ui.common
 
 import android.app.Application
-import android.content.Context
 import edu.gatech.cs2340.spacetraderredux.di.AppComponent
 import edu.gatech.cs2340.spacetraderredux.di.AppModule
 import edu.gatech.cs2340.spacetraderredux.di.DaggerAppComponent

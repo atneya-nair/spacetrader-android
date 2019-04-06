@@ -5,8 +5,8 @@ import dagger.Provides
 import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.*
 import io.reactivex.Scheduler
-import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Named
 import javax.inject.Singleton
 

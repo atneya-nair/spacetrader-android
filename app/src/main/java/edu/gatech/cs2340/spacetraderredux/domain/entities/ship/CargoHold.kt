@@ -1,9 +1,7 @@
 package edu.gatech.cs2340.spacetraderredux.domain.entities.ship
 
-import android.util.Log
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Tradeable
-import java.lang.IllegalStateException
-import java.util.HashMap
+import java.util.*
 
 class CargoHold constructor(val size: Int) {
     var capacityLeft: Int = size

@@ -1,9 +1,11 @@
 package edu.gatech.cs2340.spacetraderredux.domain.common
 
-import io.reactivex.*
+import io.reactivex.Completable
+import io.reactivex.CompletableObserver
+import io.reactivex.Scheduler
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Function
 
 abstract class CompletableFunctionUseCase<T, in SingleParams, in FunctionParams>(
         private val subscribeScheduler: Scheduler,

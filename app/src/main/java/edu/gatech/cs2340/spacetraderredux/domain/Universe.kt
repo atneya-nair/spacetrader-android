@@ -1,14 +1,8 @@
 package edu.gatech.cs2340.spacetraderredux.domain
 
 
-import android.util.Log
-import android.widget.RadioButton
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
-
-import java.util.ArrayList
-import java.util.Collections
-import java.util.HashSet
-import java.util.Random
+import java.util.*
 import javax.inject.Inject
 
 class Universe @Inject constructor() {

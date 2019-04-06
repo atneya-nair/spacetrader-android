@@ -1,16 +1,14 @@
 package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
 import edu.gatech.cs2340.spacetraderredux.domain.Game
-import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.Universe
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
+import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
-import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.Ship
 import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.types.Gnat
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.SaveNewGame
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.TradeUseCase
 import edu.gatech.cs2340.spacetraderredux.ui.common.BasePresenter
-import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeActivity
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 

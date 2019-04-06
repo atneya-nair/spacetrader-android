@@ -3,8 +3,8 @@ import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.view.View
 import android.widget.ImageButton
-import edu.gatech.cs2340.spacetraderredux.R
 import android.widget.RelativeLayout
+import edu.gatech.cs2340.spacetraderredux.R
 import java.util.*
 
 //411 x 650

@@ -3,19 +3,18 @@ package edu.gatech.cs2340.spacetraderredux.ui.mappane
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.RelativeLayout
 import android.widget.Toast
-import edu.gatech.cs2340.spacetraderredux.domain.SolarSystem
-import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
-import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
-import java.util.*
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerMapComponent
+import edu.gatech.cs2340.spacetraderredux.domain.SolarSystem
+import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
+import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
 import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
+import java.util.*
 
 
 class MapActivity : BaseActivity<MapPresenter>(), MapView {

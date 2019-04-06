@@ -1,12 +1,10 @@
 package edu.gatech.cs2340.spacetraderredux.ui.tradepane
 
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
-
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerTradeSpecComponent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState

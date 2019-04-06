@@ -5,7 +5,6 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.CargoHold
 import org.junit.Assert.assertEquals
 import org.junit.Assert.fail
 import org.junit.Test
-import java.lang.IllegalStateException
 
 class SeungJeUnitTest {
     companion object {

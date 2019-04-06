@@ -2,7 +2,6 @@ package edu.gatech.cs2340.spacetraderredux.domain.common
 
 import edu.gatech.cs2340.spacetraderredux.domain.Game
 import io.reactivex.Completable
-import io.reactivex.Observable
 import io.reactivex.Single
 
 interface GameStateRepository {

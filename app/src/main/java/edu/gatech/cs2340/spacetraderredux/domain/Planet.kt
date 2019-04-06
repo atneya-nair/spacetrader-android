@@ -5,7 +5,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.PlanetName
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Resource
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
-import java.util.Random
+import java.util.*
 
 class Planet(rand: Random) {
 

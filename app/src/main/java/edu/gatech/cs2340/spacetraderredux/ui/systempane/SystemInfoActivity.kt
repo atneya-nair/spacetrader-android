@@ -1,12 +1,9 @@
 package edu.gatech.cs2340.spacetraderredux.ui.systempane
 
+
 import android.content.Intent
-
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
-
-
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerSystemInfoComponent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Politics
@@ -14,10 +11,10 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.PlanetName
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
-import edu.gatech.cs2340.spacetraderredux.ui.mappane.MapActivity
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
+import edu.gatech.cs2340.spacetraderredux.ui.mappane.MapActivity
 import edu.gatech.cs2340.spacetraderredux.ui.tradepane.TradeActivity
 import kotlinx.android.synthetic.main.activity_system_info.*
 
