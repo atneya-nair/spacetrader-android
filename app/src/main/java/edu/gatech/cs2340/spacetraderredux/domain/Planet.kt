@@ -5,22 +5,18 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.PlanetName
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Resource
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
-import java.util.Random
+import java.util.*
 
 class Planet(rand: Random) {
 
-    val name: PlanetName
-    val resource: Resource
-    val techLevel: TechLevel
-    val specialEvent: SpecialEvent = SpecialEvent.UNEVENTFUL
+    val name: PlanetName = PlanetName.values()[rand.nextInt(PlanetName.values().size)]
+    val resource: Resource = Resource.values()[rand.nextInt(Resource.values().size - 1)]
+    val techLevel: TechLevel = TechLevel.values()[rand.nextInt(TechLevel.values().size)]
+    var specialEvent: SpecialEvent = SpecialEvent.UNEVENTFUL
     val politics: Politics = Politics.DEMOCRACY// TODO Initialize this
-    init {
-        this.name = PlanetName.values()[rand.nextInt(PlanetName.values().size)]
-        this.resource = Resource.values()[rand.nextInt(Resource.values().size - 1)]
-        this.techLevel = TechLevel.values()[rand.nextInt(TechLevel.values().size)]
-    }
 
     override fun toString(): String {
-        return "Planet " + name.name + " with resource: " + resource.name + " and tech level: " + techLevel.name
+        return "Planet " + name.name + " with resource: " + resource.name + " and tech level: " +
+                techLevel.name
     }
 }

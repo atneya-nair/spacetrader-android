@@ -1,35 +1,27 @@
 package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-
+import edu.gatech.cs2340.spacetraderredux.R
+import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerConfigurationComponent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.Difficulty
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
-import edu.gatech.cs2340.spacetraderredux.R
-import edu.gatech.cs2340.spacetraderredux.di.AppModule
-import edu.gatech.cs2340.spacetraderredux.di.DaggerAppComponent
-import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerConfigurationComponent
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
-import edu.gatech.cs2340.spacetraderredux.domain.Game
-import edu.gatech.cs2340.spacetraderredux.domain.common.GameStateRepository
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
-import edu.gatech.cs2340.spacetraderredux.ui.tradespec.Trade
+import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
 import kotlinx.android.synthetic.main.activity_configuration.*
 import kotlinx.android.synthetic.main.configuration_containers.view.*
-import javax.inject.Inject
 
 class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), ConfigurationView{
 
 
-    lateinit var difficultyTextView: TextView
-    lateinit var buttonIdToSkillType: Map<Int, SkillType>
-    lateinit var skillTypeToTextView: Map<SkillType, TextView>
+    private lateinit var difficultyTextView: TextView
+    private lateinit var buttonIdToSkillType: Map<Int, SkillType>
+    private  lateinit var skillTypeToTextView: Map<SkillType, TextView>
 
 
 
@@ -89,22 +81,27 @@ class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), Configurat
     }
 
     override fun displayInvalidPlayerNameError() {
-        Toast.makeText(this@ConfigurationActivity, "PlayerState name is empty", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@ConfigurationActivity, "PlayerState name is empty",
+                Toast.LENGTH_SHORT).show()
     }
 
     override fun displaySkillPointsRemainingError() {
-        Toast.makeText(this@ConfigurationActivity, "Unallocated skill points remaining", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@ConfigurationActivity,
+                "Unallocated skill points remaining", Toast.LENGTH_SHORT).show()
     }
 
-    override fun configurationSuccess(game: Game) {
-        Toast.makeText(this@ConfigurationActivity, "Creating valid playerState", Toast.LENGTH_SHORT).show()
-        val activityChangeIntent = Intent(this@ConfigurationActivity, Trade::class.java)
+    override fun configurationSuccess() {
+        Toast.makeText(this@ConfigurationActivity,
+                "Creating valid playerState", Toast.LENGTH_SHORT).show()
+        val activityChangeIntent = Intent(this@ConfigurationActivity,
+                SystemInfoActivity::class.java)
         this@ConfigurationActivity.startActivity(activityChangeIntent)
         this.finish()
     }
 
     /**
-     * Processes a decrement button being clicked, updating the corresponding difficulty or skillpoint.
+     * Processes a decrement button being clicked, updating the corresponding difficulty or
+     * skillpoint.
      * @param view the view the event happened in.
      */
     fun downClicked(view: View) {
@@ -117,7 +114,8 @@ class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), Configurat
     }
 
     /**
-     * Processes an increment button being clicked, updating the corresponding difficulty or skillpoint.
+     * Processes an increment button being clicked, updating the corresponding difficulty or
+     * skillpoint.
      * @param view the view the event happened in.
      */
     fun upClicked(view: View) {

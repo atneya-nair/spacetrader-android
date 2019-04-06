@@ -1,9 +1,11 @@
 package edu.gatech.cs2340.spacetraderredux.domain.common
 
-import io.reactivex.*
+import io.reactivex.Completable
+import io.reactivex.CompletableObserver
+import io.reactivex.Scheduler
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Function
 
 abstract class CompletableFunctionUseCase<T, in SingleParams, in FunctionParams>(
         private val subscribeScheduler: Scheduler,
@@ -17,7 +19,8 @@ abstract class CompletableFunctionUseCase<T, in SingleParams, in FunctionParams>
 
     abstract fun buildOnCompletableSuccess(t: T): Completable
 
-    fun execute(observer: CompletableObserver, sparams: SingleParams? = null, fparams: FunctionParams? = null) {
+    fun execute(observer: CompletableObserver, sparams: SingleParams? = null,
+                fparams: FunctionParams? = null) {
         val observable: Completable = this.buildUseCaseSingle(sparams)
                 .subscribeOn(subscribeScheduler)
                 .map { t -> transform(t, fparams)}

@@ -6,9 +6,11 @@ import javax.inject.Inject
 
 class PlayerConfiguration @Inject constructor(){
 
-    val MAX_SKILLPOINTS = 16
-    val DEFAULT_PLAYER_NAME = "Player1"
-    val DEFAULT_PLAYER_DIFFICULTY = Difficulty.EASY
+    companion object {
+        private const val MAX_SKILLPOINTS = 16
+        private const val DEFAULT_PLAYER_NAME = "Player1"
+        private val DEFAULT_PLAYER_DIFFICULTY = Difficulty.EASY
+    }
 
     var playerName = DEFAULT_PLAYER_NAME
     var playerDifficulty = DEFAULT_PLAYER_DIFFICULTY
@@ -17,7 +19,7 @@ class PlayerConfiguration @Inject constructor(){
 
     init {
         for (type in SkillType.values()) {
-            skillPoints.put(type, 0)
+            skillPoints[type] = 0
         }
     }
 
@@ -28,21 +30,24 @@ class PlayerConfiguration @Inject constructor(){
         remaining = MAX_SKILLPOINTS
 
         for (type in SkillType.values()) {
-            skillPoints.put(type, 0)
+            skillPoints[type] = 0
         }
     }
 
     fun incrementDifficulty() {
-        playerDifficulty = Difficulty.values()[(playerDifficulty.ordinal + 1) % Difficulty.values().size]
+        playerDifficulty = Difficulty.values()[
+                (playerDifficulty.ordinal + 1) % Difficulty.values().size]
     }
 
     fun decrementDifficulty() {
-        playerDifficulty = Difficulty.values()[(playerDifficulty.ordinal + Difficulty.values().size - 1) % Difficulty.values().size]
+        playerDifficulty = Difficulty.values()[
+                (playerDifficulty.ordinal + Difficulty.values().size - 1) %
+                        Difficulty.values().size]
     }
 
     fun incrementSkill(type: SkillType): Boolean {
         if (remaining > 0) {
-            skillPoints.put(type, skillPoints.get(type)!! + 1)
+            skillPoints[type] = skillPoints[type]!! + 1
             remaining--
             return true
         }
@@ -50,9 +55,9 @@ class PlayerConfiguration @Inject constructor(){
     }
 
     fun decrementSkill(type: SkillType): Boolean {
-        var pointsAllocated = skillPoints.get(type)!!
+        val pointsAllocated = skillPoints[type]!!
         if (pointsAllocated > 0) {
-            skillPoints.put(type, pointsAllocated - 1)
+            skillPoints[type] = pointsAllocated - 1
             remaining++
             return true
         }
@@ -60,18 +65,19 @@ class PlayerConfiguration @Inject constructor(){
     }
 
     fun getSkillPoints(type: SkillType): Int {
-        return skillPoints.get(type)!!
+        return skillPoints[type]!!
     }
 
     fun isPlayerNameValid(): Boolean {
-        return playerName.isNotEmpty() && playerName.length < 20 && !playerName.contains(Regex("^.*[^a-zA-Z0-9 ].*$"))
+        return playerName.isNotEmpty() && playerName.length < 20 &&
+                !playerName.contains(Regex("^.*[^a-zA-Z0-9 ].*$"))
     }
 
     fun areSkillPointsRemaining(): Boolean {
         return remaining != 0
     }
 
-    fun isValidConfig(): Boolean {
+    private fun isValidConfig(): Boolean {
         return !areSkillPointsRemaining() && isPlayerNameValid()
     }
 
@@ -85,14 +91,14 @@ class PlayerConfiguration @Inject constructor(){
 
     fun getName(): String? {
         if (isValidConfig()) {
-            return playerName;
+            return playerName
         }
         return null
     }
 
     fun getDifficulty(): Difficulty? {
         if (isValidConfig()) {
-            return playerDifficulty;
+            return playerDifficulty
         }
         return null
     }

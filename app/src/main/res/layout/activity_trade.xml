@@ -2,11 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_trade"
-    tools:context=".ui.tradespec.Trade"
+    tools:context=".ui.tradepane.TradeActivity"
     android:orientation="vertical"
     android:paddingBottom="@dimen/row_padding_vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -25,7 +24,6 @@
         android:id="@+id/labelPlanetName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelTabName"
         android:paddingLeft="15dp"
         android:paddingRight="25dp"
         android:text="Planet Name:"
@@ -36,11 +34,9 @@
         android:id="@+id/planetName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelTabName"
         android:text="Jar"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:layout_alignParentEnd="@id/labelPlanetName"
-        android:layout_toRightOf="@id/labelPlanetName"/>
+        />
 
 
     </LinearLayout>
@@ -53,13 +49,14 @@
         android:paddingRight="25dp"
         android:text="Resources:"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:layout_below="@id/labelPlanetName"/>
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:layout_below="@id/labelResources" />
+        />
+
 
 </LinearLayout>

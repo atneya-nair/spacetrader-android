@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nameView"
     android:layout_width="match_parent"
@@ -35,7 +35,10 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="charName"
+                android:text="Name"
+                android:autofillHints="Player1"
+                tools:targetApi="o" />
 
         </LinearLayout>
         <LinearLayout

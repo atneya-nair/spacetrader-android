@@ -1,3 +1,4 @@
 package edu.gatech.cs2340.spacetraderredux.domain.entities
 
-data class TradeAction(val tradeable: Tradeable, val price: Int, val sell:Boolean)
+
+class TradeAction(val trade:Trade, val quantity:Int, val sell:Boolean = false)

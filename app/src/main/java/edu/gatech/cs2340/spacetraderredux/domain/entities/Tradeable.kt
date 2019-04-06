@@ -5,10 +5,12 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
 
 
-enum class Tradeable(val displayName:String, val minProduceLevel: TechLevel, val minUseLevel: TechLevel,
-                     val topProductionLevel: TechLevel, val baseLevelPrice: Int, val incPerLevel: Int,
-                     val percentVariance: Int, val demandEvent: SpecialEvent, val cheapResource: Resource,
-                     val expensiveResource: Resource, val minMerchantPrice: Int, val maxMerchantPrice: Int) {
+enum class Tradeable(val displayName:String, val minProduceLevel: TechLevel,
+                     val minUseLevel: TechLevel, val topProductionLevel: TechLevel,
+                     val baseLevelPrice: Int, val incPerLevel: Int, val percentVariance: Int,
+                     val demandEvent: SpecialEvent, val cheapResource: Resource,
+                     val expensiveResource: Resource, val minMerchantPrice: Int,
+                     val maxMerchantPrice: Int) {
 
     WATER(
             "Water",

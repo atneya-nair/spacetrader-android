@@ -1,21 +1,20 @@
 package edu.gatech.cs2340.spacetraderredux.ui.configuration
 
-import edu.gatech.cs2340.spacetraderredux.di.DaggerPlayerConfigurationComponent
 import edu.gatech.cs2340.spacetraderredux.domain.Game
-import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.Universe
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerConfiguration
+import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SkillType
 import edu.gatech.cs2340.spacetraderredux.domain.entities.ship.types.Gnat
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.SaveNewGame
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.TradeUseCase
 import edu.gatech.cs2340.spacetraderredux.ui.common.BasePresenter
-import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class ConfigurationPresenter @Inject constructor(
-        val tradeUseCase: TradeUseCase, val saveNewGameUseCase: SaveNewGame, var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
+        val tradeUseCase: TradeUseCase, private val saveNewGameUseCase: SaveNewGame,
+        var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
 
 
 
@@ -30,14 +29,14 @@ class ConfigurationPresenter @Inject constructor(
     }
 
     fun onIncrementSkillType(type: SkillType): Boolean {
-        var didSucceed = playerConfiguration.incrementSkill(type)
+        val didSucceed = playerConfiguration.incrementSkill(type)
         getView()?.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
         getView()?.updateRemainingSkillPoints(playerConfiguration.remaining)
         return didSucceed
     }
 
     fun onDecrementSkillType(type: SkillType): Boolean {
-        var didSucceed = playerConfiguration.decrementSkill(type)
+        val didSucceed = playerConfiguration.decrementSkill(type)
         getView()?.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
         getView()?.updateRemainingSkillPoints(playerConfiguration.remaining)
         return didSucceed
@@ -59,13 +58,14 @@ class ConfigurationPresenter @Inject constructor(
         } else if (playerConfiguration.areSkillPointsRemaining()) {
             getView()?.displaySkillPointsRemainingError()
         } else {
-            var universe = Universe() //TODO Figure out a better way to do this
-            var game = Game(PlayerState(playerConfiguration.getName()!!,
+            val universe = Universe() //TODO Figure out a better way to do this
+            val game = Game(PlayerState(playerConfiguration.getName()!!,
                     playerConfiguration.getDifficulty()!!, playerConfiguration.getSkills()!!,
-                    universe.solarSystems[0].planets[0], Gnat(), 1000), universe)
-
+                    universe.solarSystems[0], universe.solarSystems[0].planets[0], Gnat(),
+                    1000), universe)
             saveNewGameUseCase.execute(object: DisposableSingleObserver<Int>() {
                 override fun onSuccess(t: Int) {
+                    getView()?.configurationSuccess()
                 }
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
