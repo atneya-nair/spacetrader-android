@@ -18,7 +18,7 @@ open class BaseMarketPlace(private val planet: Planet) {
         price = tradeable.baseLevelPrice + ((this.planet.techLevel.ordinal - tradeable.minUseLevel.ordinal) * tradeable.incPerLevel)
 
         if (tradeable == this.planet.politics.tradeItemDemand)
-            price = (price * 4) / 3;
+            price = (price * 4) / 3
 
         price = (price * (100 - (2 * this.planet.politics.traderStrength))) / 100
 
@@ -29,6 +29,6 @@ open class BaseMarketPlace(private val planet: Planet) {
         if (planet.specialEvent == tradeable.demandEvent) price *= 3
         price += ((-tradeable.percentVariance..tradeable.percentVariance).random()) * price / 100
         if (price < 0) return 0
-        return price;
+        return price
     }
 }

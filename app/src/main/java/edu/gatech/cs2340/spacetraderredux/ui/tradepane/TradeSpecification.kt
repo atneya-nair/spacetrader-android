@@ -68,6 +68,6 @@ class TradeSpecification : AppCompatActivity() {
     }
 
     fun cancel(view: View) {
-        finish();
+        finish()
     }
 }

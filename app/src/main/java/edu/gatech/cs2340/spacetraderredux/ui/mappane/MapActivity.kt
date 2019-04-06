@@ -46,7 +46,7 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
             solarSystemArray[i] = ImageButton(this)
             solarSystemArray[i]?.x = posX
             solarSystemArray[i]?.y = posY
-            solarSystemArray[i]?.setImageResource(R.drawable.red_dot);
+            solarSystemArray[i]?.setImageResource(R.drawable.red_dot)
             solarSystemArray[i]?.setOnClickListener {
                 presenter.onSelectSolarSystem(solarSystems[i])
             }
@@ -55,7 +55,7 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
 
             if (playerState.currSystem.location.x == solarSystems[i].location.x
                     && playerState.currSystem.location.y == solarSystems[i].location.y) {
-                solarSystemArray[i]?.setImageResource(R.drawable.green_dot);
+                solarSystemArray[i]?.setImageResource(R.drawable.green_dot)
             }
 
             solarSystemMap.addView(solarSystemArray[i])
@@ -95,7 +95,7 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
     }
 
     override fun initialiseView() {
-        presenter.onInitialise();
+        presenter.onInitialise()
     }
 
     override fun onResume() {

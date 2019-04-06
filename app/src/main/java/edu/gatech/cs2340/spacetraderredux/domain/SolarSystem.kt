@@ -20,7 +20,7 @@ class SolarSystem(val name: SolarSystemName, val location: Point, rand: Random) 
     }
 
     private fun generateRandomPlanet(rand: Random): Planet {
-        return Planet(rand);
+        return Planet(rand)
     }
 
     override fun toString(): String {

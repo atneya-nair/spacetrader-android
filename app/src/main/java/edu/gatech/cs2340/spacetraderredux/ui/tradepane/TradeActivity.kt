@@ -47,7 +47,7 @@ class TradeActivity : AppCompatActivity() {
                 playerState = playerStateResult
                 planetName.text = playerStateResult.currPlanet.name.toString()
                 val trades = LinkedList<Trade>()
-                val bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult);
+                val bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult)
                 for (element in bmp.marketPrice) {
                     if (element.value == 0) {
                         continue
@@ -78,7 +78,7 @@ class TradeActivity : AppCompatActivity() {
             override fun onSuccess(playerStateResult: PlayerState) {
                 planetName.text = playerStateResult.currPlanet.name.toString()
                 val trades = LinkedList<Trade>()
-                val bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult);
+                val bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult)
                 for (element in bmp.marketPrice) {
                     if (element.value == 0) {
                         continue

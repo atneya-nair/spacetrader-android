@@ -19,8 +19,8 @@ class SolarSystemSpecification : AppCompatActivity() {
         val bundle = intent.getBundleExtra("information")
         labelSolarSystemConfirmation.text = "Trade: " + bundle.getString("name") + " at: (" + bundle.getInt("x") + ", " + bundle.getInt("y") + ")"
         distance.text = bundle.getInt("distance").toString()
-        fuelCost.text = bundle.getInt("fuelCost").toString();
-        remainingFuel.text = bundle.getInt("remainingFuel").toString();
+        fuelCost.text = bundle.getInt("fuelCost").toString()
+        remainingFuel.text = bundle.getInt("remainingFuel").toString()
 
     }
 
@@ -31,6 +31,6 @@ class SolarSystemSpecification : AppCompatActivity() {
     }
 
     fun cancel(view: View) {
-        finish();
+        finish()
     }
 }

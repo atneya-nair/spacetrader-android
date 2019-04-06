@@ -29,7 +29,7 @@ class SolarSystemViewModel : ViewModel() {
             solarSystemArray[i] = ImageButton(context)
             solarSystemArray[i]?.x = posX
             solarSystemArray[i]?.y = posY
-            solarSystemArray[i]?.setImageResource(R.drawable.red_dot);
+            solarSystemArray[i]?.setImageResource(R.drawable.red_dot)
 
             solarSystemArray[i]?.layoutParams = layoutParams
             solarSystemMap.addView(solarSystemArray[i])

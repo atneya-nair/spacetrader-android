@@ -7,5 +7,5 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
 
 interface SystemInfoView {
-    fun displayInfo(solarSystemName: SolarSystemName, planetName: PlanetName, techLevel: TechLevel, politics: Politics, specialEvent: SpecialEvent);
+    fun displayInfo(solarSystemName: SolarSystemName, planetName: PlanetName, techLevel: TechLevel, politics: Politics, specialEvent: SpecialEvent)
 }

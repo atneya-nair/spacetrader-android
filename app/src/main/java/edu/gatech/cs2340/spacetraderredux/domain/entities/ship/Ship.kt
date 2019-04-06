@@ -14,6 +14,6 @@ open class Ship internal constructor(private val shipName: String,
                                          val hull: ShipHull) {
 
     override fun toString(): String {
-        return shipName;
+        return shipName
     }
 }

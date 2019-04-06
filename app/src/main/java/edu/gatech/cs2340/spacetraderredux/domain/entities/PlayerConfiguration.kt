@@ -87,14 +87,14 @@ class PlayerConfiguration @Inject constructor(){
 
     fun getName(): String? {
         if (isValidConfig()) {
-            return playerName;
+            return playerName
         }
         return null
     }
 
     fun getDifficulty(): Difficulty? {
         if (isValidConfig()) {
-            return playerDifficulty;
+            return playerDifficulty
         }
         return null
     }
