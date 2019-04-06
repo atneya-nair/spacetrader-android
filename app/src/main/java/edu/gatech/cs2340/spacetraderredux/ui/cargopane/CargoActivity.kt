@@ -48,7 +48,7 @@ class CargoActivity : AppCompatActivity() {
 
                 val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
 
-                var adapter = ResourcesViewAdapter(trades)
+                val adapter = ResourcesViewAdapter(trades)
                 val mLayoutManager = GridLayoutManager(applicationContext, 2)
                 recyclerView.layoutManager = mLayoutManager
                 recyclerView.itemAnimator = DefaultItemAnimator()
@@ -75,7 +75,7 @@ class CargoActivity : AppCompatActivity() {
 
                 val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
 
-                var adapter = ResourcesViewAdapter(trades)
+                val adapter = ResourcesViewAdapter(trades)
                 val mLayoutManager = GridLayoutManager(applicationContext, 2)
                 recyclerView.layoutManager = mLayoutManager
                 recyclerView.itemAnimator = DefaultItemAnimator()

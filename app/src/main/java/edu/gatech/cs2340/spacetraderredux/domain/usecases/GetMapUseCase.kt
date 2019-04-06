@@ -12,7 +12,7 @@ class GetMapUseCase(private val gameStateRepository: GameStateRepository,
                             subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) : UseCase<List<SolarSystem>, Int>(
         subscribeScheduler, postExecutionScheduler) {
     override fun buildUseCaseSingle(params: Int?): Single<List<SolarSystem>> {
-        var game = gameStateRepository.getGameStateById(0)
+        val game = gameStateRepository.getGameStateById(0)
         return game.map {
             return@map it.universe.solarSystems
         }

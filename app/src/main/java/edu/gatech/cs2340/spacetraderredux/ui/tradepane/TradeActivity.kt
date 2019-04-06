@@ -47,7 +47,7 @@ class TradeActivity : AppCompatActivity() {
                 playerState = playerStateResult
                 planetName.text = playerStateResult.currPlanet.name.toString()
                 val trades = LinkedList<Trade>()
-                var bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult);
+                val bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult);
                 for (element in bmp.marketPrice) {
                     if (element.value == 0) {
                         continue
@@ -57,7 +57,7 @@ class TradeActivity : AppCompatActivity() {
 
                 val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
 
-                var adapter = TradeViewAdapter(trades)
+                val adapter = TradeViewAdapter(trades)
                 val mLayoutManager = GridLayoutManager(applicationContext, 2)
                 recyclerView.layoutManager = mLayoutManager
                 recyclerView.itemAnimator = DefaultItemAnimator()
@@ -78,7 +78,7 @@ class TradeActivity : AppCompatActivity() {
             override fun onSuccess(playerStateResult: PlayerState) {
                 planetName.text = playerStateResult.currPlanet.name.toString()
                 val trades = LinkedList<Trade>()
-                var bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult);
+                val bmp = BuyMarketPlace(playerStateResult.currPlanet, playerStateResult);
                 for (element in bmp.marketPrice) {
                     if (element.value == 0) {
                         continue
@@ -88,7 +88,7 @@ class TradeActivity : AppCompatActivity() {
 
                 val recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
 
-                var adapter = TradeViewAdapter(trades)
+                val adapter = TradeViewAdapter(trades)
                 val mLayoutManager = GridLayoutManager(applicationContext, 2)
                 recyclerView.layoutManager = mLayoutManager
                 recyclerView.itemAnimator = DefaultItemAnimator()

@@ -4,12 +4,12 @@ import edu.gatech.cs2340.spacetraderredux.domain.Planet
 
 //TODO tradeable skill stuff (and crew member)
 //TODO all quantity items
-open class BaseMarketPlace(val planet: Planet) {
+open class BaseMarketPlace(private val planet: Planet) {
     val marketPrice = HashMap<Tradeable, Int>()
     init {
-        enumValues<Tradeable>().forEach { marketPrice.put(it, getPrice(it)) }
+        enumValues<Tradeable>().forEach { marketPrice[it] = getPrice(it) }
     }
-    fun getPrice(tradeable: Tradeable): Int {
+    private fun getPrice(tradeable: Tradeable): Int {
         var price = 0
         if (((tradeable == Tradeable.NARCOTICS) && (!this.planet.politics.drugLegality)) ||
 		    ((tradeable == Tradeable.FIREARMS) && (!this.planet.politics.drugLegality))) return 0
@@ -17,7 +17,7 @@ open class BaseMarketPlace(val planet: Planet) {
 
         price = tradeable.baseLevelPrice + ((this.planet.techLevel.ordinal - tradeable.minUseLevel.ordinal) * tradeable.incPerLevel)
 
-        if (tradeable.equals(this.planet.politics.tradeItemDemand))
+        if (tradeable == this.planet.politics.tradeItemDemand)
             price = (price * 4) / 3;
 
         price = (price * (100 - (2 * this.planet.politics.traderStrength))) / 100

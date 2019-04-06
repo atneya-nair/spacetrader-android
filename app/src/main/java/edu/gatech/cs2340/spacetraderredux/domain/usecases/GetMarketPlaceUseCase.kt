@@ -9,7 +9,7 @@ import io.reactivex.Single
 class GetMarketPlaceUseCase(private val gameStateRepository: GameStateRepository,
                             subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) : UseCase<BuyMarketPlace, Int>(subscribeScheduler, postExecutionScheduler) {
     override fun buildUseCaseSingle(params: Int?): Single<BuyMarketPlace> {
-        var game = gameStateRepository.getGameStateById(0)
+        val game = gameStateRepository.getGameStateById(0)
         return game.map {
             return@map BuyMarketPlace(it.playerState.currPlanet, it.playerState)
         }

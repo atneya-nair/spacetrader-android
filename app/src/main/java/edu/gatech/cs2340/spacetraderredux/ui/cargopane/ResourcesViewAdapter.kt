@@ -14,13 +14,9 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 class ResourcesViewAdapter(private val list: List<Trade>) : RecyclerView.Adapter<ResourcesViewAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var resourceName: TextView
-        var price: TextView
+        var resourceName: TextView = view.findViewById<View>(R.id.tradeResource) as TextView
+        var price: TextView = view.findViewById<View>(R.id.tradeResourcePrice) as TextView
 
-        init {
-            resourceName = view.findViewById<View>(R.id.tradeResource) as TextView
-            price = view.findViewById<View>(R.id.tradeResourcePrice) as TextView
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

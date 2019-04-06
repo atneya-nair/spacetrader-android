@@ -16,7 +16,7 @@ class SolarSystemSpecification : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_solar_system_specification)
         presenter = (parent as MapActivity).presenter
-        var bundle = intent.getBundleExtra("information")
+        val bundle = intent.getBundleExtra("information")
         labelSolarSystemConfirmation.text = "Trade: " + bundle.getString("name") + " at: (" + bundle.getInt("x") + ", " + bundle.getInt("y") + ")"
         distance.text = bundle.getInt("distance").toString()
         fuelCost.text = bundle.getInt("fuelCost").toString();

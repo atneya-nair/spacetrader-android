@@ -16,7 +16,7 @@ class GameConverter {
      @TypeConverter
      fun toGame(string: String): Game {
          //registerTypeAdapter(Ship::class.java, InterfaceAdapter<Ship>())
-         var gson = GsonBuilder().create()
+         val gson = GsonBuilder().create()
          return gson.fromJson(string, Game::class.java)
      }
 }

@@ -6,9 +6,11 @@ import javax.inject.Inject
 
 class PlayerConfiguration @Inject constructor(){
 
-    val MAX_SKILLPOINTS = 16
-    val DEFAULT_PLAYER_NAME = "Player1"
-    val DEFAULT_PLAYER_DIFFICULTY = Difficulty.EASY
+    companion object {
+        private const val MAX_SKILLPOINTS = 16
+        private const val DEFAULT_PLAYER_NAME = "Player1"
+        private val DEFAULT_PLAYER_DIFFICULTY = Difficulty.EASY
+    }
 
     var playerName = DEFAULT_PLAYER_NAME
     var playerDifficulty = DEFAULT_PLAYER_DIFFICULTY
@@ -17,7 +19,7 @@ class PlayerConfiguration @Inject constructor(){
 
     init {
         for (type in SkillType.values()) {
-            skillPoints.put(type, 0)
+            skillPoints[type] = 0
         }
     }
 
@@ -28,7 +30,7 @@ class PlayerConfiguration @Inject constructor(){
         remaining = MAX_SKILLPOINTS
 
         for (type in SkillType.values()) {
-            skillPoints.put(type, 0)
+            skillPoints[type] = 0
         }
     }
 
@@ -42,7 +44,7 @@ class PlayerConfiguration @Inject constructor(){
 
     fun incrementSkill(type: SkillType): Boolean {
         if (remaining > 0) {
-            skillPoints.put(type, skillPoints.get(type)!! + 1)
+            skillPoints[type] = skillPoints[type]!! + 1
             remaining--
             return true
         }
@@ -50,9 +52,9 @@ class PlayerConfiguration @Inject constructor(){
     }
 
     fun decrementSkill(type: SkillType): Boolean {
-        var pointsAllocated = skillPoints.get(type)!!
+        val pointsAllocated = skillPoints[type]!!
         if (pointsAllocated > 0) {
-            skillPoints.put(type, pointsAllocated - 1)
+            skillPoints[type] = pointsAllocated - 1
             remaining++
             return true
         }
@@ -60,7 +62,7 @@ class PlayerConfiguration @Inject constructor(){
     }
 
     fun getSkillPoints(type: SkillType): Int {
-        return skillPoints.get(type)!!
+        return skillPoints[type]!!
     }
 
     fun isPlayerNameValid(): Boolean {
@@ -71,7 +73,7 @@ class PlayerConfiguration @Inject constructor(){
         return remaining != 0
     }
 
-    fun isValidConfig(): Boolean {
+    private fun isValidConfig(): Boolean {
         return !areSkillPointsRemaining() && isPlayerNameValid()
     }
 

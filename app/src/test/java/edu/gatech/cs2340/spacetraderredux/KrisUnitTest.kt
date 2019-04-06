@@ -7,10 +7,10 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class KrisUnitTest {
-    var universe : Universe
-    val expectedTotalSystems = 25
-    val numberIterations = 10000
-    var curr = 0
+    private var universe : Universe
+    private val expectedTotalSystems = 25
+    private val numberIterations = 10000
+    private var curr = 0
 
     init {
         universe = Universe()
@@ -41,7 +41,7 @@ class KrisUnitTest {
     @Test
     fun testExpectedSolarSystemCoordinates() {
         val pointSet = HashSet<Point>()
-        for (index in 0..expectedTotalSystems - 1) {
+        for (index in 0 until expectedTotalSystems) {
             if (pointSet.contains(universe.solarSystems[index].location)) {
                 fail()
             }

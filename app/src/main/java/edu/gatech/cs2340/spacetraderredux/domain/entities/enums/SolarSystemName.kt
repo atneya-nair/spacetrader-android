@@ -122,9 +122,6 @@ enum class SolarSystemName private constructor() {
     ZALKON,
     ZUUL;
 
-    val displayName: String
+    val displayName: String = name.substring(0, 1) + name.toLowerCase().substring(1)
 
-    init {
-        displayName = name.substring(0, 1) + name.toLowerCase().substring(1)
-    }
 }
