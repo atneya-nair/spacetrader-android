@@ -35,11 +35,14 @@ class PlayerConfiguration @Inject constructor(){
     }
 
     fun incrementDifficulty() {
-        playerDifficulty = Difficulty.values()[(playerDifficulty.ordinal + 1) % Difficulty.values().size]
+        playerDifficulty = Difficulty.values()[
+                (playerDifficulty.ordinal + 1) % Difficulty.values().size]
     }
 
     fun decrementDifficulty() {
-        playerDifficulty = Difficulty.values()[(playerDifficulty.ordinal + Difficulty.values().size - 1) % Difficulty.values().size]
+        playerDifficulty = Difficulty.values()[
+                (playerDifficulty.ordinal + Difficulty.values().size - 1) %
+                        Difficulty.values().size]
     }
 
     fun incrementSkill(type: SkillType): Boolean {
@@ -66,7 +69,8 @@ class PlayerConfiguration @Inject constructor(){
     }
 
     fun isPlayerNameValid(): Boolean {
-        return playerName.isNotEmpty() && playerName.length < 20 && !playerName.contains(Regex("^.*[^a-zA-Z0-9 ].*$"))
+        return playerName.isNotEmpty() && playerName.length < 20 &&
+                !playerName.contains(Regex("^.*[^a-zA-Z0-9 ].*$"))
     }
 
     fun areSkillPointsRemaining(): Boolean {

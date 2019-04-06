@@ -22,7 +22,9 @@ class RoomRepository(private val gameDao: GameDao, var counter: Int = -1): GameS
     }
 
     override fun setNewGameState(game: Game): Single<Int> {
-        return Completable.fromAction { gameDao.insert(GameData(0, game)) }.toSingleDefault(0)//TODO use counter for multiple
+        return Completable.fromAction {
+            gameDao.insert(GameData(0, game))
+        }.toSingleDefault(0)//TODO use counter for multiple
     }
 
     override fun setGameState(id: Int, game: Game): Completable {

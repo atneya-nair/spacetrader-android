@@ -16,6 +16,7 @@ class Planet(rand: Random) {
     val politics: Politics = Politics.DEMOCRACY// TODO Initialize this
 
     override fun toString(): String {
-        return "Planet " + name.name + " with resource: " + resource.name + " and tech level: " + techLevel.name
+        return "Planet " + name.name + " with resource: " + resource.name + " and tech level: " +
+                techLevel.name
     }
 }

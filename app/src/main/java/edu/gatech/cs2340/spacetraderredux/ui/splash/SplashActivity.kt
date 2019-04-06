@@ -18,14 +18,16 @@ class SplashActivity : AppCompatActivity() {
         val button = findViewById<View>(R.id.newGame) as Button
         button.setOnClickListener {
             // Perform action on click
-            val activityChangeIntent = Intent(this@SplashActivity, ConfigurationActivity::class.java)
+            val activityChangeIntent = Intent(this@SplashActivity,
+                    ConfigurationActivity::class.java)
 
             // currentContext.startActivity(activityChangeIntent);
 
             this@SplashActivity.startActivity(activityChangeIntent)
         }
         continueGame.setOnClickListener {
-            val activityChangeIntent = Intent(this@SplashActivity, SystemInfoActivity::class.java)
+            val activityChangeIntent = Intent(this@SplashActivity,
+                    SystemInfoActivity::class.java)
             this@SplashActivity.startActivity(activityChangeIntent)
         }
         if (intent.getBooleanExtra("EXIT", false)) {   // To be removed...

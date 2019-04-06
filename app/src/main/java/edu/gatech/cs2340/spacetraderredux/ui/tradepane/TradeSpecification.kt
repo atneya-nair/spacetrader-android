@@ -23,21 +23,26 @@ class TradeSpecification : AppCompatActivity() {
         setContentView(R.layout.activity_trade_specification)
         mViewModel = ViewModelProviders.of(this).get(TradeSpecificationViewModel::class.java)
         (mViewModel as TradeSpecificationViewModel).playerState = TradeActivity.playerState!!
-        DaggerTradeSpecComponent.builder().appComponent((application as App).applicationComponent).build().inject(mViewModel as TradeSpecificationViewModel)
+        DaggerTradeSpecComponent.builder().appComponent(
+                (application as App).applicationComponent).build().inject(
+                mViewModel as TradeSpecificationViewModel)
         val specificationText = findViewById<View>(R.id.labelTradeConfirmation) as TextView
         val intent = intent
-        (findViewById<TextView>(R.id.remainingCredits)).text = (TradeActivity.playerState as PlayerState).credits.toString()
+        (findViewById<TextView>(R.id.remainingCredits)).text =
+                (TradeActivity.playerState as PlayerState).credits.toString()
 
         val resourceValue = Integer.parseInt(intent.getStringExtra("resourcePrice"))
         val resourceName = intent.getStringExtra("resource")
         mViewModel!!.trade = Trade(Tradeable.valueOf(resourceName.toUpperCase()), resourceValue)
         if (intent.getStringExtra("buy") == "True") {
             mViewModel!!.isBuy = true
-            val text = "Buy " + intent.getStringExtra("resource") + " at " + intent.getStringExtra("resourcePrice") + " credits"
+            val text = "Buy " + intent.getStringExtra("resource") + " at " +
+                    intent.getStringExtra("resourcePrice") + " credits"
             specificationText.text = text
         } else {
             mViewModel!!.isBuy = false
-            val text = "Sell " + intent.getStringExtra("resource") + " at " + intent.getStringExtra("resourcePrice") + " credits"
+            val text = "Sell " + intent.getStringExtra("resource") + " at " +
+                    intent.getStringExtra("resourcePrice") + " credits"
             specificationText.text = text
         }
     }

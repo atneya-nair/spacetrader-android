@@ -15,7 +15,8 @@ import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class ConfigurationPresenter @Inject constructor(
-        val tradeUseCase: TradeUseCase, private val saveNewGameUseCase: SaveNewGame, var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
+        val tradeUseCase: TradeUseCase, private val saveNewGameUseCase: SaveNewGame,
+        var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
 
 
 
@@ -62,7 +63,8 @@ class ConfigurationPresenter @Inject constructor(
             val universe = Universe() //TODO Figure out a better way to do this
             val game = Game(PlayerState(playerConfiguration.getName()!!,
                     playerConfiguration.getDifficulty()!!, playerConfiguration.getSkills()!!,
-                    universe.solarSystems[0], universe.solarSystems[0].planets[0], Gnat(), 1000), universe)
+                    universe.solarSystems[0], universe.solarSystems[0].planets[0], Gnat(),
+                    1000), universe)
             saveNewGameUseCase.execute(object: DisposableSingleObserver<Int>() {
                 override fun onSuccess(t: Int) {
                     getView()?.configurationSuccess()

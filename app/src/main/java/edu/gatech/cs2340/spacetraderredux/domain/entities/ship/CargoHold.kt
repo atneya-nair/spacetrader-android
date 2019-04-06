@@ -21,7 +21,8 @@ class CargoHold constructor(val size: Int) {
 
     fun removeItems(tradeable: Tradeable, num: Int) {
         val curItems = items[tradeable] ?: 0
-        if (curItems < num) throw IllegalStateException("Cargo hold does not have enough items to sell!")
+        if (curItems < num)
+            throw IllegalStateException("Cargo hold does not have enough items to sell!")
         if (curItems - num == 0) {
             items.remove(tradeable)
         } else {

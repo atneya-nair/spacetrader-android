@@ -23,8 +23,10 @@ class SolarSystemViewModel : ViewModel() {
         val solarSystemMap = view.findViewById<View>(R.id.solarSystemLayout) as RelativeLayout
         val rand = Random()
         for (i in 0 until solarSystemArray.size) {
-            val posX = (rand.nextInt(maxX - minX + 1) + minX) * context.resources.displayMetrics.density
-            val posY = (rand.nextInt(maxY - minY + 1) + minY) * context.resources.displayMetrics.density
+            val posX = (rand.nextInt(maxX - minX + 1) + minX) *
+                    context.resources.displayMetrics.density
+            val posY = (rand.nextInt(maxY - minY + 1) + minY) *
+                    context.resources.displayMetrics.density
 
             solarSystemArray[i] = ImageButton(context)
             solarSystemArray[i]?.x = posX

@@ -15,5 +15,6 @@ class ConfigurationModule {
     fun provideConfigurationPresenter(
             tradeUseCase: TradeUseCase,
             saveNewGame: SaveNewGame,
-            playerConfiguration:PlayerConfiguration) = ConfigurationPresenter(tradeUseCase, saveNewGame, playerConfiguration)
+            playerConfiguration:PlayerConfiguration) = ConfigurationPresenter(tradeUseCase,
+            saveNewGame, playerConfiguration)
 }

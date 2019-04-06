@@ -40,8 +40,10 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
         val solarSystemMap = view.findViewById<View>(R.id.solarSystemLayout) as RelativeLayout
         var rand = Random()
         for (i in 0 until solarSystemArray.size) {
-            val posX = (solarSystems[i].location.x * (300 / 150) + 50) * resources.displayMetrics.density
-            val posY = (solarSystems[i].location.y * (400 / 100) + 100) * resources.displayMetrics.density
+            val posX = (solarSystems[i].location.x * (300 / 150) + 50) *
+                    resources.displayMetrics.density
+            val posY = (solarSystems[i].location.y * (400 / 100) + 100) *
+                    resources.displayMetrics.density
 
             solarSystemArray[i] = ImageButton(this)
             solarSystemArray[i]?.x = posX

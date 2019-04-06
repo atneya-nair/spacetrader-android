@@ -10,5 +10,6 @@ import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoPresenter
 class SystemInfoModule {
     @PerActivity
     @Provides
-    fun provideSystemInfoPresenter(currentStateUseCase: GetCurrentStateUseCase) = SystemInfoPresenter(currentStateUseCase)
+    fun provideSystemInfoPresenter(currentStateUseCase: GetCurrentStateUseCase) =
+            SystemInfoPresenter(currentStateUseCase)
 }

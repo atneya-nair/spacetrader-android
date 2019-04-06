@@ -15,7 +15,9 @@ open class BaseMarketPlace(private val planet: Planet) {
 		    ((tradeable == Tradeable.FIREARMS) && (!this.planet.politics.drugLegality))) return 0
 		if (planet.techLevel.ordinal < tradeable.minUseLevel.ordinal) return 0
 
-        price = tradeable.baseLevelPrice + ((this.planet.techLevel.ordinal - tradeable.minUseLevel.ordinal) * tradeable.incPerLevel)
+        price = tradeable.baseLevelPrice +
+                ((this.planet.techLevel.ordinal - tradeable.minUseLevel.ordinal)
+                        * tradeable.incPerLevel)
 
         if (tradeable == this.planet.politics.tradeItemDemand)
             price = (price * 4) / 3

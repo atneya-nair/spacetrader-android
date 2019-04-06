@@ -17,7 +17,8 @@ abstract class CompletableFunctionUseCase<T, in SingleParams, in FunctionParams>
 
     abstract fun buildOnCompletableSuccess(t: T): Completable
 
-    fun execute(observer: CompletableObserver, sparams: SingleParams? = null, fparams: FunctionParams? = null) {
+    fun execute(observer: CompletableObserver, sparams: SingleParams? = null,
+                fparams: FunctionParams? = null) {
         val observable: Completable = this.buildUseCaseSingle(sparams)
                 .subscribeOn(subscribeScheduler)
                 .map { t -> transform(t, fparams)}

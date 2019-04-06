@@ -23,7 +23,8 @@ import kotlinx.android.synthetic.main.activity_system_info.*
 
 class SystemInfoActivity : BaseActivity<SystemInfoPresenter>(), SystemInfoView {
 
-    override fun displayInfo(solarSystem: SolarSystemName, planetName: PlanetName, techLevel: TechLevel, politics: Politics, specialEvent: SpecialEvent) {
+    override fun displayInfo(solarSystem: SolarSystemName, planetName: PlanetName,
+                             techLevel: TechLevel, politics: Politics, specialEvent: SpecialEvent) {
         systemNameText.text = solarSystem.displayName
         planetNameText.text = planetName.toString()
         techLevelText.text = techLevel.toString()
@@ -40,7 +41,8 @@ class SystemInfoActivity : BaseActivity<SystemInfoPresenter>(), SystemInfoView {
     }
 
     fun systemInfoClick(view: View) {
-        Toast.makeText(this@SystemInfoActivity, "Already on System Info page!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@SystemInfoActivity, "Already on System Info page!",
+                Toast.LENGTH_SHORT).show()
     }
 
     fun cargoClick(view: View) {

@@ -38,7 +38,8 @@ class CargoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cargo)
         val tabText = findViewById<View>(R.id.labelTabName) as TextView
         tabText.text = "Cargo"
-        DaggerCargoComponent.builder().appComponent((application as App).applicationComponent).build().inject(this)
+        DaggerCargoComponent.builder().appComponent(
+                (application as App).applicationComponent).build().inject(this)
         getCurrentStateUseCase.execute(object: DisposableSingleObserver<PlayerState>() {
             override fun onSuccess(playerStateResult: PlayerState) {
                 val trades = LinkedList<Trade>()

@@ -11,7 +11,8 @@ import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class MapPresenter @Inject constructor(
-        private var mapUseCase: GetMapUseCase, private var travelUseCase: TravelUseCase, private var currentStateUseCase: GetCurrentStateUseCase): BasePresenter<MapView>() {
+        private var mapUseCase: GetMapUseCase, private var travelUseCase: TravelUseCase,
+        private var currentStateUseCase: GetCurrentStateUseCase): BasePresenter<MapView>() {
     override fun disposeSubscriptions() {
         mapUseCase.dispose()
         travelUseCase.dispose()
@@ -72,10 +73,14 @@ class MapPresenter @Inject constructor(
             override fun onSuccess(playerStateResult: PlayerState) {
                 val x = playerStateResult.currSystem.location.x
                 val y = playerStateResult.currSystem.location.y
-                val distance = Math.abs(x - solarSystem.location.x) + Math.abs(y - solarSystem.location.y)
+                val distance = Math.abs(x - solarSystem.location.x) +
+                        Math.abs(y - solarSystem.location.y)
                 val fuelCost = distance / 3
                 val fuelRemaining = playerStateResult.ship.storageUnits.fuelTank.current
-                getView()?.showConfirmationDialogue(solarSystem, String.format("Travel to system at (%d, %d)\nFuel Remeaining: %d\nFuel Cost: %d\nDistance %d", x, y, fuelRemaining, fuelCost, distance))
+                getView()?.showConfirmationDialogue(solarSystem, String.format(
+                        "Travel to system at (%d, %d)\nFuel Remeaining: %d" +
+                                "\nFuel Cost: %d\nDistance %d",
+                        x, y, fuelRemaining, fuelCost, distance))
             }
 
             override fun onError(e: Throwable) {

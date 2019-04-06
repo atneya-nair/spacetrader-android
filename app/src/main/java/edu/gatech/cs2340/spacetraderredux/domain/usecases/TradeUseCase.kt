@@ -10,7 +10,8 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import java.lang.IllegalStateException
 
-class TradeUseCase(val gameStateRepository: GameStateRepository, subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler):
+class TradeUseCase(val gameStateRepository: GameStateRepository, subscribeScheduler: Scheduler,
+                   postExecutionScheduler: Scheduler):
         CompletableFunctionUseCase<Game, Int, TradeAction>(subscribeScheduler, postExecutionScheduler) {
 
     override fun buildUseCaseSingle(params: Int?): Single<Game> {
@@ -21,12 +22,16 @@ class TradeUseCase(val gameStateRepository: GameStateRepository, subscribeSchedu
         val player = t.playerState
         if (!tradeAction!!.sell) {
             //TODO move code from cargo hold to here
-            if (tradeAction != null) player.credits -= tradeAction.trade.price * tradeAction.quantity
+            if (tradeAction != null) player.credits -= tradeAction.trade.price *
+                    tradeAction.quantity
             if (player.credits < 0) throw IllegalStateException("Not enough money to buy item!")
-            player.ship.storageUnits.cargoHold.addItems(tradeAction.trade.tradeable, tradeAction.quantity)
+            player.ship.storageUnits.cargoHold.addItems(tradeAction.trade.tradeable,
+                    tradeAction.quantity)
         } else {
-            player.ship.storageUnits.cargoHold.removeItems(tradeAction.trade.tradeable, tradeAction.quantity)
-            if (tradeAction != null) player.credits += tradeAction.trade.price * tradeAction.quantity
+            player.ship.storageUnits.cargoHold.removeItems(tradeAction.trade.tradeable,
+                    tradeAction.quantity)
+            if (tradeAction != null) player.credits += tradeAction.trade.price *
+                    tradeAction.quantity
         }
 
         return Game(player, t.universe)

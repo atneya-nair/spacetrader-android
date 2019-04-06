@@ -9,8 +9,9 @@ import io.reactivex.Single
 
 
 class GetMapUseCase(private val gameStateRepository: GameStateRepository,
-                            subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) : UseCase<List<SolarSystem>, Int>(
-        subscribeScheduler, postExecutionScheduler) {
+                            subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) :
+        UseCase<List<SolarSystem>, Int>(subscribeScheduler, postExecutionScheduler) {
+
     override fun buildUseCaseSingle(params: Int?): Single<List<SolarSystem>> {
         val game = gameStateRepository.getGameStateById(0)
         return game.map {

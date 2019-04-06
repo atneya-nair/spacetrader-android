@@ -12,8 +12,11 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import java.lang.IllegalStateException
 
-class TravelUseCase(private val gameStateRepository: GameStateRepository, subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler):
-        CompletableFunctionUseCase<Game, Int, SolarSystem>(subscribeScheduler, postExecutionScheduler) {
+class TravelUseCase(private val gameStateRepository: GameStateRepository,
+                    subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler):
+        CompletableFunctionUseCase<Game, Int, SolarSystem>(subscribeScheduler,
+                postExecutionScheduler) {
+
     override fun buildUseCaseSingle(params: Int?): Single<Game> {
         return gameStateRepository.getGameStateById(params!!)
     }
@@ -21,8 +24,8 @@ class TravelUseCase(private val gameStateRepository: GameStateRepository, subscr
         val curSystem = t.playerState.currSystem
         val dist = Math.abs(curSystem.location.x - solarSystem!!.location.x) +
                 Math.abs(curSystem.location.y - solarSystem.location.y)
-        if (dist / 3 > t.playerState.ship.storageUnits.fuelTank.current) throw IllegalStateException(
-                "Ship does not have fuel for this journey!")
+        if (dist / 3 > t.playerState.ship.storageUnits.fuelTank.current)
+            throw IllegalStateException("Ship does not have fuel for this journey!")
         t.playerState.currSystem = solarSystem
         t.playerState.currPlanet = solarSystem.planets[0] // TODO pick planets
         var specialEvent = t.playerState.currPlanet.specialEvent

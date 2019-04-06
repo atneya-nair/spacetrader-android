@@ -7,7 +7,9 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 
 class GetMarketPlaceUseCase(private val gameStateRepository: GameStateRepository,
-                            subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) : UseCase<BuyMarketPlace, Int>(subscribeScheduler, postExecutionScheduler) {
+                            subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) :
+        UseCase<BuyMarketPlace, Int>(subscribeScheduler, postExecutionScheduler) {
+
     override fun buildUseCaseSingle(params: Int?): Single<BuyMarketPlace> {
         val game = gameStateRepository.getGameStateById(0)
         return game.map {

@@ -84,22 +84,27 @@ class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), Configurat
     }
 
     override fun displayInvalidPlayerNameError() {
-        Toast.makeText(this@ConfigurationActivity, "PlayerState name is empty", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@ConfigurationActivity, "PlayerState name is empty",
+                Toast.LENGTH_SHORT).show()
     }
 
     override fun displaySkillPointsRemainingError() {
-        Toast.makeText(this@ConfigurationActivity, "Unallocated skill points remaining", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@ConfigurationActivity,
+                "Unallocated skill points remaining", Toast.LENGTH_SHORT).show()
     }
 
     override fun configurationSuccess() {
-        Toast.makeText(this@ConfigurationActivity, "Creating valid playerState", Toast.LENGTH_SHORT).show()
-        val activityChangeIntent = Intent(this@ConfigurationActivity, SystemInfoActivity::class.java)
+        Toast.makeText(this@ConfigurationActivity,
+                "Creating valid playerState", Toast.LENGTH_SHORT).show()
+        val activityChangeIntent = Intent(this@ConfigurationActivity,
+                SystemInfoActivity::class.java)
         this@ConfigurationActivity.startActivity(activityChangeIntent)
         this.finish()
     }
 
     /**
-     * Processes a decrement button being clicked, updating the corresponding difficulty or skillpoint.
+     * Processes a decrement button being clicked, updating the corresponding difficulty or
+     * skillpoint.
      * @param view the view the event happened in.
      */
     fun downClicked(view: View) {
@@ -112,7 +117,8 @@ class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), Configurat
     }
 
     /**
-     * Processes an increment button being clicked, updating the corresponding difficulty or skillpoint.
+     * Processes an increment button being clicked, updating the corresponding difficulty or
+     * skillpoint.
      * @param view the view the event happened in.
      */
     fun upClicked(view: View) {

@@ -11,7 +11,8 @@ import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 
 
-class ResourcesViewAdapter(private val list: List<Trade>) : RecyclerView.Adapter<ResourcesViewAdapter.MyViewHolder>() {
+class ResourcesViewAdapter(private val list: List<Trade>) :
+        RecyclerView.Adapter<ResourcesViewAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var resourceName: TextView = view.findViewById<View>(R.id.tradeResource) as TextView

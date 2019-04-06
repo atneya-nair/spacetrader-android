@@ -41,7 +41,8 @@ class TradeActivity : AppCompatActivity() {
         Log.d("sdfs", "sdfdfsdf")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trade)
-        DaggerTradeComponent.builder().appComponent((application as App).applicationComponent).build().inject(this)
+        DaggerTradeComponent.builder().appComponent(
+                (application as App).applicationComponent).build().inject(this)
         getCurrentStateUseCase.execute(object: DisposableSingleObserver<PlayerState>() {
             override fun onSuccess(playerStateResult: PlayerState) {
                 playerState = playerStateResult

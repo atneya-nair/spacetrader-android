@@ -25,7 +25,8 @@ class SolarSystem(val name: SolarSystemName, val location: Point, rand: Random) 
 
     override fun toString(): String {
         val sb = StringBuilder()
-        sb.append("Solar System " + name.displayName + " at (" + location.x + ", " + location.y + ") containing planets: {")
+        sb.append("Solar System " + name.displayName + " at (" + location.x + ", " + location.y +
+                ") containing planets: {")
         for (i in 0 until planets.size - 1) {
             sb.append(planets[i].toString() + ", ")
         }

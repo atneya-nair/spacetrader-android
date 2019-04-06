@@ -8,7 +8,9 @@ import io.reactivex.Single
 import java.lang.IllegalArgumentException
 
 class SaveNewGame(private val gameStateRepository: GameStateRepository,
-                  subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) : UseCase<Int, Game>(subscribeScheduler, postExecutionScheduler) {
-    override fun buildUseCaseSingle(params: Game?): Single<Int> = gameStateRepository.setNewGameState(params!!)
+                  subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) :
+        UseCase<Int, Game>(subscribeScheduler, postExecutionScheduler) {
+    override fun buildUseCaseSingle(params: Game?): Single<Int> =
+            gameStateRepository.setNewGameState(params!!)
 
 }

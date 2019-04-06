@@ -45,10 +45,12 @@ class KrisUnitTest {
             if (pointSet.contains(universe.solarSystems[index].location)) {
                 fail()
             }
-            if (universe.solarSystems[index].location.x < 0 || universe.solarSystems[index].location.x >= 150) {
+            if (universe.solarSystems[index].location.x < 0 ||
+                    universe.solarSystems[index].location.x >= 150) {
                 fail()
             }
-            if (universe.solarSystems[index].location.y < 0 || universe.solarSystems[index].location.y >= 150) {
+            if (universe.solarSystems[index].location.y < 0 ||
+                    universe.solarSystems[index].location.y >= 150) {
                 fail()
             }
         }
