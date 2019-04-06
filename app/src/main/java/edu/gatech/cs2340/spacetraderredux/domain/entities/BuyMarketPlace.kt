@@ -11,7 +11,7 @@ class BuyMarketPlace(planet: Planet, playerState: PlayerState): BaseMarketPlace(
                 modifiedPrice = if (planet.techLevel.ordinal < it.minProduceLevel.ordinal) {
                     0
                 } else {
-                    ((playerState.skills.trader - playerState.skills.MAX_SKILL) / 2) + 100 * modifiedPrice / 100
+                    ((playerState.skills.trader - Skills.MAX_SKILL) / 2) + 100 * modifiedPrice / 100
                 }
                 this.marketPrice[it] = modifiedPrice
             }
