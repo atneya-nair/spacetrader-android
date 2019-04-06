@@ -14,12 +14,12 @@ import kotlin.IllegalStateException
 import kotlin.random.Random
 
 class TanayUnitTest {
-    var cargoHold : CargoHold
-    val hiCapacity = 1000
-    val loCapacity = 0
-    var tradeable : Tradeable
-    var hiCapacityLeft = hiCapacity
-    var loCapacityLeft = loCapacity
+    private var cargoHold : CargoHold
+    private val hiCapacity = 1000
+    private val loCapacity = 0
+    private var tradeable : Tradeable
+    private var hiCapacityLeft = hiCapacity
+    private var loCapacityLeft = loCapacity
 
     init {
         cargoHold = CargoHold(hiCapacity)

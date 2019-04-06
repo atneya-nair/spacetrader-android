@@ -13,19 +13,19 @@ class CargoHold constructor(val size: Int) {
     fun addItems(tradeable: Tradeable, num: Int) {
         capacityLeft -= num
         if (capacityLeft < 0) throw IllegalStateException("Cargo hold is full, cannot add items!")
-        var currentNum = items.get(tradeable) ?: 0
+        val currentNum = items[tradeable] ?: 0
         if (currentNum + num != 0) {
-            items.put(tradeable, currentNum!! + num)
+            items[tradeable] = currentNum + num
         }
     }
 
     fun removeItems(tradeable: Tradeable, num: Int) {
-        var curItems = items.get(tradeable) ?: 0
+        val curItems = items[tradeable] ?: 0
         if (curItems < num) throw IllegalStateException("Cargo hold does not have enough items to sell!")
         if (curItems - num == 0) {
             items.remove(tradeable)
         } else {
-            items.put(tradeable, curItems - num)
+            items[tradeable] = curItems - num
         }
         capacityLeft += num
     }

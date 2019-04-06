@@ -16,7 +16,7 @@ import edu.gatech.cs2340.spacetraderredux.ui.common.App
 
 
 class TradeSpecification : AppCompatActivity() {
-    var mViewModel: TradeSpecificationViewModel? = null
+    private var mViewModel: TradeSpecificationViewModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setFinishOnTouchOutside(false)
@@ -28,8 +28,8 @@ class TradeSpecification : AppCompatActivity() {
         val intent = intent
         (findViewById<TextView>(R.id.remainingCredits)).text = (TradeActivity.playerState as PlayerState).credits.toString()
 
-        var resourceValue = Integer.parseInt(intent.getStringExtra("resourcePrice"))
-        var resourceName = intent.getStringExtra("resource")
+        val resourceValue = Integer.parseInt(intent.getStringExtra("resourcePrice"))
+        val resourceName = intent.getStringExtra("resource")
         mViewModel!!.trade = Trade(Tradeable.valueOf(resourceName.toUpperCase()), resourceValue)
         if (intent.getStringExtra("buy") == "True") {
             mViewModel!!.isBuy = true

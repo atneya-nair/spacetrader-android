@@ -8,9 +8,9 @@ class SolarSystem(val name: SolarSystemName, val location: Point, rand: Random) 
     val planets: Array<Planet>
 
     init {
-        var set = HashSet<String>()
+        val set = HashSet<String>()
         this.planets = Array(rand.nextInt(10) + 1){generateRandomPlanet(rand)}
-        for (i in 0..planets.size-1) {
+        for (i in 0 until planets.size) {
             var currPlanet = generateRandomPlanet(rand)
             while (set.contains(currPlanet.name.name)) {
                 currPlanet = generateRandomPlanet(rand)

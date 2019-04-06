@@ -13,7 +13,7 @@ class GetCurrentStateUseCase(private val gameStateRepository: GameStateRepositor
                     subscribeScheduler: Scheduler, postExecutionScheduler: Scheduler) : UseCase<PlayerState, Int>(
         subscribeScheduler, postExecutionScheduler) {
     override fun buildUseCaseSingle(params: Int?): Single<PlayerState> {
-        var game = gameStateRepository.getGameStateById(0)
+        val game = gameStateRepository.getGameStateById(0)
         return game.map {
             return@map it.playerState
         }

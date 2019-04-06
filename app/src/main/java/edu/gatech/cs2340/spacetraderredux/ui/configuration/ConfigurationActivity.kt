@@ -22,9 +22,9 @@ import kotlinx.android.synthetic.main.configuration_containers.view.*
 class ConfigurationActivity : BaseActivity<ConfigurationPresenter>(), ConfigurationView{
 
 
-    lateinit var difficultyTextView: TextView
-    lateinit var buttonIdToSkillType: Map<Int, SkillType>
-    lateinit var skillTypeToTextView: Map<SkillType, TextView>
+    private lateinit var difficultyTextView: TextView
+    private lateinit var buttonIdToSkillType: Map<Int, SkillType>
+    private  lateinit var skillTypeToTextView: Map<SkillType, TextView>
 
 
 

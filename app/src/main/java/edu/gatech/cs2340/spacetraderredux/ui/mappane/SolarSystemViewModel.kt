@@ -11,20 +11,20 @@ import java.util.*
 
 
 class SolarSystemViewModel : ViewModel() {
-    var solarSystemArray = arrayOfNulls<ImageButton>(25)
-    val minX = 50
-    val minY = 100
-    val maxX = 350
-    val maxY = 500
+    private var solarSystemArray = arrayOfNulls<ImageButton>(25)
+    private val minX = 50
+    private val minY = 100
+    private val maxX = 350
+    private val maxY = 500
     fun initPlanetLocations(context : Context, view : View) {
-        var dpWidth = 15 * context.getResources().getDisplayMetrics().density
-        var dpHeight = 15 * context.getResources().getDisplayMetrics().density
+        val dpWidth = 15 * context.resources.displayMetrics.density
+        val dpHeight = 15 * context.resources.displayMetrics.density
         val layoutParams = RelativeLayout.LayoutParams(dpWidth.toInt(), dpHeight.toInt())
         val solarSystemMap = view.findViewById<View>(R.id.solarSystemLayout) as RelativeLayout
-        var rand = Random()
-        for (i in 0..solarSystemArray.size - 1) {
-            var posX = (rand.nextInt(maxX - minX + 1) + minX) * context.getResources().getDisplayMetrics().density
-            var posY = (rand.nextInt(maxY - minY + 1) + minY) * context.getResources().getDisplayMetrics().density
+        val rand = Random()
+        for (i in 0 until solarSystemArray.size) {
+            val posX = (rand.nextInt(maxX - minX + 1) + minX) * context.resources.displayMetrics.density
+            val posY = (rand.nextInt(maxY - minY + 1) + minY) * context.resources.displayMetrics.density
 
             solarSystemArray[i] = ImageButton(context)
             solarSystemArray[i]?.x = posX

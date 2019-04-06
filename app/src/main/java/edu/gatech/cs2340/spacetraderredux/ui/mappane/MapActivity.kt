@@ -20,7 +20,7 @@ import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
 
 class MapActivity : BaseActivity<MapPresenter>(), MapView {
 
-    var solarSystemArray = arrayOfNulls<ImageButton>(25)
+    private var solarSystemArray = arrayOfNulls<ImageButton>(25)
     val minX = 50
     val minY = 100
     val maxX = 350
@@ -33,15 +33,15 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
     }
 
     override fun displaySolarSystems(solarSystems: List<SolarSystem>, playerState: PlayerState) {
-        var dpWidth = 15 * getResources().getDisplayMetrics().density
-        var dpHeight = 15 * getResources().getDisplayMetrics().density
+        val dpWidth = 15 * resources.displayMetrics.density
+        val dpHeight = 15 * resources.displayMetrics.density
         val layoutParams = RelativeLayout.LayoutParams(dpWidth.toInt(), dpHeight.toInt())
-        var view = findViewById<View>(R.id.solarSystemLayout)
+        val view = findViewById<View>(R.id.solarSystemLayout)
         val solarSystemMap = view.findViewById<View>(R.id.solarSystemLayout) as RelativeLayout
         var rand = Random()
-        for (i in 0..solarSystemArray.size - 1) {
-            var posX = (solarSystems[i].location.x * (300 / 150) + 50) * getResources().getDisplayMetrics().density
-            var posY = (solarSystems[i].location.y * (400 / 100) + 100) * getResources().getDisplayMetrics().density
+        for (i in 0 until solarSystemArray.size) {
+            val posX = (solarSystems[i].location.x * (300 / 150) + 50) * resources.displayMetrics.density
+            val posY = (solarSystems[i].location.y * (400 / 100) + 100) * resources.displayMetrics.density
 
             solarSystemArray[i] = ImageButton(this)
             solarSystemArray[i]?.x = posX

@@ -28,7 +28,7 @@ class SystemInfoActivity : BaseActivity<SystemInfoPresenter>(), SystemInfoView {
         planetNameText.text = planetName.toString()
         techLevelText.text = techLevel.toString()
         politicsText.text = politics.toString()
-        specialEventText.text = "This system is currently under " + specialEvent.toString() + "!"
+        specialEventText.text = "This system is currently under $specialEvent!"
     }
 
     override fun getLayout(): Int = R.layout.activity_system_info

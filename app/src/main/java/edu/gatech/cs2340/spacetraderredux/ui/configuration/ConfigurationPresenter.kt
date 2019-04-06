@@ -15,7 +15,7 @@ import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class ConfigurationPresenter @Inject constructor(
-        val tradeUseCase: TradeUseCase, val saveNewGameUseCase: SaveNewGame, var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
+        val tradeUseCase: TradeUseCase, private val saveNewGameUseCase: SaveNewGame, var playerConfiguration:PlayerConfiguration): BasePresenter<ConfigurationView>() {
 
 
 
@@ -30,14 +30,14 @@ class ConfigurationPresenter @Inject constructor(
     }
 
     fun onIncrementSkillType(type: SkillType): Boolean {
-        var didSucceed = playerConfiguration.incrementSkill(type)
+        val didSucceed = playerConfiguration.incrementSkill(type)
         getView()?.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
         getView()?.updateRemainingSkillPoints(playerConfiguration.remaining)
         return didSucceed
     }
 
     fun onDecrementSkillType(type: SkillType): Boolean {
-        var didSucceed = playerConfiguration.decrementSkill(type)
+        val didSucceed = playerConfiguration.decrementSkill(type)
         getView()?.updateSkillPoints(type, playerConfiguration.getSkillPoints(type))
         getView()?.updateRemainingSkillPoints(playerConfiguration.remaining)
         return didSucceed
@@ -59,8 +59,8 @@ class ConfigurationPresenter @Inject constructor(
         } else if (playerConfiguration.areSkillPointsRemaining()) {
             getView()?.displaySkillPointsRemainingError()
         } else {
-            var universe = Universe() //TODO Figure out a better way to do this
-            var game = Game(PlayerState(playerConfiguration.getName()!!,
+            val universe = Universe() //TODO Figure out a better way to do this
+            val game = Game(PlayerState(playerConfiguration.getName()!!,
                     playerConfiguration.getDifficulty()!!, playerConfiguration.getSkills()!!,
                     universe.solarSystems[0], universe.solarSystems[0].planets[0], Gnat(), 1000), universe)
             saveNewGameUseCase.execute(object: DisposableSingleObserver<Int>() {
