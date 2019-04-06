@@ -139,13 +139,6 @@ class TradeActivity : AppCompatActivity() {
         Toast.makeText(this@TradeActivity, "Already on Trade page!", Toast.LENGTH_SHORT).show()
     }
 
-    fun warpClick(view: View) {
-        val activityChangeIntent = Intent(this@TradeActivity, TradeActivity::class.java)
-        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-        startActivityIfNeeded(activityChangeIntent, 0)
-
-    }
-
     fun solarClick(view: View) {
         val activityChangeIntent = Intent(this@TradeActivity, MapActivity::class.java)
         activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT

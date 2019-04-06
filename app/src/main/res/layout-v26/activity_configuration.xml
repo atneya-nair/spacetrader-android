@@ -37,8 +37,7 @@
                 android:inputType="textPersonName"
                 android:hint="charName"
                 android:text="Name"
-                android:autofillHints="Player1"
-                tools:targetApi="o" />
+                android:autofillHints="Player1" />
 
         </LinearLayout>
         <LinearLayout

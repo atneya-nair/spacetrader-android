@@ -13,7 +13,6 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
 import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
-import java.util.*
 
 
 class MapActivity : BaseActivity<MapPresenter>(), MapView {
