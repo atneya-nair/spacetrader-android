@@ -22,7 +22,6 @@ class CargoHold constructor(val size: Int) {
     fun removeItems(tradeable: Tradeable, num: Int) {
         var curItems = items.get(tradeable) ?: 0
         if (curItems < num) throw IllegalStateException("Cargo hold does not have enough items to sell!")
-        Log.i("INFO", curItems.toString() + " " + num.toString());
         if (curItems + num == 0) {
             items.remove(tradeable)
         } else {
