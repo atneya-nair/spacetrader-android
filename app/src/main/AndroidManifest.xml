@@ -27,10 +27,7 @@
             android:name=".ui.tradepane.TradeSpecification"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity
-            android:name=".ui.mappane.SolarSystemSpecification"
-            android:excludeFromRecents="true"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+
     </application>
 
 </manifest>

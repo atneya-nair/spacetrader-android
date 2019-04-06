@@ -19,6 +19,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="downButton"
         android:id="@+id/downButton"
         android:onClick="downClicked"
         app:srcCompat="@drawable/ic_down"
@@ -28,6 +29,7 @@
         android:id="@+id/valueText"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:contentDescription="upButton"
         android:layout_weight="0"
         android:text="0"
         android:gravity="center"
@@ -36,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
+        android:contentDescription="upButton"
         android:id="@+id/upButton"
         app:srcCompat="@drawable/ic_up"
         android:onClick="upClicked"

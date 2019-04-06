@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Space Trader Redux"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textStyle="bold"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"

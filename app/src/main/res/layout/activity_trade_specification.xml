@@ -46,6 +46,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="downButton"
                 android:id="@+id/downResourceButton"
                 android:onClick="downResourceClicked"
                 app:srcCompat="@drawable/ic_down"
@@ -63,6 +64,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="upButton"
                 android:layout_marginRight="25dp"
                 android:id="@+id/upResourceButton"
                 android:onClick="upResourceClicked"
