@@ -104,7 +104,6 @@
         android:paddingTop="15dp"
         android:text="This system is currently under X!"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_below="@id/labelTechLevel"
         />
 
 
