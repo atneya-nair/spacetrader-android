@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.domain.entities.enums
 
-enum class SolarSystemName private constructor() {
+enum class SolarSystemName {
     ACAMAR,
     ADAHN,
     ALDEA,

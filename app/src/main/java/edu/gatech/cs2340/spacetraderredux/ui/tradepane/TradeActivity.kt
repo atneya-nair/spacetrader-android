@@ -150,7 +150,5 @@ class TradeActivity : AppCompatActivity() {
         val activityChangeIntent = Intent(this@TradeActivity, MapActivity::class.java)
         activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
         startActivityIfNeeded(activityChangeIntent, 0)
-
-
     }
 }

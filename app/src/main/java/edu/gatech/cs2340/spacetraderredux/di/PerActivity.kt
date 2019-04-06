@@ -5,5 +5,4 @@ import javax.inject.Scope
 
 @Scope
 @Retention
-annotation class PerActivity {
-}
+annotation class PerActivity

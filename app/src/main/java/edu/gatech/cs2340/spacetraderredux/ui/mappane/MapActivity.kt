@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.ui.mappane
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.view.View
 import android.widget.ImageButton
@@ -20,10 +19,6 @@ import java.util.*
 class MapActivity : BaseActivity<MapPresenter>(), MapView {
 
     private var solarSystemArray = arrayOfNulls<ImageButton>(25)
-    val minX = 50
-    val minY = 100
-    val maxX = 350
-    val maxY = 500
     override fun getLayout(): Int = R.layout.activity_solar_system
 
     override fun initInjector() {
@@ -37,7 +32,6 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
         val layoutParams = RelativeLayout.LayoutParams(dpWidth.toInt(), dpHeight.toInt())
         val view = findViewById<View>(R.id.solarSystemLayout)
         val solarSystemMap = view.findViewById<View>(R.id.solarSystemLayout) as RelativeLayout
-        var rand = Random()
         for (i in 0 until solarSystemArray.size) {
             val posX = (solarSystems[i].location.x * (300 / 150) + 50) *
                     resources.displayMetrics.density
@@ -67,14 +61,8 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
         val alertDialog: AlertDialog? = this.let {
             val builder = AlertDialog.Builder(it)
             builder.apply {
-                setPositiveButton("Travel",
-                        DialogInterface.OnClickListener { dialog, id ->
-                            presenter.onTravel(solarSystem)
-                        })
-                setNegativeButton("Cancel",
-                        DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                setPositiveButton("Travel") { _, _ -> presenter.onTravel(solarSystem) }
+                setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
                 setTitle("Travel Confirmation")
                 setMessage(dialogue)
             }

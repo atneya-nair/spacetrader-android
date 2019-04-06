@@ -10,7 +10,6 @@ class KrisUnitTest {
     private var universe : Universe
     private val expectedTotalSystems = 25
     private val numberIterations = 10000
-    private var curr = 0
 
     init {
         universe = Universe()
@@ -58,7 +57,7 @@ class KrisUnitTest {
 
     @Test
     fun testExpectedSolarSystemNames() {
-        val solarSystemName = HashSet<String>();
+        val solarSystemName = HashSet<String>()
         for (solarSystem : SolarSystem in universe.solarSystems) {
             if (solarSystemName.contains(solarSystem.name.displayName)) {
                 fail()
