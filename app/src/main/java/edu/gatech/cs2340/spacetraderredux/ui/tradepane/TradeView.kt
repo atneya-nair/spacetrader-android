@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.spacetraderredux.ui.tradepane
 
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
-import kotlin.reflect.KClass
 
 interface TradeView {
     fun setPlanetName(name: String)

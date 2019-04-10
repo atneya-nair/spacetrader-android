@@ -25,11 +25,6 @@
         <activity android:name=".ui.cargopane.CargoActivity" />
         <activity android:name=".ui.systempane.SystemInfoActivity" />
 
-        <activity
-            android:name=".ui.tradepane.TradeSpecification"
-            android:excludeFromRecents="true"
-            android:theme="@style/Theme.AppCompat.Dialog" />
-
     </application>
 
 </manifest>

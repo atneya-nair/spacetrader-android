@@ -6,18 +6,17 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerTradeComponent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
-import kotlinx.android.synthetic.main.activity_trade.*
 import kotlinx.android.synthetic.main.activity_buy_trade_pane.view.*
 import kotlinx.android.synthetic.main.activity_sell_trade_pane.view.*
-import kotlinx.android.synthetic.main.configuration_containers.view.*
+import kotlinx.android.synthetic.main.activity_trade.*
 import java.util.*
 
 class TradeActivity : BaseActivity<TradePresenter>(), TradeView {
@@ -32,7 +31,7 @@ class TradeActivity : BaseActivity<TradePresenter>(), TradeView {
 
     override fun displayBuyDialog(trade: Trade) {
         val builder = AlertDialog.Builder(this)
-        tradePane = layoutInflater.inflate(R.layout.activity_buy_trade_pane, null)
+        tradePane = layoutInflater.inflate(R.layout.activity_buy_trade_pane, parent as? ViewGroup)
         builder.setView(tradePane)
         builder.setTitle("Buying " + trade.tradeable.displayName)
         tradePane!!.cancelButton.setOnClickListener { presenter.onCancelTransaction() }
@@ -65,7 +64,8 @@ class TradeActivity : BaseActivity<TradePresenter>(), TradeView {
 
     override fun displaySellDialog(trade: Trade) {
         val builder = AlertDialog.Builder(this)
-        tradePane = layoutInflater.inflate(R.layout.activity_sell_trade_pane, null)
+        tradePane = layoutInflater.inflate(R.layout.activity_sell_trade_pane, parent as? ViewGroup,
+                false)
         builder.setView(tradePane)
         builder.setTitle("Selling " + trade.tradeable.displayName)
         tradePane!!.cancelSellButton.setOnClickListener { presenter.onCancelTransaction() }

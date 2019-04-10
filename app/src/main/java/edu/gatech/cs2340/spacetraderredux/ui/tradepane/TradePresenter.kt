@@ -35,10 +35,10 @@ class TradePresenter @Inject constructor(val getCurrentStateUseCase: GetCurrentS
     }
 
     fun initialiseView() {
-        var view = getView()!!
+        val view = getView()!!
         view.setPlanetName(playerState.currPlanet.name.name)
 
-        var trades = ArrayList<Trade>()
+        val trades = ArrayList<Trade>()
         val bmp = BuyMarketPlace(playerState.currPlanet, playerState)
         for (element in bmp.marketPrice) {
             if (element.value == 0) {
@@ -82,6 +82,10 @@ class TradePresenter @Inject constructor(val getCurrentStateUseCase: GetCurrentS
     }
 
     fun onIncrementSellQuantityClick() {
+        if (!playerState.ship.storageUnits.cargoHold.getItems()
+                        .containsKey(currentTrade!!.tradeable)) {
+            return
+        }
         if (currentQuantity + 1 > playerState.ship.storageUnits.cargoHold.getItems()
                         .getValue(currentTrade!!.tradeable)) {
             return
