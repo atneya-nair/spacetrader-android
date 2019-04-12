@@ -43,7 +43,7 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:$room_version"
     implementation "android.arch.persistence.room:rxjava2:$room_version"
     implementation 'com.google.code.gson:gson:2.8.2'
-
+    testImplementation "org.mockito:mockito-inline:2.8.9"
 
 }
 repositories {
