@@ -10,6 +10,7 @@ import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerMapComponent
 import edu.gatech.cs2340.spacetraderredux.domain.SolarSystem
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
+import edu.gatech.cs2340.spacetraderredux.ui.EncounterActivity
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
 import edu.gatech.cs2340.spacetraderredux.ui.systempane.SystemInfoActivity
@@ -73,7 +74,7 @@ class MapActivity : BaseActivity<MapPresenter>(), MapView {
     }
 
     override fun onSuccessfulTravel() {
-        val activityChangeIntent = Intent(this, SystemInfoActivity::class.java)
+        val activityChangeIntent = Intent(this, EncounterActivity::class.java)
         this.startActivity(activityChangeIntent)
     }
 

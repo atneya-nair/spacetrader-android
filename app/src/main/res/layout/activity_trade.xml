@@ -29,7 +29,6 @@
         android:text="Planet Name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-
     <TextView
         android:id="@+id/planetName"
         android:layout_width="wrap_content"

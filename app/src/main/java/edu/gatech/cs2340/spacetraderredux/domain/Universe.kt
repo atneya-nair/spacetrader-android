@@ -31,8 +31,8 @@ class Universe @Inject constructor() {
                 usedPoints.add(newLocation)
                 solarSystemList.add(SolarSystem(currSolarSystem, newLocation, rand))
                 counter++
+                selectedNames.add(currSolarSystem.name)
             }
-            selectedNames.add(currSolarSystem.name)
         }
         this.solarSystems = Collections.unmodifiableList(solarSystemList)
     }

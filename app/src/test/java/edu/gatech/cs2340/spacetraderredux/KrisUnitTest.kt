@@ -13,7 +13,6 @@ class KrisUnitTest {
 
     init {
         universe = Universe()
-        System.out.println(universe.solarSystems)
     }
 
     @Test

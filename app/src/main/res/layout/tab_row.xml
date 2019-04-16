@@ -29,7 +29,8 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:text="Y"
-        android:layout_toLeftOf="@id/tradeableButton"/>
+        android:layout_toLeftOf="@id/tradeableButton"
+        android:onClick="yardClick"/>
     <Button
         android:id="@+id/cargoButton"
         android:layout_width="35dp"

@@ -3,6 +3,7 @@ package edu.gatech.cs2340.spacetraderredux.ui.systempane
 
 import android.content.Intent
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import edu.gatech.cs2340.spacetraderredux.R
 import edu.gatech.cs2340.spacetraderredux.di.presenters.DaggerSystemInfoComponent
@@ -11,6 +12,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.PlanetName
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
+import edu.gatech.cs2340.spacetraderredux.ui.ShipYardActivity
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity
@@ -22,6 +24,8 @@ class SystemInfoActivity : BaseActivity<SystemInfoPresenter>(), SystemInfoView {
 
     override fun displayInfo(solarSystem: SolarSystemName, planetName: PlanetName,
                              techLevel: TechLevel, politics: Politics, specialEvent: SpecialEvent) {
+        val tabText = findViewById<View>(R.id.labelTabName) as TextView
+        tabText.text = "System Info"
         systemNameText.text = solarSystem.displayName
         planetNameText.text = planetName.toString()
         techLevelText.text = techLevel.toString()
@@ -56,6 +60,12 @@ class SystemInfoActivity : BaseActivity<SystemInfoPresenter>(), SystemInfoView {
 
     fun solarClick(view: View) {
         val activityChangeIntent = Intent(this@SystemInfoActivity, MapActivity::class.java)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+    }
+
+    fun yardClick(view: View) {
+        val activityChangeIntent = Intent(this@SystemInfoActivity, ShipYardActivity::class.java)
         activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
         startActivityIfNeeded(activityChangeIntent, 0)
     }

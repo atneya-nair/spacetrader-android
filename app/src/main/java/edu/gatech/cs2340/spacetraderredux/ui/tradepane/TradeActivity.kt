@@ -16,6 +16,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.BuyMarketPlace
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.GetCurrentStateUseCase
+import edu.gatech.cs2340.spacetraderredux.ui.ShipYardActivity
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.mappane.MapActivity
@@ -141,6 +142,12 @@ class TradeActivity : AppCompatActivity() {
 
     fun solarClick(view: View) {
         val activityChangeIntent = Intent(this@TradeActivity, MapActivity::class.java)
+        activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(activityChangeIntent, 0)
+    }
+
+    fun yardClick(view: View) {
+        val activityChangeIntent = Intent(this@TradeActivity, ShipYardActivity::class.java)
         activityChangeIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
         startActivityIfNeeded(activityChangeIntent, 0)
     }

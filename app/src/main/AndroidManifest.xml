@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.ShipYardActivity"></activity>
         <activity android:name=".ui.mappane.MapActivity" />
         <activity android:name=".ui.tradepane.TradeActivity" />
         <activity android:name=".ui.configuration.ConfigurationActivity" />
@@ -24,12 +25,18 @@
         </activity>
         <activity android:name=".ui.cargopane.CargoActivity" />
         <activity android:name=".ui.systempane.SystemInfoActivity" />
-
+        <activity
+            android:name=".ui.EncounterActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+        <activity
+            android:name=".ui.EncounterDialog"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
             android:name=".ui.tradepane.TradeSpecification"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.AppCompat.Dialog" />
-
     </application>
 
 </manifest>
