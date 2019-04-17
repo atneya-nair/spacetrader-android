@@ -11,4 +11,4 @@ class Bumblebee : Ship("Bumblebee",
         ShipPurchaseInfo(TechLevel.INDUSTRIAL, 60000),
         15,
         0,
-        ShipHull(100, 1, 2))
+        ShipHull(100, 1, 2, 100))

@@ -11,4 +11,4 @@ class Beetle : Ship("Beetle",
         ShipPurchaseInfo(TechLevel.INDUSTRIAL, 80000),
         3,
         0,
-        ShipHull(50, 1, 2))
+        ShipHull(50, 1, 2, 50))

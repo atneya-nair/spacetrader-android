@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.ShipYardActivity"
+    tools:context=".ui.shipyard.ShipYardActivity"
     android:paddingBottom="16dp"
     android:paddingLeft="30dp"
     android:paddingRight="@dimen/activity_horizontal_margin"

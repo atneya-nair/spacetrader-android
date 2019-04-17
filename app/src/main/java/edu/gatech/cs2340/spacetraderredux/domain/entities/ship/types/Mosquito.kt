@@ -11,4 +11,4 @@ class Mosquito : Ship("Mosquito",
         ShipPurchaseInfo(TechLevel.INDUSTRIAL, 30000),
         20,
         0,
-        ShipHull(100, 1, 1))
+        ShipHull(100, 1, 1, 100))

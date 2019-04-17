@@ -11,4 +11,4 @@ class Flea : Ship("Flea",
         ShipPurchaseInfo(TechLevel.EARLY_INDUSTRIAL, 2000),
         2,
         0,
-        ShipHull(25, 1, 0))
+        ShipHull(25, 1, 0, 25))

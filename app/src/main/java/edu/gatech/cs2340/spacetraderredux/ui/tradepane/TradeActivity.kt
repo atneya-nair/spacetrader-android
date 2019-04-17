@@ -16,7 +16,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.BuyMarketPlace
 import edu.gatech.cs2340.spacetraderredux.domain.entities.PlayerState
 import edu.gatech.cs2340.spacetraderredux.domain.entities.Trade
 import edu.gatech.cs2340.spacetraderredux.domain.usecases.GetCurrentStateUseCase
-import edu.gatech.cs2340.spacetraderredux.ui.ShipYardActivity
+import edu.gatech.cs2340.spacetraderredux.ui.shipyard.ShipYardActivity
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.mappane.MapActivity

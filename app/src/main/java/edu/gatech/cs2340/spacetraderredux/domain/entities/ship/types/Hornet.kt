@@ -11,4 +11,4 @@ class Hornet : Ship("Hornet",
         ShipPurchaseInfo(TechLevel.POST_INDUSTRIAL, 100000),
         6,
         1,
-        ShipHull(150, 2, 3))
+        ShipHull(150, 2, 3, 150))

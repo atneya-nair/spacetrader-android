@@ -11,4 +11,4 @@ class Grasshopper : Ship("Grasshopper",
         ShipPurchaseInfo(TechLevel.POST_INDUSTRIAL, 150000),
         2,
         2,
-        ShipHull(150, 3, 3))
+        ShipHull(150, 3, 3, 150))

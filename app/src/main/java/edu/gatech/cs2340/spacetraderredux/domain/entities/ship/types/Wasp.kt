@@ -11,4 +11,4 @@ class Wasp : Ship("Wasp",
         ShipPurchaseInfo(TechLevel.HI_TECH, 300000),
         2,
         4,
-        ShipHull(200, 5, 4))
+        ShipHull(200, 5, 4, 200))

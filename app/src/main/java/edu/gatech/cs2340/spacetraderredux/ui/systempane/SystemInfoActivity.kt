@@ -12,7 +12,7 @@ import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.PlanetName
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SolarSystemName
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.SpecialEvent
 import edu.gatech.cs2340.spacetraderredux.domain.entities.enums.TechLevel
-import edu.gatech.cs2340.spacetraderredux.ui.ShipYardActivity
+import edu.gatech.cs2340.spacetraderredux.ui.shipyard.ShipYardActivity
 import edu.gatech.cs2340.spacetraderredux.ui.cargopane.CargoActivity
 import edu.gatech.cs2340.spacetraderredux.ui.common.App
 import edu.gatech.cs2340.spacetraderredux.ui.common.BaseActivity

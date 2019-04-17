@@ -11,4 +11,4 @@ class Termite : Ship("Termite",
         ShipPurchaseInfo(TechLevel.HI_TECH, 225000),
         2,
         3,
-        ShipHull(200, 4, 4))
+        ShipHull(200, 4, 4, 200))
